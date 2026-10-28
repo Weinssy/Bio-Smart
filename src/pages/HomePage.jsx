@@ -195,16 +195,16 @@ export default function HomePage() {
                 {/* Academic Metrics Row */}
                 <div className="pt-6 border-t border-slate-200/70 grid grid-cols-3 gap-4 max-w-lg mx-auto lg:mx-0">
                   <div>
-                    <p className="text-2xl font-bold text-slate-900 tracking-tight">4 Modul</p>
+                    <p className="text-2xl font-bold text-slate-900 tracking-tight">8 Modul</p>
                     <p className="text-xs text-slate-500 font-medium mt-0.5">Fase F Lengkap</p>
+                  </div>
+                  <div>
+                    <p className="text-2xl font-bold text-slate-900 tracking-tight">40+ Soal</p>
+                    <p className="text-xs text-slate-500 font-medium mt-0.5">Bank Kuis HOTS</p>
                   </div>
                   <div>
                     <p className="text-2xl font-bold text-slate-900 tracking-tight">12 Lab</p>
                     <p className="text-xs text-slate-500 font-medium mt-0.5">Simulasi Mandiri</p>
-                  </div>
-                  <div>
-                    <p className="text-2xl font-bold text-slate-900 tracking-tight">100%</p>
-                    <p className="text-xs text-slate-500 font-medium mt-0.5">Akses Pelajar SMA</p>
                   </div>
                 </div>
               </div>

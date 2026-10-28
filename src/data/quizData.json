@@ -115,6 +115,30 @@
           ],
           "correctIndex": 3,
           "explanation": "Ventrikel kiri memompa darah beroksigen tinggi ke aorta untuk didistribusikan ke seluruh tubuh. Dinding ventrikel kiri sangat tebal karena membutuhkan tekanan kuat."
+        },
+        {
+          "id": "qo-4",
+          "question": "Pada nefron ginjal manusia, proses filtrasi darah yang menghasilkan urin primer terjadi di bagian glomerulus dan kapsula Bowman. Senyawa manakah di bawah ini yang secara normal TIDAK dapat lolos melewati membran filtrasi glomerulus?",
+          "options": [
+            "Glukosa dan asam amino bebas",
+            "Ion natrium (Na+) dan kalium (K+)",
+            "Protein plasma darah (albumin) dan eritrosit",
+            "Urea dan air"
+          ],
+          "correctIndex": 2,
+          "explanation": "Membran filtrasi glomerulus dan podosit memiliki pori-pori berukuran sangat kecil dengan muatan negatif, sehingga menahan molekul berukuran besar seperti protein plasma darah (albumin) dan sel-sel darah agar tidak keluar ke kapsula Bowman."
+        },
+        {
+          "id": "qo-5",
+          "question": "Darah yang kaya akan karbon dioksida dari seluruh jaringan tubuh bagian atas dan bawah akan masuk kembali ke dalam jantung melalui pembuluh vena kava menuju ke ruang...",
+          "options": [
+            "Ventrikel kiri (bilik kiri)",
+            "Atrium kanan (serambi kanan)",
+            "Atrium kiri (serambi kiri)",
+            "Ventrikel kanan (bilik kanan)"
+          ],
+          "correctIndex": 1,
+          "explanation": "Darah deoksigenasi (miskin O2, kaya CO2) dari vena kava superior dan inferior pertama kali bermuara ke atrium kanan sebelum dipompa ke ventrikel kanan dan dialirkan ke paru-paru melalui arteri pulmonalis."
         }
       ]
     },
@@ -150,6 +174,42 @@
           ],
           "correctIndex": 2,
           "explanation": "Pewarisan buta warna terpaut kromosom X resesif. Persilangan XbY x XBXb menghasilkan genotipe XBXb (normal carrier) dan XbXb (buta warna). Sehingga peluang anak perempuan buta warna adalah 50% dari total kemungkinan anak perempuan."
+        },
+        {
+          "id": "qg-3",
+          "question": "Pada persilangan dihibrid antara tanaman ercis berbiji bulat kuning (BbKk) dengan sesamanya, jika sifat bulat (B) dominan terhadap kisut (b) dan kuning (K) dominan terhadap hijau (k), berapakah perbandingan fenotipe keturunan yang dihasilkan?",
+          "options": [
+            "9 bulat kuning : 3 bulat hijau : 3 kisut kuning : 1 kisut hijau",
+            "12 bulat kuning : 3 bulat hijau : 1 kisut hijau",
+            "9 bulat kuning : 6 bulat hijau : 1 kisut hijau",
+            "1 bulat kuning : 1 bulat hijau : 1 kisut kuning : 1 kisut hijau"
+          ],
+          "correctIndex": 0,
+          "explanation": "Menurut Hukum Mendel II (Asortasi Bebas), persilangan dihibrid heterozigot mandiri (BbKk x BbKk) menghasilkan rasio fenotipe standar F2 yaitu 9 : 3 : 3 : 1."
+        },
+        {
+          "id": "qg-4",
+          "question": "Seorang pria normal menikah dengan seorang wanita pembawa sifat (carrier) hemofilia (X^H X^h). Berapakah peluang lahirnya anak laki-laki yang menderita hemofilia dari pasangan tersebut?",
+          "options": [
+            "100% dari total anak laki-laki",
+            "50% dari total anak laki-laki",
+            "25% dari total seluruh anak, tapi 0% pada laki-laki",
+            "0% karena ayah bergenotipe normal"
+          ],
+          "correctIndex": 1,
+          "explanation": "Ibu mewariskan salah satu kromosom X secara acak (X^H atau X^h) kepada anak laki-lakinya, sedangkan ayah mewariskan kromosom Y. Maka 50% anak laki-laki akan bergenotipe X^H Y (normal) dan 50% bergenotipe X^h Y (hemofilia)."
+        },
+        {
+          "id": "qg-5",
+          "question": "Proses sintesis protein terdiri atas tahap transkripsi dan translasi. Jika pada rantai antisense DNA memiliki urutan basa nukleotida 3'-TAC-GGC-TTA-ACT-5', maka urutan kodon mRNA yang terbentuk pada transkripsi adalah...",
+          "options": [
+            "5'-AUG-CCG-AAU-UGA-3'",
+            "5'-ATG-CCG-AAT-TGA-3'",
+            "5'-UAC-GGC-UUA-ACU-3'",
+            "5'-AUG-GGC-AAU-UCA-3'"
+          ],
+          "correctIndex": 0,
+          "explanation": "Transkripsi menyalin untai antisense DNA secara komplementer dan antiparalel: T berpasangan dengan A, A berpasangan dengan U (pada RNA), C berpasangan dengan G, dan G berpasangan dengan C. Jadi TAC-GGC-TTA-ACT menjadi 5'-AUG-CCG-AAU-UGA-3'."
         }
       ]
     },
@@ -185,6 +245,322 @@
           ],
           "correctIndex": 1,
           "explanation": "Komensalisme adalah interaksi di mana satu pihak (anggrek) diuntungkan dengan mendapat tempat tumbuh, sementara pihak lain (mangga) tidak dirugikan maupun diuntungkan."
+        },
+        {
+          "id": "qe-3",
+          "question": "Dalam suatu piramida energi ekosistem alami, rata-rata efisiensi transfer energi yang dapat berpindah dari satu tingkat trofik ke tingkat trofik berikutnya yang lebih tinggi hanya sebesar kira-kira...",
+          "options": [
+            "50% – 60%",
+            "80% – 90%",
+            "10% (Hukum Sepuluh Persen Lindeman)",
+            "100% karena energi bersifat kekal"
+          ],
+          "correctIndex": 2,
+          "explanation": "Sesuai Hukum Termodinamika II dan Hukum 10% Raymond Lindeman, sekitar 90% energi hilang ke lingkungan dalam bentuk panas respirasi, ekskresi, dan biomassa yang tidak tercerna, sehingga hanya sekitar 10% energi yang berhasil diubah menjadi biomassa di tingkat trofik berikutnya."
+        },
+        {
+          "id": "qe-4",
+          "question": "Pada daur biogeokimia nitrogen, bakteri tanah *Nitrosomonas* dan *Nitrosococcus* memegang peranan krusial dalam tahap...",
+          "options": [
+            "Denitrifikasi nitrat menjadi gas nitrogen bebas (N2)",
+            "Nitritasi, yaitu mengoksidasi amonia/amonium (NH4+) menjadi ion nitrit (NO2-)",
+            "Nitratasi, yaitu mengoksidasi nitrit (NO2-) menjadi nitrat (NO3-)",
+            "Amonifikasi bahan organik mati"
+          ],
+          "correctIndex": 1,
+          "explanation": "Bakteri nitrifikasi terbagi menjadi dua tahap: (1) Nitritasi: amonia dioksidasi menjadi nitrit oleh *Nitrosomonas* & *Nitrosococcus*, dan (2) Nitratasi: nitrit dioksidasi menjadi nitrat oleh *Nitrobacter*."
+        },
+        {
+          "id": "qe-5",
+          "question": "Daya dukung lingkungan (carrying capacity) suatu ekosistem menunjukkan...",
+          "options": [
+            "Jumlah populasi maksimum suatu spesies yang dapat didukung oleh sumber daya lingkungan secara berkelanjutan tanpa merusak habitat",
+            "Laju kelahiran maksimum spesies ketika kondisi lingkungan ideal tanpa predator",
+            "Kecepatan suksesi primer pada lahan pasca-letusan gunung berapi",
+            "Tingkat keanekaragaman genetik tertinggi di hutan hujan tropis"
+          ],
+          "correctIndex": 0,
+          "explanation": "Carrying capacity (K) adalah batas atas kapasitas lingkungan untuk menyediakan makanan, ruang, dan air bagi populasi organisme tertentu secara seimbang."
+        }
+      ]
+    },
+    {
+      "id": "quiz-biotek",
+      "title": "Evaluasi: Bioteknologi Modern & Rekayasa Genetika",
+      "topic": "Bioteknologi",
+      "moduleId": "mod-5",
+      "description": "Uji pemahaman tentang prinsip kloning, plasmid rekombinan, enzim restriksi endonuklease, kultur jaringan, dan bioetika.",
+      "passingGrade": 75,
+      "questions": [
+        {
+          "id": "qb-1",
+          "question": "Enzim restriksi endonuklease mengenali sekuens DNA target yang bersifat palindromik. Manakah di bawah ini yang merupakan contoh urutan basa nukleotida palindromik?",
+          "options": [
+            "5'-GAATTC-3' berpasangan dengan 3'-CTTAAG-5'",
+            "5'-GATTACA-3' berpasangan dengan 3'-CTAATGT-5'",
+            "5'-AAAAAA-3' berpasangan dengan 3'-TTTTTT-5'",
+            "5'-GGCCAA-3' berpasangan dengan 3'-CCGGTT-5'"
+          ],
+          "correctIndex": 0,
+          "explanation": "Sekuens palindromik membaca urutan yang sama pada arah 5'->3' di kedua untai komplementer, contohnya situs pemotongan enzim EcoRI: 5'-GAATTC-3' dan 3'-CTTAAG-5'."
+        },
+        {
+          "id": "qb-2",
+          "question": "Dalam pembuatan tanaman transgenik kapas Bt, bakteri *Agrobacterium tumefaciens* umumnya dimanfaatkan sebagai vektor pembawa gen karena memiliki...",
+          "options": [
+            "Enzim selulase yang mampu melisiskan dinding sel tumbuhan secara total",
+            "Plasmid Ti (Tumor Inducing) yang secara alami mampu mengintegrasikan fragmen T-DNA ke dalam genom inti sel tumbuhan inang",
+            "Kloroplas fungsional yang dapat melakukan fotosintesis langsung",
+            "Dinding sel peptidoglikan yang kebal terhadap semua jenis pestisida"
+          ],
+          "correctIndex": 1,
+          "explanation": "Plasmid Ti dari *Agrobacterium tumefaciens* memiliki segmen T-DNA yang secara alami dipindahkan dan disisipkan ke kromosom sel tumbuhan, menjadikannya vektor biologis paling ideal untuk transgenik tanaman."
+        },
+        {
+          "id": "qb-3",
+          "question": "Sifat totipotensi sel merupakan landasan ilmiah utama dari penerapan teknik bioteknologi...",
+          "options": [
+            "Kultur jaringan tumbuhan",
+            "Fusi protoplas hibridoma",
+            "Terapi gen in vivo",
+            "Fermentasi asam sitrat"
+          ],
+          "correctIndex": 0,
+          "explanation": "Totipotensi adalah kapasitas sel hidup tumbuhan untuk tumbuh, membelah, dan berdiferensiasi membentuk seluruh organ dan individu baru secara lengkap dalam medium buatan steril."
+        },
+        {
+          "id": "qb-4",
+          "question": "Pada teknik penyuntingan genom CRISPR-Cas9, komponen molekuler yang berfungsi menentukan ketepatan lokasi pemotongan DNA secara spesifik adalah...",
+          "options": [
+            "Plasmid resistensi ampisilin",
+            "Enzim DNA ligase T4",
+            "Guide RNA (gRNA / RNA pemandu)",
+            "Enzim DNA polimerase I"
+          ],
+          "correctIndex": 2,
+          "explanation": "gRNA (guide RNA) memiliki urutan ~20 nukleotida komplementer yang mengenali dan menempel pada sekuens target spesifik di genom, memandu enzim nuklease Cas9 untuk memotong untai ganda DNA tepat di lokasi tersebut."
+        },
+        {
+          "id": "qb-5",
+          "question": "Antibodi monoklonal diproduksi massal melalui teknologi fusi sel hibridoma, yaitu penggabungan antara...",
+          "options": [
+            "Sel limfosit B penghasil antibodi spesifik dengan sel mieloma (kanker) yang mampu membelah tanpa henti",
+            "Sel eritrosit dengan sel punca embrionik",
+            "Sel limfosit T sitotoksik dengan sel bakteri *E. coli*",
+            "Sel beta pankreas dengan sel ragi *Saccharomyces*"
+          ],
+          "correctIndex": 0,
+          "explanation": "Sel hibridoma menggabungkan keunggulan spesifisitas sintesis antibodi tunggal dari sel limfosit B dan sifat immortal (dapat terus membelah dalam kultur secara berkelanjutan) dari sel mieloma (kanker)."
+        }
+      ]
+    },
+    {
+      "id": "quiz-regulasi",
+      "title": "Evaluasi: Sistem Regulasi, Saraf & Hormon",
+      "topic": "Sistem Regulasi",
+      "moduleId": "mod-6",
+      "description": "Uji pemahaman transmisi impuls saraf, mekanisme sinapsis kimiawi, kelenjar endokrin, dan homeostasis tubuh.",
+      "passingGrade": 75,
+      "questions": [
+        {
+          "id": "qr-1",
+          "question": "Ketika membran neuron berada dalam keadaan istirahat (potensial istirahat ~ -70 mV), kondisi gradien ion melintasi membran sel adalah...",
+          "options": [
+            "Konsentrasi ion Na+ lebih tinggi di luar sel, sedangkan ion K+ lebih tinggi di dalam sel",
+            "Konsentrasi ion Na+ dan K+ sama tinggi di dalam dan luar sel",
+            "Konsentrasi ion K+ lebih tinggi di luar sel, sedangkan ion Na+ lebih tinggi di dalam sel",
+            "Bagian dalam sel bermuatan positif terhadap lingkungan ekstraseluler"
+          ],
+          "correctIndex": 0,
+          "explanation": "Pompa Na+/K+-ATPase secara aktif mengeluarkan 3 Na+ dan memasukkan 2 K+, menghasilkan konsentrasi ion Na+ yang jauh lebih tinggi di ekstraseluler dan ion K+ tinggi di sitosol intraseluler."
+        },
+        {
+          "id": "qr-2",
+          "question": "Saat impuls aksi mencapai terminal prasinapsis, ion manakah yang memicu eksositosis vesikel neurotransmiter ke celah sinaptik?",
+          "options": [
+            "Ion Kalsium (Ca2+)",
+            "Ion Klorida (Cl-)",
+            "Ion Hidrogen (H+)",
+            "Ion Magnesium (Mg2+)"
+          ],
+          "correctIndex": 0,
+          "explanation": "Depolarisasi terminal akson membuka kanal Ca2+ berpintu voltase; influks kalsium intraseluler memicu protein fusi membran vesikel untuk melepaskan neurotransmiter ke celah sinapsis."
+        },
+        {
+          "id": "qr-3",
+          "question": "Jika kadar glukosa dalam darah seseorang menurun drastis di bawah ambang normal (misal saat berpuasa lama), respon kompensasi endokrin yang tepat adalah...",
+          "options": [
+            "Sel beta pankreas meningkatkan sekresi insulin untuk sintesis glikogen",
+            "Sel alfa pankreas meningkatkan sekresi hormon glukagon untuk memecah glikogen hati menjadi glukosa",
+            "Kelenjar tiroid menurunkan sekresi tiroksin untuk memperlambat metabolisme",
+            "Kelenjar paratiroid melepaskan parathormon ke ginjal"
+          ],
+          "correctIndex": 1,
+          "explanation": "Hormon glukagon disekresikan oleh sel alfa pankreas saat hipoglikemia untuk merangsang proses glikogenolisis (pemecahan glikogen cadangan di hati) dan glukoneogenesis, sehingga gula darah kembali stabil."
+        },
+        {
+          "id": "qr-4",
+          "question": "Pada mata manusia, sel fotoreseptor batang (rod cell) berbeda dengan sel kerucut (cone cell) karena sel batang...",
+          "options": [
+            "Mampu membedakan spektrum warna merah, hijau, dan biru",
+            "Terkonsentrasi padat pada area fovea sentralis",
+            "Sangat peka terhadap intensitas cahaya redup (penglihatan malam/skotopik) dan mengandung pigmen rodopsin",
+            "Menghasilkan ketajaman visual (*visual acuity*) tertinggi di siang hari"
+          ],
+          "correctIndex": 2,
+          "explanation": "Sel batang mengandung fotopigmen rodopsin yang sangat sensitif pada cahaya rendah sehingga berfungsi untuk penglihatan monokromatik di malam hari, sedangkan sel kerucut (iodopsin) bekerja pada cahaya terang untuk persepsi warna."
+        },
+        {
+          "id": "qr-5",
+          "question": "Kerusakan atau penurunan drastis sekresi hormon antidiuretik (ADH / vasopresin) dari kelenjar hipofisis posterior akan mengakibatkan gangguan...",
+          "options": [
+            "Diabetes insipidus, ditandai dengan produksi volume urin yang sangat banyak dan encer",
+            "Diabetes melitus, ditandai dengan ditemukannya glukosa pada urin",
+            "Batu ginjal akibat endapan kalsium oksalat",
+            "Albuminuria akibat kerusakan filtrasi glomerulus"
+          ],
+          "correctIndex": 0,
+          "explanation": "ADH berfungsi meningkatkan reabsorpsi air di tubulus kolektivus ginjal. Tanpa ADH, air tidak dapat diserap kembali ke darah sehingga penderita mengeluarkan urin encer dalam jumlah masif (hingga 15–20 L/hari), kondisi yang disebut Diabetes Insipidus."
+        }
+      ]
+    },
+    {
+      "id": "quiz-imun",
+      "title": "Evaluasi: Sistem Pertahanan Tubuh & Imunologi",
+      "topic": "Sistem Imun",
+      "moduleId": "mod-7",
+      "description": "Uji pemahaman tentang respon imun non-spesifik, peran sel B dan sel T, jenis antibodi, vaksinasi, dan gangguan autoimun.",
+      "passingGrade": 75,
+      "questions": [
+        {
+          "id": "qi-1",
+          "question": "Sel-sel darah putih yang bertindak sebagai fagosit garis depan dalam menelan dan menghancurkan bakteri pada respon peradangan akut adalah...",
+          "options": [
+            "Neutrofil dan Makrofag",
+            "Eritrosit dan Trombosit",
+            "Basofil dan Sel Mast",
+            "Sel B Memori"
+          ],
+          "correctIndex": 0,
+          "explanation": "Neutrofil adalah fagosit tercepat yang bermigrasi ke jaringan terinfeksi (diapedesis), disusul oleh monosit yang berdiferensiasi menjadi makrofag besar penelan patogen dan debris sel."
+        },
+        {
+          "id": "qi-2",
+          "question": "Antibodi yang paling dominan ditemukan dalam kolostrum (ASI pertama) dan sekresi saliva serta lendir mukosa pernapasan adalah...",
+          "options": [
+            "Imunoglobulin G (IgG)",
+            "Imunoglobulin A (IgA)",
+            "Imunoglobulin E (IgE)",
+            "Imunoglobulin M (IgM)"
+          ],
+          "correctIndex": 1,
+          "explanation": "IgA terdapat dalam bentuk dimer pada sekresi lendir eksternal tubuh (air liur, air mata, mukus saluran cerna dan napas, serta ASI) yang bertindak sebagai benteng pertahanan mukosa terhadap invasi patogen."
+        },
+        {
+          "id": "qi-3",
+          "question": "Peran utama sel T Helper (CD4+) dalam orkestrasi sistem imunitas adaptif tubuh adalah...",
+          "options": [
+            "Mensekresikan sitokin (interleukin) untuk mengaktivasi sel B memproduksi antibodi dan menstimulasi sel T sitotoksik",
+            "Melakukan fagositosis langsung terhadap partikel virus bebas",
+            "Memproduksi molekul histamin untuk memicu respon inflamasi lokal",
+            "Menyaring racun metabolik pada sirkulasi cairan limfa"
+          ],
+          "correctIndex": 0,
+          "explanation": "Sel T Helper (CD4+) adalah konduktor sistem imun: mereka mengenali antigen yang dipresentasikan oleh APC (Antigen Presenting Cell) pada MHC kelas II dan melepaskan sitokin pensinyal untuk mengaktivasi seluruh respon sel B dan sel T sitotoksik."
+        },
+        {
+          "id": "qi-4",
+          "question": "Mengapa respon imun sekunder (setelah paparan kedua terhadap antigen yang sama) berlangsung jauh lebih cepat dan menghasilkan titer antibodi yang jauh lebih tinggi dibanding respon imun primer?",
+          "options": [
+            "Karena kulit menjadi lebih tebal setelah infeksi pertama",
+            "Karena keberadaan sel limfosit B memori dan sel T memori spesifik yang langsung mengenali antigen tersebut tanpa fase aktivasi lambat",
+            "Karena antigen kehilangan toksisitasnya setelah kontak pertama",
+            "Karena bakteri patogen tidak mampu membelah diri pada infeksi kedua"
+          ],
+          "correctIndex": 1,
+          "explanation": "Pada paparan ulang, populasi sel memori yang sudah terbentuk dari infeksi primer atau vaksinasi dapat segera berproliferasi dan berdiferensiasi menjadi sel plasma penghasil antibodi IgG afinitas tinggi dalam waktu beberapa jam."
+        },
+        {
+          "id": "qi-5",
+          "question": "Penyakit autoimun terjadi karena kegagalan mekanisme...",
+          "options": [
+            "Pembentukan enzim lisozim pada air liur",
+            "Toleransi diri (self-tolerance), sehingga sistem imun menganggap molekul tubuh sendiri sebagai antigen asing",
+            "Sintesis histamin oleh sel mast",
+            "Pembelahan mitosis pada jaringan epitel"
+          ],
+          "correctIndex": 1,
+          "explanation": "Autoimun disebabkan hilangnya toleransi diri (self-tolerance) di mana limfosit autoreaktif lolos seleksi dan menyerang jaringan tubuh sendiri (seperti sel beta pankreas pada diabetes tipe 1 atau membran sinovial pada rheumatoid arthritis)."
+        }
+      ]
+    },
+    {
+      "id": "quiz-metabolisme",
+      "title": "Evaluasi: Enzim & Metabolisme Seluler",
+      "topic": "Metabolisme Sel",
+      "moduleId": "mod-8",
+      "description": "Uji pemahaman tentang sifat kinetika enzim, inhibitor alosterik, respirasi aerob, fermentasi, dan reaksi fotosintesis.",
+      "passingGrade": 75,
+      "questions": [
+        {
+          "id": "qm-1",
+          "question": "Enzim dapat mempercepat laju reaksi metabolisme seluler dengan cara...",
+          "options": [
+            "Menaikkan energi bebas total produk akhir reaksi",
+            "Menurunkan energi aktivasi (Ea) yang diperlukan untuk mencapai keadaan transisi reaksi",
+            "Mengubah tetapan kesetimbangan kimia agar reaksi berjalan searah",
+            "Menyuplai panas tambahan ke dalam sitoplasma sel"
+          ],
+          "correctIndex": 1,
+          "explanation": "Enzim bekerja secara termodinamika dengan cara menstabilkan kompleks keadaan transisi (transition state) sehingga menurunkan besarnya energi aktivasi (Ea) tanpa mengubah delta G (energi bebas bebas reaksi) maupun kesetimbangan reaksi."
+        },
+        {
+          "id": "qm-2",
+          "question": "Bagaimanakah cara membuktikan secara eksperimental bahwa suatu zat penghambat merupakan inhibitor kompetitif dan bukan inhibitor non-kompetitif?",
+          "options": [
+            "Menambahkan konsentrasi substrat secara berlebih; jika laju reaksi kembali mencapai kecepatan maksimum (Vmax), maka zat tersebut adalah inhibitor kompetitif",
+            "Menaikkan suhu hingga 80°C untuk mendenaturasi ikatan kovalennya",
+            "Menurunkan pH larutan menjadi asam kuat",
+            "Mengukur laju pengikatan pada sisi alosterik enzim"
+          ],
+          "correctIndex": 0,
+          "explanation": "Inhibitor kompetitif bersaing merebut sisi aktif enzim dengan substrat. Dengan meningkatkan konsentrasi substrat hingga jenuh, peluang substrat berikatan dengan sisi aktif mendominasi keberadaan inhibitor, sehingga Vmax reaksi tetap dapat dicapai."
+        },
+        {
+          "id": "qm-3",
+          "question": "Pada tahap fosforilasi oksidatif rantai transpor elektron mitokondria, zat manakah yang bertindak sebagai akseptor elektron terakhir?",
+          "options": [
+            "Gas Oksigen (O2)",
+            "Ion Besi (Fe3+)",
+            "Koenzim NAD+",
+            "Asam Sitrat"
+          ],
+          "correctIndex": 0,
+          "explanation": "Oksigen (O2) molekuler adalah akseptor elektron dan proton H+ terakhir pada kompleks IV sitokrom c oksidase rantai transpor elektron mitokondria, membentuk molekul air (H2O)."
+        },
+        {
+          "id": "qm-4",
+          "question": "Pada reaksi terang fotosintesis tumbuhan, fotolisis air (pemecahan molekul H2O oleh energi cahaya matahari) berfungsi krusial untuk...",
+          "options": [
+            "Menyediakan elektron pengganti bagi klorofil fotosistem II (P680) yang tereksitasi serta melepaskan gas O2",
+            "Menyediakan molekul CO2 untuk fiksasi enzim Rubisco",
+            "Mencegah penguapan air berlebihan melalui stomata",
+            "Mengangkut glukosa dari daun menuju akar"
+          ],
+          "correctIndex": 0,
+          "explanation": "Reaksi fotolisis air (2 H2O -> 4 H+ + 4 e- + O2) dikatalisis oleh kompleks fotolisis pada fotosistem II untuk menyuplai elektron yang hilang akibat eksitasi foton cahaya, sekaligus menghasilkan oksigen bebas ke atmosfer."
+        },
+        {
+          "id": "qm-5",
+          "question": "Senyawa hasil reaksi terang fotosintesis yang mutlak diperlukan untuk menggerakkan tahap reduksi dan sintesis glukosa pada Siklus Calvin di stroma kloroplas adalah...",
+          "options": [
+            "ATP dan NADPH",
+            "Oksigen dan Glukosa",
+            "FADH2 dan NADH",
+            "Air dan Klorofil"
+          ],
+          "correctIndex": 0,
+          "explanation": "ATP menyediakan energi bebas fosforilasi dan NADPH menyediakan daya pereduksi (elektron dan H+) yang diperlukan enzim Siklus Calvin untuk mengubah 3-PGA menjadi gula fosfat (G3P)."
         }
       ]
     }

@@ -1038,6 +1038,539 @@
           ]
         }
       ]
+    },
+    {
+      "id": "mod-5",
+      "title": "Bioteknologi Modern & Konvensional",
+      "icon": "biotech",
+      "color": "#7c3aed",
+      "gradient": "linear-gradient(135deg, #7c3aed 0%, #a855f7 100%)",
+      "description": "Mempelajari prinsip rekayasa genetika, plasmid rekombinan, kloning, kultur jaringan, teknologi CRISPR-Cas9, serta bioetika organisme transgenik.",
+      "totalSubtopics": 4,
+      "estimatedHours": 14,
+      "subtopics": [
+        {
+          "id": "sub-5-1",
+          "title": "Prinsip Dasar Bioteknologi & Fermentasi Konvensional",
+          "icon": "science",
+          "content": [
+            {
+              "type": "heading",
+              "text": "Pengertian dan Perkembangan Bioteknologi"
+            },
+            {
+              "type": "paragraph",
+              "text": "Bioteknologi adalah pemanfaatan prinsip-prinsip ilmiah yang menggunakan makhluk hidup (bakteri, jamur, ragi, sel hewan/tumbuhan) atau produk dari makhluk hidup untuk menghasilkan barang dan jasa yang bermanfaat bagi kesejahteraan manusia."
+            },
+            {
+              "type": "keypoint",
+              "text": "Bioteknologi konvensional (tradisional) bertumpu pada proses biokimia alami dan fermentasi tanpa melakukan modifikasi langsung pada materi genetik (DNA) organisme yang digunakan."
+            },
+            {
+              "type": "heading",
+              "text": "Contoh Penerapan Bioteknologi Konvensional"
+            },
+            {
+              "type": "list",
+              "items": [
+                "**Tempe** — Fermentasi kedelai oleh jamur *Rhizopus oryzae* dan *Rhizopus oligosporus* yang membentuk miselium putih pengikat biji kedelai.",
+                "**Yogurt** — Fermentasi laktosa pada susu oleh bakteri asam laktat *Lactobacillus bulgaricus* dan *Streptococcus thermophilus* yang menurunkan pH dan menggumpalkan kasein susu.",
+                "**Kecap** — Fermentasi kedelai oleh jamur *Aspergillus wentii* atau *Aspergillus oryzae* dalam larutan garam pekat.",
+                "**Nata de Coco** — Pembentukan pelikel selulosa ekstraseluler oleh bakteri *Acetobacter xylinum* pada air kelapa bergula.",
+                "**Antibiotik Penisilin** — Biosintesis senyawa antimikroba metabolit sekunder oleh kapang *Penicillium notatum* dan *Penicillium chrysogenum*."
+              ]
+            },
+            {
+              "type": "highlight",
+              "text": "Kelebihan bioteknologi konvensional adalah biayanya yang relatif murah, tidak memerlukan peralatan canggih, dan minim risiko bioetika genetik."
+            }
+          ]
+        },
+        {
+          "id": "sub-5-2",
+          "title": "Teknologi DNA Rekombinan, Plasmid & Enzim Restriksi",
+          "icon": "dna",
+          "content": [
+            {
+              "type": "heading",
+              "text": "Mekanisme Rekayasa Genetika"
+            },
+            {
+              "type": "paragraph",
+              "text": "Bioteknologi modern melibatkan rekayasa genetika (genetic engineering), yaitu teknik pengubahan susunan materi genetik suatu sel dengan cara menyisipkan, memotong, atau memindahkan fragmen DNA antar-organisme yang berbeda spesies (DNA rekombinan)."
+            },
+            {
+              "type": "keypoint",
+              "text": "Tiga instrumen molekuler utama dalam teknologi DNA rekombinan: (1) Enzim Restriksi Endonuklease sebagai 'gunting molekuler', (2) Enzim DNA Ligase sebagai 'lem molekuler', dan (3) Vektor pembawa DNA (umumnya Plasmid bakteri)."
+            },
+            {
+              "type": "heading",
+              "text": "Tahapan Pembuatan Insulin Rekombinan"
+            },
+            {
+              "type": "list",
+              "items": [
+                "**Isolasi Gen Sasaran** — Mengekstraksi gen pengkode hormon insulin dari sel beta pankreas manusia.",
+                "**Pemotongan dengan Enzim Restriksi** — Enzim restriksi (misalnya *EcoRI*) memotong plasmid bakteri dan gen insulin manusia pada situs pengenalan spesifik palindromik, menghasilkan ujung lengket (*sticky ends*).",
+                "**Ligasi (Penyambungan)** — Enzim DNA ligase menyambungkan ikatan fosfodiester antara gen insulin manusia dengan plasmid bakteri, membentuk plasmid rekombinan.",
+                "**Transformasi** — Plasmid rekombinan dimasukkan ke dalam sel inang bakteri *Escherichia coli* yang kompeten.",
+                "**Kloning & Ekspresi Gen** — Bakteri dikultur dalam bioreaktor, membelah diri secara biner, dan mengekspresikan polipeptida insulin murni yang dapat dipanen secara massal."
+              ]
+            },
+            {
+              "type": "highlight",
+              "text": "Sebelum ditemukannya teknologi insulin rekombinan (1978), penderita diabetes bergantung pada insulin babi atau sapi yang sering memicu reaksi alergi dan risiko penularan zoonosis."
+            }
+          ]
+        },
+        {
+          "id": "sub-5-3",
+          "title": "Kultur Jaringan, Kloning & Terapi Gen CRISPR",
+          "icon": "coronavirus",
+          "content": [
+            {
+              "type": "heading",
+              "text": "Totipotensi Sel dan Kultur Jaringan Tumbuhan"
+            },
+            {
+              "type": "paragraph",
+              "text": "Kultur jaringan (mikropropagasi) didasarkan pada sifat **totipotensi sel**, yaitu kemampuan setiap sel tumbuhan utuh yang hidup untuk berdiferensiasi dan berkembang kembali menjadi individu baru yang lengkap jika ditempatkan pada medium nutrisi aseptik."
+            },
+            {
+              "type": "list",
+              "items": [
+                "**Eksplan** — Bagian kecil jaringan tumbuhan (misalnya meristem pucuk atau daun muda) yang steril.",
+                "**Kalus** — Massa sel yang belum berdiferensiasi dan terus membelah aktif.",
+                "**Planlet** — Tumbuhan muda hasil diferensiasi organ (akar dan tunas) yang siap diaklimatisasi ke tanah."
+              ]
+            },
+            {
+              "type": "heading",
+              "text": "Kloning Hewan & Penyuntingan Gen CRISPR-Cas9"
+            },
+            {
+              "type": "keypoint",
+              "text": "Kloning mamalia (seperti Domba Dolly, 1996) menggunakan teknik SCNT (Somatic Cell Nuclear Transfer), yaitu pemindahan inti sel somatik donor ke dalam sel telur tanpa inti (enukleasi), kemudian diimplantasikan ke uterus induk pengganti (surrogate mother)."
+            },
+            {
+              "type": "paragraph",
+              "text": "Teknologi CRISPR-Cas9 (Clustered Regularly Interspaced Short Palindromic Repeats) memanfaatkan RNA pemandu (*guide RNA*) dan enzim endonuklease Cas9 untuk menyunting atau memperbaiki urutan basa nitrogen DNA spesifik dengan tingkat presisi yang sangat tinggi, membuka jalan bagi terapi penyakit genetik seperti anemia sel sabit (*sickle cell disease*)."
+            }
+          ]
+        },
+        {
+          "id": "sub-5-4",
+          "title": "Bioetika, Produk GMO & Dampak Lingkungan",
+          "icon": "policy",
+          "content": [
+            {
+              "type": "heading",
+              "text": "Organisme Hasil Rekayasa Genetika (GMO)"
+            },
+            {
+              "type": "paragraph",
+              "text": "Tanaman transgenik seperti jagung Bt (disisipi gen *Bacillus thuringiensis* yang tahan hama penggerek) dan Golden Rice (disisipi gen biosintesis beta-karoten provitamin A) memberikan solusi ketahanan pangan global, namun memerlukan pengawasan ketat."
+            },
+            {
+              "type": "heading",
+              "text": "Potensi Risiko Ekologis dan Bioetika"
+            },
+            {
+              "type": "list",
+              "items": [
+                "**Pencemaran Genetik (Gene Flow)** — Perpindahan serbuk sari tanaman transgenik ke varietas liar kerabatnya yang dapat memunculkan gulma super (*superweeds*) tahan herbisida.",
+                "**Gangguan Rantai Makanan** — Penurunan populasi serangga non-target akibat toksin yang terkandung dalam tanaman transgenik.",
+                "**Reaksi Alergenisitas** — Risiko transfer alergen yang tidak terduga ke dalam bahan pangan komersial.",
+                "**Etika Kloning Manusia** — Larangan global terhadap kloning reproduktif manusia demi mempertahankan martabat dan integritas identitas individu."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mod-6",
+      "title": "Sistem Regulasi & Koordinasi",
+      "icon": "neurology",
+      "color": "#0284c7",
+      "gradient": "linear-gradient(135deg, #0284c7 0%, #38bdf8 100%)",
+      "description": "Mempelajari sistem saraf, polarisasi dan transmisi impuls potensial aksi, sistem endokrin, regulasi umpan balik negatif hormon, serta indra manusia.",
+      "totalSubtopics": 4,
+      "estimatedHours": 16,
+      "subtopics": [
+        {
+          "id": "sub-6-1",
+          "title": "Struktur Sel Saraf (Neuron) & Potensial Aksi Impuls",
+          "icon": "psychology",
+          "content": [
+            {
+              "type": "heading",
+              "text": "Struktur Neuron dan Sel Glia"
+            },
+            {
+              "type": "paragraph",
+              "text": "Neuron adalah unit struktural dan fungsional sistem saraf yang terspesialisasi menghantarkan impuls listrik. Neuron didukung oleh sel glia (astrosit, oligodendrosit, sel Schwann, dan mikroglia) yang berfungsi memberi nutrisi, membentuk selubung mielin, dan melindungi jaringan saraf."
+            },
+            {
+              "type": "list",
+              "items": [
+                "**Dendrit** — Percabangan sitoplasma pendek yang menerima rangsangan dari reseptor atau neuron lain menuju badan sel.",
+                "**Badan Sel (Perikarion)** — Mengandung inti sel (nukleus) dan badan Nissl (retikulum endoplasma kasar penghasil neurotransmiter).",
+                "**Akson (Neurit)** — Serabut tunggal panjang yang menghantarkan impuls dari badan sel menuju efektor atau neuron lain.",
+                "**Selubung Mielin** — Lapisan fosfolipid isolator yang dibentuk oleh sel Schwann pada sistem saraf tepi; memicu konduksi saltatori (*loncatan impuls*) pada Nodus Ranvier hingga 120 m/s."
+              ]
+            },
+            {
+              "type": "heading",
+              "text": "Mekanisme Potensial Aksi"
+            },
+            {
+              "type": "keypoint",
+              "text": "1. **Polarisasi (Istirahat -70 mV)**: Pompa Na+/K+-ATPase memompa 3 Na+ keluar dan 2 K+ ke dalam, menjaga bagian dalam membran bermuatan negatif dibanding luar.\n2. **Depolarisasi (+30 mV)**: Stimulus membuka kanal Na+ berpintu voltase; ion Na+ membanjiri bagian dalam sel.\n3. **Repolarisasi**: Kanal Na+ tertutup dan kanal K+ terbuka; ion K+ keluar dari sitoplasma sel."
+            }
+          ]
+        },
+        {
+          "id": "sub-6-2",
+          "title": "Transmisi Sinapsis Kimiawi & Neurotransmiter",
+          "icon": "hub",
+          "content": [
+            {
+              "type": "heading",
+              "text": "Struktur dan Cara Kerja Sinapsis"
+            },
+            {
+              "type": "paragraph",
+              "text": "Sinapsis adalah celah mikroskopis (celah sinaptik ~20 nm) yang memisahkan membran prasinapsis dari membran pascasinapsis. Karena impuls listrik tidak dapat melompati celah cairan secara langsung, transmisi informasi dilakukan oleh zat kimia yang disebut neurotransmiter."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Impuls listrik mencapai terminal akson prasinapsis, memicu pembukaan kanal ion Ca2+ berpintu voltase.",
+                "Influks ion Ca2+ menstimulasi vesikel sinapsis untuk fusi dengan membran prasinapsis (eksositosis) dan melepaskan molekul neurotransmiter ke celah sinaptik.",
+                "Neurotransmiter berdifusi dan berikatan secara spesifik dengan reseptor pada membran pascasinapsis, memicu pembukaan kanal ion baru (EPSP atau IPSP)."
+              ]
+            },
+            {
+              "type": "heading",
+              "text": "Jenis-Jenis Neurotransmiter Utama"
+            },
+            {
+              "type": "keypoint",
+              "text": "**Asetilkolin (ACh)**: Bekerja pada sambungan neuromuskular untuk kontraksi otot rangka.\n**Dopamin**: Mengatur motorik halus, pusat motivasi dan penghargaan (reward system).\n**Serotonin**: Memodulasi suasana hati (*mood*), siklus tidur, dan nafsu makan.\n**GABA (Gamma-Aminobutyric Acid)**: Neurotransmiter inhibitorik utama di otak yang menenangkan aktivitas saraf."
+            }
+          ]
+        },
+        {
+          "id": "sub-6-3",
+          "title": "Kelenjar Endokrin & Regulasi Hormon Homeostasis",
+          "icon": "medication",
+          "content": [
+            {
+              "type": "heading",
+              "text": "Sistem Hormon dan Mekanisme Umpan Balik"
+            },
+            {
+              "type": "paragraph",
+              "text": "Kelenjar endokrin adalah kelenjar buntu (tanpa saluran) yang mensekresikan molekul pembawa pesan kimiawi (hormon) langsung ke dalam sirkulasi aliran darah menuju organ sasaran yang memiliki reseptor spesifik."
+            },
+            {
+              "type": "keypoint",
+              "text": "Homeostasis dijaga melalui mekanisme **Umpan Balik Negatif (Negative Feedback Loop)**: Ketika suatu variabel biologis melampaui batas normal, respon tubuh akan membalikkan arah perubahan tersebut menuju titik setel (set point)."
+            },
+            {
+              "type": "heading",
+              "text": "Regulasi Glukosa Darah oleh Pankreas"
+            },
+            {
+              "type": "list",
+              "items": [
+                "**Kondisi Hiperglikemia (Gula Darah Tinggi sesudah makan)**: Sel Beta Pulau Langerhans mensekresikan **Insulin**. Insulin menstimulasi sel tubuh menyerap glukosa dan memicu hati mengubah glukosa menjadi glikogen (glikogenesis).",
+                "**Kondisi Hipoglikemia (Gula Darah Rendah saat puasa)**: Sel Alfa Pulau Langerhans mensekresikan **Glukagon**. Glukagon menstimulasi hati memecah glikogen menjadi glukosa (glikogenolisis) dan melepaskannya ke darah."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "sub-6-4",
+          "title": "Sistem Indra & Gangguan Sistem Saraf",
+          "icon": "visibility",
+          "content": [
+            {
+              "type": "heading",
+              "text": "Fotoreseptor Mata: Sel Batang vs Sel Kerucut"
+            },
+            {
+              "type": "paragraph",
+              "text": "Retina mata memiliki dua jenis sel fotoreseptor: **Sel Batang (Rod cell)** yang mengandung pigmen rodopsin untuk penglihatan monokromatik di cahaya redup (skotopik), dan **Sel Kerucut (Cone cell)** yang mengandung pigmen iodopsin untuk penglihatan warna di cahaya terang (fotopik)."
+            },
+            {
+              "type": "heading",
+              "text": "Kelainan dan Gangguan Sistem Koordinasi"
+            },
+            {
+              "type": "list",
+              "items": [
+                "**Alzheimer** — Penyakit neurodegeneratif akibat penumpukan plak amiloid-beta dan serat kusut tau yang merusak neuron di hipokampus otak.",
+                "**Parkinson** — Penurunan produksi dopamin akibat degenerasi sel saraf pada substansia nigra otak tengah, menyebabkan tremor dan kekakuan otot.",
+                "**Diabetes Melitus Tipe 1** — Penyakit autoimun di mana sel T menghancurkan sel beta pankreas sehingga tubuh kekurangan insulin mutlak.",
+                "**Diabetes Melitus Tipe 2** — Terjadi resistensi reseptor insulin pada membran sel tubuh akibat pola hidup dan obesitas."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mod-7",
+      "title": "Sistem Pertahanan Tubuh (Imunologi)",
+      "icon": "shield_with_heart",
+      "color": "#e11d48",
+      "gradient": "linear-gradient(135deg, #e11d48 0%, #fb7185 100%)",
+      "description": "Mempelajari garis pertahanan nonspesifik, respon peradangan, imunitas adaptif seluler dan humoral (sel B dan T), jenis antibodi, serta vaksinasi.",
+      "totalSubtopics": 4,
+      "estimatedHours": 12,
+      "subtopics": [
+        {
+          "id": "sub-7-1",
+          "title": "Garis Pertahanan Bawaan (Non-spesifik) & Respon Inflamasi",
+          "icon": "security",
+          "content": [
+            {
+              "type": "heading",
+              "text": "Garis Pertahanan Pertama dan Kedua"
+            },
+            {
+              "type": "paragraph",
+              "text": "Sistem imun bawaan (*innate immunity*) bekerja secara cepat dan tidak spesifik terhadap jenis antigen tertentu sejak saat lahir. Bertujuan mencegah invasi mikroorganisme patogen ke dalam jaringan tubuh."
+            },
+            {
+              "type": "list",
+              "items": [
+                "**Pertahanan Fisik & Mekanik (Garis Pertama)** — Lapisan epitel kulit berkreatin, silia pada saluran pernapasan, dan mukus (lendir) pelindung.",
+                "**Pertahanan Kimiawi** — Enzim lisozim dalam air mata dan saliva yang menghancurkan dinding peptidoglikan bakteri, serta asam lambung (HCl) ber-pH 1.5–2.0.",
+                "**Fagositosis (Garis Kedua)** — Neutrofil dan Makrofag yang menelan dan mencerna patogen melalui pembentukan fagosom dan fusi lisosom."
+              ]
+            },
+            {
+              "type": "heading",
+              "text": "Mekanisme Inflamasi (Peradangan Akut)"
+            },
+            {
+              "type": "keypoint",
+              "text": "Kerusakan jaringan memicu sel mast melepaskan **histamin** dan bradikinin. Hal ini menyebabkan vasodilatasi kapiler darah (kemerahan/rubor & panas/kalor) serta peningkatan permeabilitas kapiler sehingga plasma merembes ke jaringan (bengkak/tumor) dan menekan ujung saraf sensorik (nyeri/dolor)."
+            }
+          ]
+        },
+        {
+          "id": "sub-7-2",
+          "title": "Imunitas Adaptif: Limfosit B, Limfosit T, & Memori Imun",
+          "icon": "diversity_3",
+          "content": [
+            {
+              "type": "heading",
+              "text": "Diferensiasi Sel Limfosit B dan T"
+            },
+            {
+              "type": "paragraph",
+              "text": "Imunitas adaptif (*acquired immunity*) bersifat sangat spesifik, memiliki memori imunologis, dan melibatkan dua cabang utama: Imunitas Humoral (dimediasi sel B) dan Imunitas Seluler (dimediasi sel T)."
+            },
+            {
+              "type": "list",
+              "items": [
+                "**Limfosit B (Bursa Fabricius / Sumsum Tulang)**: Mengalami pematangan di sumsum tulang. Saat teraktivasi oleh antigen, berdiferensiasi menjadi **Sel B Plasma** (pabrik pembuat antibodi larut) dan **Sel B Memori** (penyimpan memori antigen selama bertahun-tahun).",
+                "**Limfosit T (Timus)**: Mengalami pematangan di kelenjar timus.",
+                "**Sel T Helper (CD4+)** — Menghubungkan respon imun dengan mensekresikan sitokin (interleukin) untuk mengaktivasi sel B dan sel T sitotoksik.",
+                "**Sel T Sitotoksik (CD8+)** — Membunuh secara langsung sel tubuh yang terinfeksi virus atau sel kanker dengan mensekresikan perforin (melubangi membran) dan granzim (memicu apoptosis sel target)."
+              ]
+            },
+            {
+              "type": "keypoint",
+              "text": "Respon imun sekunder terjadi jauh lebih cepat, bertahan lebih lama, dan memproduksi titer antibodi berkali-kali lipat lebih tinggi dibanding respon primer berkat keberadaan sel memori."
+            }
+          ]
+        },
+        {
+          "id": "sub-7-3",
+          "title": "Struktur & Kelas Antibodi (Imunoglobulin)",
+          "icon": "biotech",
+          "content": [
+            {
+              "type": "heading",
+              "text": "Struktur Molekul Antibodi (Imunoglobulin / Ig)"
+            },
+            {
+              "type": "paragraph",
+              "text": "Antibodi adalah glikoprotein berbentuk huruf 'Y' yang tersusun dari 4 rantai polipeptida: 2 rantai berat (*heavy chain*) identik dan 2 rantai ringan (*light chain*) identik yang dihubungkan oleh jembatan disulfida. Ujung lengan 'Y' merupakan daerah variabel (Fab) yang menjadi situs pengikatan epitop antigen (*antigen binding site*)."
+            },
+            {
+              "type": "heading",
+              "text": "5 Kelas Imunoglobulin Manusia"
+            },
+            {
+              "type": "list",
+              "items": [
+                "**IgG** — Antibodi paling melimpah dalam serum darah (~80%); mampu menembus sawar plasenta untuk memberikan kekebalan pasif alami bagi janin.",
+                "**IgA** — Terdapat dalam bentuk dimer pada sekresi mukosa tubuh: ASI (kolostrum), air liur, air mata, dan lendir saluran napas.",
+                "**IgM** — Berbentuk pentamer besar; merupakan antibodi pertama yang disintesis dalam respon imun primer terhadap infeksi baru.",
+                "**IgE** — Menempel pada membran sel mast dan basofil; bertanggung jawab atas respon hipersensitivitas (alergi) dan pertahanan terhadap cacing parasit.",
+                "**IgD** — Berfungsi terutama sebagai reseptor antigen pada permukaan membran sel B yang belum matang (*naive B cells*)."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "sub-7-4",
+          "title": "Mekanisme Vaksinasi, Alergi, & Penyakit Autoimun",
+          "icon": "vaccines",
+          "content": [
+            {
+              "type": "heading",
+              "text": "Vaksinasi dan Herd Immunity"
+            },
+            {
+              "type": "paragraph",
+              "text": "Vaksinasi adalah pemberian antigen patogen yang telah dilemahkan (*attenuated*), dimatikan (*inactivated*), berupa subunit protein, toksin yang dinetralkan (*toksoid*), atau materi genetik (mRNA) untuk menstimulasi pembentukan sel B dan T memori tanpa menyebabkan penyakit sesungguhnya."
+            },
+            {
+              "type": "heading",
+              "text": "Gangguan Sistem Imun"
+            },
+            {
+              "type": "list",
+              "items": [
+                "**Alergi (Hipersensitivitas)** — Reaksi imun berlebihan terhadap alergen yang sebenarnya tidak berbahaya (debu, serbuk sari, makanan), memicu pelepasan histamin masif.",
+                "**Autoimunitas** — Kegagalan toleransi imun tubuh untuk mengenali jaringan diri sendiri (*self-tolerance failure*), sehingga limfosit menyerang sel tubuh normal (contoh: Lupus Eritematosus Sistemik / SLE, Artritis Reumatoid).",
+                "**Imunodefisiensi (AIDS)** — Infeksi virus HIV yang menyerang dan melisiskan sel T Helper (CD4+), meruntuhkan seluruh sistem koordinasi imun penderita."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mod-8",
+      "title": "Enzim & Metabolisme Seluler",
+      "icon": "bolt",
+      "color": "#d97706",
+      "gradient": "linear-gradient(135deg, #d97706 0%, #f59e0b 100%)",
+      "description": "Mempelajari sifat dan mekanisme kerja enzim, inhibitor, katabolisme respirasi seluler aerob dan fermentasi, serta reaksi fotosintesis tumbuhan.",
+      "totalSubtopics": 4,
+      "estimatedHours": 15,
+      "subtopics": [
+        {
+          "id": "sub-8-1",
+          "title": "Sifat, Struktur, & Mekanisme Kerja Enzim (Induced-fit Model)",
+          "icon": "speed",
+          "content": [
+            {
+              "type": "heading",
+              "text": "Karakteristik Biokatalisator Enzim"
+            },
+            {
+              "type": "paragraph",
+              "text": "Enzim adalah biokatalisator organik yang mempercepat laju reaksi kimia dalam sel tanpa ikut habis bereaksi. Enzim bekerja dengan cara **menurunkan energi aktivasi (Ea)**, yaitu energi ambang minimal yang diperlukan untuk memulai suatu reaksi kimia."
+            },
+            {
+              "type": "list",
+              "items": [
+                "**Spesifisitas Tinggi** — Enzim hanya mengkatalisis substrat tertentu (*one enzyme, one substrate*).",
+                "**Struktur Holoenzim** — Terdiri dari bagian protein termolabil (**Apoenzim**) dan bagian non-protein (**Kofaktor** berupa ion anorganik Zn2+/Fe2+ atau **Koenzim** berupa molekul organik seperti vitamin B, NAD+, FAD).",
+                "**Bekerja Bolak-balik (Reversibel)** — Dapat mengkatalisis reaksi penguraian maupun pembentukan senyawa."
+              ]
+            },
+            {
+              "type": "keypoint",
+              "text": "Model *Induced Fit* (Koshland, 1958) membuktikan bahwa sisi aktif enzim bersifat fleksibel; pengikatan substrat akan menginduksi perubahan konformasi spasial sisi aktif enzim sehingga substrat terikat secara pas dan membentuk kompleks Enzim-Substrat (ES)."
+            }
+          ]
+        },
+        {
+          "id": "sub-8-2",
+          "title": "Faktor yang Mempengaruhi Aktivitas Enzim & Jenis Inhibitor",
+          "icon": "tune",
+          "content": [
+            {
+              "type": "heading",
+              "text": "Faktor Lingkungan Fisik & Kimia"
+            },
+            {
+              "type": "list",
+              "items": [
+                "**Suhu** — Laju reaksi meningkat hingga suhu optimum (~37°C–40°C pada manusia). Di atas suhu optimum, ikatan hidrogen enzim putus menyebabkan **denaturasi** permanen struktur tersier protein.",
+                "**Derajat Keasaman (pH)** — Setiap enzim memiliki pH optimum spesifik (misal pepsin lambung ber-pH ~2, amilase ludah ber-pH ~7, tripsin usus ber-pH ~8).",
+                "**Konsentrasi Substrat & Enzim** — Penambahan substrat menaikkan laju reaksi sampai seluruh sisi aktif enzim jenuh (*Vmax*)."
+              ]
+            },
+            {
+              "type": "heading",
+              "text": "Inhibitor Kompetitif vs Non-Kompetitif"
+            },
+            {
+              "type": "keypoint",
+              "text": "**Inhibitor Kompetitif**: Memiliki kemiripan struktur dengan substrat dan bersaing merebut sisi aktif enzim. Hambatan dapat diatasi dengan **meningkatkan konsentrasi substrat**.\n\n**Inhibitor Non-Kompetitif**: Berikatan pada sisi alosterik (di luar sisi aktif), mengubah konformasi sisi aktif enzim sehingga substrat tidak lagi dapat berikatan. Hambatan **tidak dapat diatasi** meskipun konsentrasi substrat ditingkatkan."
+            }
+          ]
+        },
+        {
+          "id": "sub-8-3",
+          "title": "Respirasi Aerob & Fermentasi Anaerob",
+          "icon": "air",
+          "content": [
+            {
+              "type": "heading",
+              "text": "4 Tahap Respirasi Seluler Aerob"
+            },
+            {
+              "type": "paragraph",
+              "text": "Persamaan reaksi umum: C6H12O6 + 6 O2 → 6 CO2 + 6 H2O + 30–32 ATP."
+            },
+            {
+              "type": "list",
+              "items": [
+                "**1. Glikolisis (Sitosol/Sitoplasma)**: 1 molekul Glukosa (6C) dipecah menjadi 2 molekul Asam Piruvat (3C), menghasilkan 2 NADH dan 2 ATP murni.",
+                "**2. Dekarboksilasi Oksidatif (Matriks Mitokondria)**: 2 Asam Piruvat diubah menjadi 2 Asetil Ko-A (2C), menghasilkan 2 CO2 dan 2 NADH.",
+                "**3. Siklus Krebs (Matriks Mitokondria)**: 2 Asetil Ko-A berikatan dengan Oksaloasetat membentuk Sitrat; melepaskan 4 CO2, 6 NADH, 2 FADH2, dan 2 ATP.",
+                "**4. Rantai Transpor Elektron (Krista Mitokondria)**: Transfer elektron dari NADH dan FADH2 melalui kompleks protein membran dalam memompa proton H+ untuk menggerakkan ATP sintase. Oksigen (O2) bertindak sebagai **akseptor elektron terakhir** dan membentuk H2O."
+              ]
+            },
+            {
+              "type": "heading",
+              "text": "Fermentasi (Jalur Anaerob)"
+            },
+            {
+              "type": "keypoint",
+              "text": "**Fermentasi Asam Laktat**: Terjadi di otot saat kekurangan O2; Asam Piruvat direduksi langsung oleh NADH menjadi Asam Laktat, menghasilkan 2 ATP.\n**Fermentasi Alkohol**: Terjadi pada ragi (*Saccharomyces*); Asam Piruvat didekarboksilasi menjadi Asetaldehida (melepas CO2) lalu direduksi menjadi Etanol, menghasilkan 2 ATP."
+            }
+          ]
+        },
+        {
+          "id": "sub-8-4",
+          "title": "Anabolisme: Reaksi Terang & Siklus Calvin Fotosintesis",
+          "icon": "wb_sunny",
+          "content": [
+            {
+              "type": "heading",
+              "text": "Persamaan Umum Fotosintesis"
+            },
+            {
+              "type": "paragraph",
+              "text": "6 CO2 + 6 H2O + Cahaya Matahari → C6H12O6 + 6 O2. Fotosintesis berlangsung di kloroplas dalam dua fase utama:"
+            },
+            {
+              "type": "list",
+              "items": [
+                "**Reaksi Terang (Membran Tilakoid / Grana)** — Absorpsi foton cahaya oleh fotosistem II (P680) dan fotosistem I (P700). Melibatkan **fotolisis air** (2 H2O → 4 H+ + 4 e- + O2) yang melepaskan gas oksigen, serta fotofosforilasi menghasilkan **ATP dan NADPH**.",
+                "**Reaksi Gelap / Siklus Calvin-Benson (Stroma Kloroplas)** — Fiksasi karbon independen dari cahaya langsung yang menggunakan ATP dan NADPH hasil reaksi terang untuk mensintesis glukosa."
+              ]
+            },
+            {
+              "type": "keypoint",
+              "text": "3 Fase Siklus Calvin: (1) **Karboksilasi/Fiksasi**: Gas CO2 diikat oleh ribulosa 1,5-bisfosfat (RuBP) dikatalisis enzim **Rubisco** membentuk 3-PGA; (2) **Reduksi**: 3-PGA direduksi oleh NADPH dan fosforilasi ATP menjadi G3P (gliseraldehida 3-fosfat); (3) **Regenerasi**: Molekul G3P disusun kembali menjadi RuBP."
+            }
+          ]
+        }
+      ]
     }
   ],
   "glossary": [
@@ -1076,6 +1609,50 @@
     {
       "term": "Hemoglobin",
       "definition": "Protein dalam sel darah merah yang mengikat dan membawa oksigen."
+    },
+    {
+      "term": "Plasmid",
+      "definition": "Molekul DNA sirkular untai ganda ekstra-kromosomal pada bakteri yang dapat bereplikasi secara otonom dan sering dijadikan vektor rekayasa genetika."
+    },
+    {
+      "term": "CRISPR-Cas9",
+      "definition": "Teknologi penyuntingan genom presisi tinggi yang memanfaatkan RNA penuntun dan enzim endonuklease Cas9 untuk memotong sekuens DNA target."
+    },
+    {
+      "term": "Restriksi Endonuklease",
+      "definition": "Enzim bakteri yang memotong ikatan fosfodiester DNA pada situs pengenalan urutan basa nukleotida palindromik tertentu."
+    },
+    {
+      "term": "Neuron",
+      "definition": "Sel sistem saraf yang berfungsi menerima, mengintegrasikan, dan menghantarkan impuls elektrokimiawi ke seluruh tubuh."
+    },
+    {
+      "term": "Sinapsis",
+      "definition": "Titik temu fungsional mikroskopis antara ujung terminal akson satu neuron dengan dendrit atau efektor neuron berikutnya."
+    },
+    {
+      "term": "Homeostasis",
+      "definition": "Kondisi dinamis tubuh makhluk hidup dalam memelihara stabilitas lingkungan internal (suhu, pH, glukosa) secara konstan."
+    },
+    {
+      "term": "Antibodi",
+      "definition": "Protein imunoglobulin spesifik yang disekresikan oleh sel plasma untuk mengikat dan menetralkan antigen patogen asing."
+    },
+    {
+      "term": "Limfosit T",
+      "definition": "Sel darah putih pemegang kunci imunitas seluler yang matang di kelenjar timus dan bertugas mengenali antigen melalui MHC."
+    },
+    {
+      "term": "Glikolisis",
+      "definition": "Tahap awal pemecahan satu molekul glukosa (6 karbon) menjadi dua molekul asam piruvat (3 karbon) di dalam sitoplasma sel."
+    },
+    {
+      "term": "Siklus Krebs",
+      "definition": "Rangkaian reaksi siklik enzimatik di matriks mitokondria yang mengoksidasi asetil Ko-A menghasilkan NADH, FADH2, ATP, dan melepaskan CO2."
+    },
+    {
+      "term": "Inhibitor Kompetitif",
+      "definition": "Senyawa penghambat yang bersaing langsung merebut sisi aktif enzim karena memiliki kemiripan struktur spasial dengan substrat alami."
     }
   ]
 }
