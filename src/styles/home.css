@@ -1,19 +1,71 @@
+/* Bio Smart Homepage Styles - Aligned with DESIGN.md */
 
-    body {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      background-color: #fcfdfc;
-      color: #0f172a;
-    }
-    
-    /* Watermark background motif for banner */
-    .bg-leaf-pattern {
-      background-image: radial-gradient(circle at right center, rgba(255, 255, 255, 0.08) 0, rgba(255, 255, 255, 0.08) 120px, transparent 121px),
-                        radial-gradient(circle at right 60px center, rgba(255, 255, 255, 0.05) 0, rgba(255, 255, 255, 0.05) 190px, transparent 191px);
-    }
-    
-    /* Custom subtle glass effect */
-    .glass-card {
-      backdrop-filter: blur(12px);
-      background-color: rgba(255, 255, 255, 0.88);
-    }
-  
+.home-page-container {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-surface, #fcfdfc);
+  color: var(--color-on-surface, #0d1c2f);
+  font-family: var(--font-body, system-ui, sans-serif);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Watermark background motif for banner */
+.bg-leaf-pattern {
+  background-image: radial-gradient(circle at right center, rgba(255, 255, 255, 0.08) 0, rgba(255, 255, 255, 0.08) 120px, transparent 121px),
+                    radial-gradient(circle at right 60px center, rgba(255, 255, 255, 0.05) 0, rgba(255, 255, 255, 0.05) 190px, transparent 191px);
+}
+
+/* Tactile & Spring Micro-interactions */
+.tactile-btn {
+  transition: transform var(--duration-quick, 180ms) var(--ease-spring, cubic-bezier(0.16, 1, 0.3, 1)),
+              box-shadow var(--duration-quick, 180ms) ease,
+              background-color var(--duration-quick, 180ms) ease;
+}
+.tactile-btn:active {
+  transform: scale(0.98) translateY(1px);
+}
+
+.tactile-card {
+  transition: transform var(--duration-normal, 260ms) var(--ease-spring, cubic-bezier(0.16, 1, 0.3, 1)),
+              box-shadow var(--duration-normal, 260ms) ease,
+              border-color var(--duration-normal, 260ms) ease;
+}
+.tactile-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 24px -4px rgba(13, 92, 70, 0.08), 0 4px 8px -2px rgba(13, 92, 70, 0.04);
+}
+
+/* Glass Card */
+.glass-card {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  background-color: rgba(255, 255, 255, 0.88);
+}
+
+/* Pulse animation for active simulation status */
+@keyframes subtle-pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.65;
+    transform: scale(1.15);
+  }
+}
+
+.animate-subtle-pulse {
+  animation: subtle-pulse 2.2s var(--ease-spring, cubic-bezier(0.16, 1, 0.3, 1)) infinite;
+}
+
+/* Microscope rotation */
+@keyframes rotate-microscope {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.animate-microscope-rotate {
+  animation: rotate-microscope 45s linear infinite;
+  will-change: transform;
+}

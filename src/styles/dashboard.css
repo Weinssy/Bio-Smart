@@ -133,12 +133,16 @@
   color: var(--color-on-surface-variant);
   font-weight: 500;
   font-size: 0.9rem;
-  transition: all 0.15s ease;
+  transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .nav-item:hover {
   background-color: var(--color-surface-container-low);
   color: var(--color-on-surface);
+}
+
+.nav-item:active {
+  transform: scale(0.98);
 }
 
 .nav-item.active {
@@ -176,6 +180,10 @@
 
 .btn-practical:hover {
   background-color: var(--color-primary);
+}
+
+.btn-practical:active {
+  transform: scale(0.98) translateY(1px);
 }
 
 .btn-practical:active {
@@ -885,4 +893,18 @@
 
 .footer-links a:hover {
   color: var(--color-primary);
+}
+
+/* Responsive Header Refinements */
+@media (max-width: 640px) {
+  .header-inner {
+    padding: 0 1rem;
+    gap: 0.5rem;
+  }
+  .header-badge {
+    display: none !important;
+  }
+  .quick-lab-text {
+    display: none !important;
+  }
 }
