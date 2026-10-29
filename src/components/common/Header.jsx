@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import { useAuth } from '../../context/AuthContext'
 import CommandPalette from './CommandPalette'
 
 export default function Header() {
   const [isPaletteOpen, setIsPaletteOpen] = useState(false)
+  const { user, profile } = useAuth()
 
   // Listen for Ctrl+K
   useEffect(() => {
@@ -61,6 +63,7 @@ export default function Header() {
             >
               Kurikulum Merdeka • Fase F
             </span>
+
             <Link 
               to="/laboratorium" 
               className="header-quick-lab"
@@ -81,6 +84,34 @@ export default function Header() {
             >
               <span className="material-symbols-outlined" style={{ fontSize: '1.1rem' }}>science</span>
               <span className="quick-lab-text">Lab Virtual</span>
+            </Link>
+
+            {/* User Profile / Login Link */}
+            <Link 
+              to="/login"
+              className="header-user-btn"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.4rem',
+                fontSize: '0.8rem',
+                fontWeight: 600,
+                color: user ? 'var(--color-primary, #004331)' : 'var(--color-on-surface-variant)',
+                backgroundColor: user ? 'var(--color-secondary-container, #e6f7ef)' : 'var(--color-surface-container-high)',
+                padding: '0.45rem 0.75rem',
+                borderRadius: '0.5rem',
+                textDecoration: 'none',
+                border: '1px solid rgba(13, 92, 70, 0.1)',
+                transition: 'all 0.18s cubic-bezier(0.16, 1, 0.3, 1)'
+              }}
+              title={user ? `Akun: ${profile?.full_name || user.email}` : 'Masuk ke Portal Siswa'}
+            >
+              <span className="material-symbols-outlined" style={{ fontSize: '1.1rem' }}>
+                {user ? 'account_circle' : 'login'}
+              </span>
+              <span className="header-user-name">
+                {user ? (profile?.full_name?.split(' ')[0] || 'Akun') : 'Masuk'}
+              </span>
             </Link>
           </div>
         </div>

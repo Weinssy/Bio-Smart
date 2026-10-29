@@ -1,10 +1,12 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 import '../styles/home.css';
 
 export default function HomePage() {
   const navigate = useNavigate();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { user, profile } = useAuth();
 
   return (
     <div className="home-page-container scroll-smooth text-slate-900 bg-[#fcfdfc] font-sans selection:bg-emerald-100 selection:text-pine-900">
