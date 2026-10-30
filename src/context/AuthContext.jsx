@@ -101,10 +101,15 @@ export function AuthProvider({ children }) {
       return { error: { message: 'Kredensial Supabase belum diatur. Silakan atur VITE_SUPABASE_URL dan VITE_SUPABASE_ANON_KEY terlebih dahulu.' } }
     }
 
+    const redirectUrl = typeof window !== 'undefined' 
+      ? `${window.location.origin}${window.location.pathname}#/login`
+      : undefined
+
     const { data, error } = await supabase.auth.signUp({
       email,
       password,
       options: {
+        emailRedirectTo: redirectUrl,
         data: {
           full_name: fullName,
           nisn,
@@ -146,4 +151,3 @@ export function AuthProvider({ children }) {
 export function useAuth() {
   return useContext(AuthContext)
 }
-
