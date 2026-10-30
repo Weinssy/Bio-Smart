@@ -12,28 +12,28 @@ export default function HomePage() {
     <div className="home-page-container scroll-smooth text-slate-900 bg-[#fcfdfc] font-sans selection:bg-emerald-100 selection:text-pine-900">
       {/* Primary Navigation */}
       <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-100/80 transition-all duration-200" data-purpose="primary-navigation">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-20 gap-4">
+        <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-16 sm:h-20 gap-2 sm:gap-4">
             {/* Logo */}
-            <Link className="flex items-center gap-3 shrink-0 group focus:outline-none focus:ring-2 focus:ring-pine-800 rounded-lg p-1" to="/" aria-label="Beranda Bio Smart">
-              <div className="w-11 h-11 rounded-xl bg-pine-900 flex items-center justify-center text-white shadow-md shadow-pine-900/15 group-hover:scale-105 transition-transform duration-200">
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" aria-hidden="true">
+            <Link className="flex items-center gap-2.5 sm:gap-3 shrink-0 group focus:outline-none focus:ring-2 focus:ring-pine-800 rounded-lg p-0.5 sm:p-1" to="/" aria-label="Beranda Bio Smart">
+              <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-pine-900 flex items-center justify-center text-white shadow-md shadow-pine-900/15 group-hover:scale-105 transition-transform duration-200 shrink-0">
+                <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" aria-hidden="true">
                   <path d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 100-6 3 3 0 000 6z" strokeLinecap="round" strokeLinejoin="round" />
                   <path d="M12 4v4m3-2h-6" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
               </div>
               <div>
-                <div className="flex items-center gap-1.5">
-                  <span className="text-xl font-bold tracking-tight text-slate-900">Bio&nbsp;<span className="text-pine-800">Smart</span></span>
-                  <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-emerald-50 text-pine-800 border border-emerald-200/60 uppercase tracking-wider">SMA</span>
+                <div className="flex items-center gap-1 sm:gap-1.5">
+                  <span className="text-lg sm:text-xl font-bold tracking-tight text-slate-900">Bio&nbsp;<span className="text-pine-800">Smart</span></span>
+                  <span className="text-[9px] sm:text-[10px] font-bold px-1.5 py-0.5 rounded bg-emerald-50 text-pine-800 border border-emerald-200/60 uppercase tracking-wider">SMA</span>
                 </div>
-                <p className="text-xs text-slate-500 font-medium">Belajar Biologi Interaktif</p>
+                <p className="hidden sm:block text-xs text-slate-500 font-medium leading-none mt-0.5">Belajar Biologi Interaktif</p>
               </div>
             </Link>
 
-            {/* Quick Search Box */}
+            {/* Quick Search Box (Desktop/Tablet) */}
             <form 
-              className="hidden md:flex flex-1 max-w-md mx-6" 
+              className="hidden md:flex flex-1 max-w-md mx-4 lg:mx-6" 
               data-purpose="search-box" 
               onSubmit={(e) => {
                 e.preventDefault();
@@ -70,15 +70,24 @@ export default function HomePage() {
             </nav>
 
             {/* Right Action Buttons */}
-            <div className="flex items-center gap-2 sm:gap-3">
+            <div className="flex items-center gap-1.5 sm:gap-3 shrink-0">
+              {/* Direct Login/Profile Pill Button (Always visible on mobile & desktop - No menu click needed!) */}
               <Link 
                 to="/login" 
-                className="hidden sm:inline-flex text-sm font-semibold text-slate-700 hover:text-pine-900 px-3.5 py-2 rounded-lg hover:bg-slate-100/80 transition tactile-btn"
+                className="inline-flex items-center gap-1.5 px-3 py-2 sm:px-3.5 sm:py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition tactile-btn shrink-0 min-h-[42px] sm:min-h-[44px] bg-emerald-50/95 hover:bg-emerald-100 text-pine-900 border border-emerald-200/80 active:scale-95 shadow-xs"
+                aria-label={user ? `Profil Akun: ${profile?.full_name || 'Siswa'}` : 'Masuk ke Portal Siswa'}
               >
-                Masuk Siswa
+                <span className="material-symbols-outlined text-[18px] sm:text-[20px] text-pine-800">
+                  {user ? 'account_circle' : 'login'}
+                </span>
+                <span className="font-bold">
+                  {user ? (profile?.full_name?.split(' ')[0] || 'Akun') : 'Masuk'}
+                </span>
               </Link>
+
+              {/* Lab Virtual Shortcut (Hidden on small mobile to avoid header overflow, visible on md+) */}
               <Link 
-                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-pine-900 hover:bg-pine-950 text-white text-sm font-medium shadow-md shadow-pine-950/15 hover:shadow-lg transition-all tactile-btn" 
+                className="hidden md:inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-pine-900 hover:bg-pine-950 text-white text-sm font-medium shadow-md shadow-pine-950/15 hover:shadow-lg transition-all tactile-btn shrink-0 min-h-[44px]" 
                 to="/laboratorium"
               >
                 <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true">
@@ -87,20 +96,23 @@ export default function HomePage() {
                 <span>Mulai Praktikum</span>
               </Link>
 
-              {/* Mobile Menu Hamburger Button */}
+              {/* Mobile Menu Hamburger Button (44px touch target, prominent background, never cut off) */}
               <button 
                 type="button" 
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)} 
-                className="lg:hidden p-2 rounded-lg text-slate-600 hover:text-pine-900 hover:bg-slate-100 transition"
-                aria-label={mobileMenuOpen ? "Tutup menu" : "Buka menu"}
+                className="lg:hidden w-11 h-11 min-w-[44px] min-h-[44px] rounded-xl bg-slate-100 hover:bg-slate-200/90 active:bg-slate-300 active:scale-95 text-slate-800 border border-slate-200/80 flex items-center justify-center transition-all shrink-0 focus:outline-none focus:ring-2 focus:ring-pine-800 shadow-xs"
+                aria-label={mobileMenuOpen ? "Tutup menu navigasi" : "Buka menu navigasi"}
+                aria-expanded={mobileMenuOpen}
               >
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                  {mobileMenuOpen ? (
+                {mobileMenuOpen ? (
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24">
                     <path d="M6 18L18 6M6 6l12 12" strokeLinecap="round" strokeLinejoin="round" />
-                  ) : (
+                  </svg>
+                ) : (
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24">
                     <path d="M4 6h16M4 12h16M4 18h16" strokeLinecap="round" strokeLinejoin="round" />
-                  )}
-                </svg>
+                  </svg>
+                )}
               </button>
             </div>
           </div>
@@ -108,42 +120,101 @@ export default function HomePage() {
 
         {/* Mobile Navigation Drawer */}
         {mobileMenuOpen && (
-          <div className="lg:hidden border-t border-slate-100 bg-white px-4 pt-3 pb-6 space-y-2 shadow-lg animate-in slide-in-from-top-2">
-            <Link 
-              className="block px-3 py-2.5 rounded-lg text-base font-semibold text-pine-900 bg-emerald-50/70" 
-              to="/materi" 
-              onClick={() => setMobileMenuOpen(false)}
+          <div className="lg:hidden border-t border-slate-100 bg-white px-4 pt-3 pb-6 space-y-3 shadow-xl animate-in slide-in-from-top-2">
+            {/* Student Auth Status Card */}
+            <div className="p-3.5 rounded-2xl bg-gradient-to-r from-emerald-50 to-teal-50/80 border border-emerald-100/90 flex items-center justify-between gap-3 shadow-xs">
+              <div className="flex items-center gap-3 min-w-0">
+                <div className="w-10 h-10 rounded-xl bg-pine-900 text-white flex items-center justify-center shrink-0 shadow-sm font-bold text-sm">
+                  {user ? (profile?.full_name || user.email || 'S')[0].toUpperCase() : (
+                    <span className="material-symbols-outlined text-[20px]">person</span>
+                  )}
+                </div>
+                <div className="min-w-0">
+                  <p className="text-sm font-bold text-slate-900 truncate">
+                    {user ? (profile?.full_name || user.email) : 'Portal Akun Siswa'}
+                  </p>
+                  <p className="text-xs text-slate-500 truncate">
+                    {user ? 'Siswa Terdaftar' : 'Masuk untuk simpan skor & progres'}
+                  </p>
+                </div>
+              </div>
+              <Link
+                to="/login"
+                onClick={() => setMobileMenuOpen(false)}
+                className="px-3.5 py-2 rounded-xl bg-pine-900 text-white font-bold text-xs hover:bg-pine-950 active:scale-95 transition shadow-sm min-h-[40px] flex items-center justify-center shrink-0"
+              >
+                {user ? 'Buka Akun' : 'Masuk / Daftar'}
+              </Link>
+            </div>
+
+            {/* Mobile Quick Search */}
+            <form 
+              className="relative" 
+              onSubmit={(e) => {
+                e.preventDefault();
+                const q = new FormData(e.currentTarget).get('q');
+                if (q) {
+                  setMobileMenuOpen(false);
+                  navigate(`/materi?q=${encodeURIComponent(String(q))}`);
+                }
+              }}
             >
-              Katalog Modul
-            </Link>
-            <Link 
-              className="block px-3 py-2.5 rounded-lg text-base font-medium text-slate-700 hover:bg-slate-50" 
-              to="/laboratorium" 
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Lab Virtual
-            </Link>
-            <Link 
-              className="block px-3 py-2.5 rounded-lg text-base font-medium text-slate-700 hover:bg-slate-50" 
-              to="/anatomi" 
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Anatomi 3D
-            </Link>
-            <Link 
-              className="block px-3 py-2.5 rounded-lg text-base font-medium text-slate-700 hover:bg-slate-50" 
-              to="/kuis" 
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Bank Kuis
-            </Link>
-            <div className="pt-3 border-t border-slate-100 flex flex-col gap-2">
+              <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+                <span className="material-symbols-outlined text-[18px]">search</span>
+              </div>
+              <input 
+                name="q" 
+                className="w-full pl-10 pr-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:bg-white focus:outline-none focus:border-pine-800 placeholder-slate-400" 
+                placeholder="Cari materi biologi, sel, DNA..." 
+                type="text" 
+              />
+            </form>
+
+            {/* Navigation links with icons & comfortable >=48px touch heights */}
+            <div className="space-y-1 pt-1">
               <Link 
-                className="w-full text-center py-2.5 rounded-xl border border-slate-200 text-sm font-semibold text-slate-700 hover:bg-slate-50" 
-                to="/login" 
+                className="flex items-center gap-3 px-3.5 py-3 rounded-xl text-sm font-bold text-pine-900 bg-emerald-50/70 border border-emerald-100/70 min-h-[48px]" 
+                to="/materi" 
                 onClick={() => setMobileMenuOpen(false)}
               >
-                Masuk Siswa
+                <span className="material-symbols-outlined text-[20px] text-pine-800">menu_book</span>
+                <span>Katalog Modul Materi</span>
+              </Link>
+              <Link 
+                className="flex items-center gap-3 px-3.5 py-3 rounded-xl text-sm font-semibold text-slate-700 hover:text-pine-900 hover:bg-slate-50 active:bg-slate-100 min-h-[48px]" 
+                to="/laboratorium" 
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                <span className="material-symbols-outlined text-[20px] text-pine-800">science</span>
+                <span>Lab Virtual Interaktif</span>
+              </Link>
+              <Link 
+                className="flex items-center gap-3 px-3.5 py-3 rounded-xl text-sm font-semibold text-slate-700 hover:text-pine-900 hover:bg-slate-50 active:bg-slate-100 min-h-[48px]" 
+                to="/anatomi" 
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                <span className="material-symbols-outlined text-[20px] text-pine-800">view_in_ar</span>
+                <span>Visualisasi 3D Organ &amp; Sel</span>
+              </Link>
+              <Link 
+                className="flex items-center gap-3 px-3.5 py-3 rounded-xl text-sm font-semibold text-slate-700 hover:text-pine-900 hover:bg-slate-50 active:bg-slate-100 min-h-[48px]" 
+                to="/kuis" 
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                <span className="material-symbols-outlined text-[20px] text-pine-800">quiz</span>
+                <span>Bank Kuis &amp; Evaluasi HOTS</span>
+              </Link>
+            </div>
+
+            {/* Quick Action Button */}
+            <div className="pt-2">
+              <Link 
+                className="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-pine-900 hover:bg-pine-950 text-white text-sm font-bold shadow-md shadow-pine-950/15 active:scale-95 transition-all min-h-[48px]" 
+                to="/laboratorium" 
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                <span className="material-symbols-outlined text-[20px]">science</span>
+                <span>Mulai Praktikum Virtual</span>
               </Link>
             </div>
           </div>
