@@ -18,6 +18,10 @@ if (!isSupabaseConfigured) {
   console.warn(
     '[Bio-Smart] Supabase credentials belum dikonfigurasi. Pastikan VITE_SUPABASE_URL dan VITE_SUPABASE_ANON_KEY telah diatur di .env (lokal) atau GitHub Secrets (GitHub Pages).'
   )
+} else if (supabaseAnonKey.startsWith('sb_secret_')) {
+  console.error(
+    '[Bio-Smart] PERINGATAN: Kunci API yang terpasang adalah Secret Key (sb_secret_...). Supabase melarang penggunaan secret key di browser. Pastikan menggunakan Publishable Key (sb_publishable_...).'
+  )
 }
 
 // Inisialisasi client Supabase dengan auto session persistence di localStorage

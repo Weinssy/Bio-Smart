@@ -35,7 +35,9 @@ export default function LoginPage() {
       const cleanEmail = email.trim()
       const { data, error } = await signIn({ email: cleanEmail, password })
       if (error) {
-        if (error.message.includes('Invalid login credentials')) {
+        if (error.message.includes('Forbidden use of secret API key')) {
+          setErrorMessage('Browser masih memuat konfigurasi Secret Key lama. Silakan lakukan Hard Refresh (Ctrl + Shift + R atau bersihkan cache browser).')
+        } else if (error.message.includes('Invalid login credentials')) {
           setErrorMessage('Email atau kata sandi tidak sesuai. Silakan periksa kembali.')
         } else if (error.message.includes('Email not confirmed')) {
           setErrorMessage('Email Anda belum dikonfirmasi. Silakan buka kotak masuk atau folder spam email Anda untuk mengklik tautan verifikasi.')
@@ -82,7 +84,9 @@ export default function LoginPage() {
       })
 
       if (error) {
-        if (error.message.includes('User already registered')) {
+        if (error.message.includes('Forbidden use of secret API key')) {
+          setErrorMessage('Browser masih memuat konfigurasi Secret Key lama. Silakan lakukan Hard Refresh (Ctrl + Shift + R atau bersihkan cache browser).')
+        } else if (error.message.includes('User already registered')) {
           setErrorMessage('Alamat email ini sudah terdaftar. Silakan beralih ke tab "Masuk" di atas.')
         } else {
           setErrorMessage(error.message || 'Gagal mendaftarkan akun. Silakan periksa kembali data Anda.')
