@@ -5,7 +5,7 @@ import Header from '../components/common/Header'
 import Footer from '../components/common/Footer'
 import materiData from '../data/materiData.json'
 import quizData from '../data/quizData.json'
-import { resolveAsset } from '../utils/assetResolver'
+import MembraneSpecimen from '../components/visual/MembraneSpecimen'
 import '../styles/home.css'
 
 export default function HomePage() {
@@ -45,11 +45,7 @@ export default function HomePage() {
               </div>
               <p className="study-feature-note">Materi, diagram interaktif, dan praktikum tersedia tanpa masuk akun.</p>
             </div>
-            <figure className="study-specimen">
-              <div className="study-specimen-heading"><span>Objek pengamatan</span><span>Biologi sel / 01</span></div>
-              <img src={resolveAsset('images/diagrams/sel/membran-sel.svg')} alt="Diagram dwilapis fosfolipid dan protein pada membran sel" width="800" height="600" fetchPriority="high" />
-              <figcaption><span>Membran sel</span><Link to="/materi/mod-1">Amati bagian-bagiannya <span aria-hidden="true">↗</span></Link></figcaption>
-            </figure>
+            <MembraneSpecimen />
           </section>
           <section className="study-library" aria-labelledby="study-library-title">
             <div className="study-section-heading">

@@ -1,0 +1,30 @@
+.membrane-specimen { margin: 1rem 1rem 1rem 0; background: #f5f8ef; border-radius: .8rem; color: #193e2e; min-width: 0; display: flex; flex-direction: column; overflow: hidden; }
+.membrane-heading { display: flex; justify-content: space-between; gap: .7rem; padding: 1rem 1.2rem; border-bottom: 1px solid #d8e2d5; color: #3b6250; font-size: .7rem; }
+.membrane-title { padding: 1.1rem 1.2rem 0; display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: .4rem; }
+.membrane-title > span { font-weight: 700; font-size: 1rem; }
+.membrane-title small { font-size: .65rem; color: #526259; }
+.membrane-drawing { width: 100%; height: auto; aspect-ratio: 720 / 370; display: block; }
+.membrane-region-label { font: 16px var(--font-body); fill: #526259; }
+.membrane-part { opacity: .65; transition: opacity 180ms; }
+.membrane-part.emphasized { opacity: 1; }
+.membrane-marker circle { fill: #fff; stroke: #426c54; stroke-width: 2; }
+.membrane-marker text { fill: #264f38; font: 700 17px var(--font-body); }
+.membrane-marker.selected circle { fill: #064733; stroke: #064733; }
+.membrane-marker.selected text { fill: #fff; }
+.membrane-selector { display: grid; grid-template-columns: 1fr 1fr; gap: .4rem; padding: 0 1.2rem; }
+.membrane-selector button { display: flex; align-items: center; gap: .5rem; text-align: left; min-height: 44px; padding: .55rem .65rem; background: #fff; border: 1px solid #a5b9a6; border-radius: .5rem; color: #315740; font: 600 .73rem var(--font-body); }
+.membrane-selector button > span { font-variant-numeric: tabular-nums; color: inherit; }
+.membrane-selector button[aria-pressed='true'] { background: #064733; border-color: #064733; color: #fff; }
+.membrane-selector button:hover { border-color: #064733; text-decoration: underline; text-underline-offset: 3px; }
+.membrane-detail { padding: 1rem 1.2rem; min-height: 132px; }
+.membrane-detail strong { font-size: .8rem; color: #193e2e; }
+.membrane-detail p { font-size: .77rem; color: #435a49; line-height: 1.7; margin-top: .4rem; max-width: 65ch; }
+.membrane-specimen figcaption { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: .4rem; border-top: 1px solid #d8e2d5; margin-top: auto; padding: .5rem 1.2rem; font-size: .7rem; color: #435a49; }
+.membrane-specimen figcaption a { display: inline-flex; align-items: center; min-height: 44px; gap: .5rem; color: #064733; font-weight: 600; text-decoration: underline; text-underline-offset: 4px; }
+@media (max-width: 767px) {
+  .membrane-specimen { margin: 0 .8rem .8rem; }
+  .membrane-heading, .membrane-detail, .membrane-specimen figcaption { padding-inline: .9rem; }
+  .membrane-title { padding-inline: .9rem; }
+  .membrane-selector { padding-inline: .9rem; }
+  .membrane-detail { min-height: 160px; }
+}

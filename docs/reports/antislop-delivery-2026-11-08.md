@@ -1,5 +1,15 @@
 # Pemeriksaan antislop Bio Smart
 
+## Pembaruan objek pengamatan membran
+
+PASS untuk pembaruan panel: SVG penampang membran menggantikan gambar statis di beranda. Empat tombol native memilih fosfolipid, protein integral, kolesterol, dan rantai karbohidrat; masing-masing sudah diklik dan menampilkan penjelasan dari dataset materi. Tautan Baca materi membran membuka `/materi/mod-1?topik=sub-1-1`.
+
+Hard Gate PASS: ukuran tombol minimal 44 px, tidak ada overflow halaman pada 320/1440 px, kontras teks DOM tidak menemukan kegagalan AA, SVG memiliki judul/deskripsi dan ukuran intrinsik, pilihan memakai aria-pressed serta penjelasan live region. Tidak menambahkan statistik, klaim, atau gerakan berulang. Kontrol native mendukung keyboard dan aturan fokus global.
+
+Purpose-Gate PASS: gradasi hanya memberi kedalaman pada lapisan lipid/protein, warna membedakan komponen biologis, angka menghubungkan penanda dengan pilihan. SVG dibuat dalam source agar tetap tajam dan dapat merespons pilihan. Konten biologis memakai penjelasan materi yang sudah tersedia.
+
+Liveliness PASS: ENERGY 2 / RHYTHM 2 / MOTION 1 tetap berlaku; penampang menjadi fokus panel dan penjelasan ditempatkan tepat di bawah pilihan. Craftsmanship PASS: empat pilihan berfungsi, status aktif terbaca tanpa bergantung pada warna saja, dan penampang diberi label skematis/tidak berskala. Build dan lima tes regresi lulus; lint tanpa error, dengan warning lama yang sama.
+
 Tanggal: 8 November 2026. Mode during, dipilih pengguna untuk sesi ini.
 
 Status: **PASS untuk lingkup perubahan** pada beranda, katalog, navigasi bersama, dialog pencarian, perbaikan alur materi/kuis, form akun, dan informasi model lab. Ini bukan sertifikasi aksesibilitas seluruh konten lama atau aplikasi atlas di dalam iframe.
