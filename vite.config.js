@@ -1,14 +1,9 @@
 import path from 'path'
 import react from '@vitejs/plugin-react'
-import { defineConfig, loadEnv } from 'vite'
+import { defineConfig } from 'vite'
 import { VitePWA } from 'vite-plugin-pwa'
-import { isPrivilegedSupabaseKey } from './src/lib/supabaseConfig.js'
 
-export default defineConfig(({ mode }) => {
-  const env = loadEnv(mode, process.cwd(), 'VITE_')
-  if (isPrivilegedSupabaseKey((env.VITE_SUPABASE_ANON_KEY || '').trim())) {
-    throw new Error('VITE_SUPABASE_ANON_KEY berisi kunci server. Gunakan publishable key atau anon key agar kunci server tidak masuk bundle browser.')
-  }
+export default defineConfig(() => {
   return {
   plugins: [
     react(),

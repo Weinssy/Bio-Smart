@@ -1,5 +1,5 @@
 import { lazy, Suspense } from 'react'
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, Navigate } from 'react-router-dom'
 import NotFoundPage from '../pages/NotFoundPage.jsx'
 import PageErrorBoundary from '../components/common/PageErrorBoundary.jsx'
 
@@ -10,7 +10,6 @@ const LabPage = lazy(() => import('../pages/LabPage.jsx'))
 const MateriPage = lazy(() => import('../pages/MateriPage.jsx'))
 const MateriDetailPage = lazy(() => import('../pages/MateriDetailPage.jsx'))
 const HomePage = lazy(() => import('../pages/HomePage.jsx'))
-const LoginPage = lazy(() => import('../pages/LoginPage.jsx'))
 
 function LoadingFallback() {
   return (
@@ -27,7 +26,7 @@ export default function AppRoutes() {
     <Suspense fallback={<LoadingFallback />}>
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/login" element={<LoginPage />} />
+        <Route path="/login" element={<Navigate to="/" replace />} />
         <Route path="/materi" element={<MateriPage />} />
         <Route path="/katalog" element={<MateriPage />} />
         <Route path="/materi/:moduleId" element={<MateriDetailPage />} />

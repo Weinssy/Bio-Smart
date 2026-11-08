@@ -1,12 +1,10 @@
 import { useState, useEffect, useRef } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import { useAuth } from '../../context/AuthContext'
 import CommandPalette from './CommandPalette'
 
 export default function Header() {
   const [isPaletteOpen, setIsPaletteOpen] = useState(false)
   const searchButtonRef = useRef(null)
-  const { user, profile } = useAuth()
   const { pathname } = useLocation()
   const section = pathname.startsWith('/materi') || pathname.startsWith('/katalog') ? 'Materi' : pathname === '/kuis' ? 'Kuis' : ['/anatomi', '/anatomi-3d'].includes(pathname) ? 'Anatomi 3D' : ['/laboratorium', '/lab', '/praktikum'].includes(pathname) ? 'Laboratorium' : 'Beranda'
 
@@ -34,7 +32,6 @@ export default function Header() {
           <button ref={searchButtonRef} type="button" className="learning-search-trigger" onClick={() => setIsPaletteOpen(true)} aria-label="Cari materi biologi (Ctrl K)">
             <span className="material-symbols-outlined" aria-hidden="true">search</span><span className="learning-search-label">Cari materi biologi...</span><kbd>Ctrl K</kbd>
           </button>
-          <Link to="/login" className="learning-account">{user ? (profile?.full_name?.split(' ')[0] || 'Akun saya') : 'Masuk akun'}</Link>
         </div>
       </header>
       {isPaletteOpen && <CommandPalette returnFocusRef={searchButtonRef} onClose={() => setIsPaletteOpen(false)} />}

@@ -1,5 +1,4 @@
 import { Link, useNavigate } from 'react-router-dom'
-import { useAuth } from '../context/AuthContext'
 import Sidebar from '../components/common/Sidebar'
 import Header from '../components/common/Header'
 import Footer from '../components/common/Footer'
@@ -10,7 +9,6 @@ import '../styles/home.css'
 
 export default function HomePage() {
   const navigate = useNavigate()
-  const { user, profile } = useAuth()
   const modules = materiData.modules
   const subtopicCount = modules.reduce((total, mod) => total + mod.subtopics.length, 0)
 
@@ -29,7 +27,7 @@ export default function HomePage() {
           <div className="study-intro">
             <div>
               <p className="study-eyebrow">Ruang belajar biologi · SMA kelas XI & XII</p>
-              <h1>{user ? `Selamat belajar, ${profile?.full_name?.split(' ')[0] || 'Siswa'}.` : 'Ada yang menarik di setiap sel.'}</h1>
+              <h1>Ada yang menarik di setiap sel.</h1>
               <p>Pahami konsepnya, amati prosesnya, lalu uji pemahamanmu.</p>
             </div>
             <span className="study-curriculum">Kurikulum Merdeka · Fase F</span>
