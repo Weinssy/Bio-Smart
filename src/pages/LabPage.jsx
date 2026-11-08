@@ -12,7 +12,7 @@ export default function LabPage() {
       <div className="main-wrapper">
         <Header />
 
-        <main className="dashboard-main">
+        <main className="dashboard-main" id="main-content" tabIndex={-1}>
           {/* Welcome Banner */}
           <section className="welcome-banner" style={{ padding: '1.5rem 2rem' }}>
             <span className="material-symbols-outlined banner-bg-motif">science</span>

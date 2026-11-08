@@ -1,6 +1,7 @@
 import { lazy, Suspense } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import NotFoundPage from '../pages/NotFoundPage.jsx'
+import PageErrorBoundary from '../components/common/PageErrorBoundary.jsx'
 
 // Lazy loaded page modules
 const AnatomyPage = lazy(() => import('../pages/AnatomyPage.jsx'))
@@ -15,13 +16,14 @@ function LoadingFallback() {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '100vh', gap: '1rem', color: 'var(--color-primary)' }}>
       <div style={{ width: '3rem', height: '3rem', borderRadius: '50%', border: '3px solid #e2e8f0', borderTopColor: 'var(--color-primary)', animation: 'spin 1s linear infinite' }} />
-      <p style={{ fontWeight: 600, fontSize: '0.9rem' }}>Memuat Halaman Bio Smart...</p>
+      <p role="status" style={{ fontWeight: 600, fontSize: '0.9rem' }}>Memuat halaman Bio Smart...</p>
     </div>
   )
 }
 
 export default function AppRoutes() {
   return (
+    <PageErrorBoundary>
     <Suspense fallback={<LoadingFallback />}>
       <Routes>
         <Route path="/" element={<HomePage />} />
@@ -39,5 +41,6 @@ export default function AppRoutes() {
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </Suspense>
+    </PageErrorBoundary>
   )
 }

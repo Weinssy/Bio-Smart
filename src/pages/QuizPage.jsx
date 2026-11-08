@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import Sidebar from '../components/common/Sidebar'
 import Header from '../components/common/Header'
@@ -8,15 +7,17 @@ import quizDataset from '../data/quizData.json'
 import QuizEngine from '../components/quiz/QuizEngine'
 
 export default function QuizPage() {
-  const [searchParams] = useSearchParams()
-  const initialQuizId = searchParams.get('quizId')
-  const [selectedQuizId, setSelectedQuizId] = useState(initialQuizId)
-
-  useEffect(() => {
-    if (initialQuizId) {
-      setSelectedQuizId(initialQuizId)
-    }
-  }, [initialQuizId])
+  const [searchParams, setSearchParams] = useSearchParams()
+  const selectedQuizId = searchParams.get('quizId')
+  const isValidQuiz = quizDataset.quizzes.some(quiz => quiz.id === selectedQuizId)
+  function setSelectedQuizId(quizId) {
+    setSearchParams(previous => {
+      const next = new URLSearchParams(previous)
+      if (quizId) next.set('quizId', quizId)
+      else next.delete('quizId')
+      return next
+    })
+  }
 
   return (
     <div className="dashboard-layout">
@@ -25,7 +26,7 @@ export default function QuizPage() {
       <div className="main-wrapper">
         <Header />
 
-        <main className="dashboard-main">
+        <main className="dashboard-main" id="main-content" tabIndex={-1}>
           {/* Welcome Banner */}
           <section className="welcome-banner" style={{ padding: '1.5rem 2rem' }}>
             <span className="material-symbols-outlined banner-bg-motif">quiz</span>
@@ -47,7 +48,7 @@ export default function QuizPage() {
 
           {/* Quiz Selection or Quiz Engine */}
           <section style={{ margin: '1rem 0 2rem' }}>
-            {selectedQuizId ? (
+            {selectedQuizId && isValidQuiz ? (
               <div>
                 <button 
                   onClick={() => setSelectedQuizId(null)}
@@ -68,11 +69,12 @@ export default function QuizPage() {
                   <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>arrow_back</span>
                   Kembali ke Daftar Kuis
                 </button>
-                <QuizEngine quizId={selectedQuizId} />
+                <QuizEngine key={selectedQuizId} quizId={selectedQuizId} />
               </div>
             ) : (
               <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-                <h3 style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--color-on-surface)' }}>Pilih Kuis Berdasarkan Materi</h3>
+                {selectedQuizId && <p role="status">Kuis yang diminta tidak ditemukan. Pilih salah satu kuis di bawah.</p>}
+                <h2 style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--color-on-surface)' }}>Pilih Kuis Berdasarkan Materi</h2>
                 <div className="quiz-catalog-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 280px), 1fr))', gap: '1.25rem' }}>
                   {quizDataset.quizzes.map((quiz) => (
                     <div 
@@ -93,9 +95,9 @@ export default function QuizPage() {
                         <div style={{ fontSize: '0.75rem', fontWeight: 700, color: 'var(--color-primary)', textTransform: 'uppercase', marginBottom: '0.5rem' }}>
                           {quiz.topic}
                         </div>
-                        <h4 style={{ fontSize: '1.1rem', fontWeight: 700, color: 'var(--color-on-surface)', marginBottom: '0.5rem' }}>
+                        <h3 style={{ fontSize: '1.1rem', fontWeight: 700, color: 'var(--color-on-surface)', marginBottom: '0.5rem' }}>
                           {quiz.title}
-                        </h4>
+                        </h3>
                         <p style={{ fontSize: '0.85rem', color: 'var(--color-on-surface-variant)', lineHeight: 1.5 }}>
                           {quiz.description}
                         </p>

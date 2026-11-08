@@ -1,136 +1,66 @@
-import { useState, useEffect, useCallback } from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import { useState, useEffect, useRef, useSyncExternalStore } from 'react'
+import { Link, NavLink, useLocation } from 'react-router-dom'
+import { trapDialogFocus } from '../../lib/dialogFocus'
+
+const mobileQuery = '(max-width: 768px)'
+const subscribeMobile = listener => {
+  const media = window.matchMedia(mobileQuery)
+  media.addEventListener('change', listener)
+  return () => media.removeEventListener('change', listener)
+}
+const getMobileSnapshot = () => window.matchMedia(mobileQuery).matches
+const navItems = [
+  { label: 'Beranda', path: '/', icon: 'home' },
+  { label: 'Materi', path: '/materi', icon: 'menu_book' },
+  { label: 'Laboratorium', path: '/laboratorium', icon: 'science' },
+  { label: 'Anatomi 3D', path: '/anatomi', icon: 'view_in_ar' },
+  { label: 'Kuis', path: '/kuis', icon: 'quiz' },
+]
 
 export default function Sidebar() {
-  const location = useLocation()
+  const { pathname } = useLocation()
+  const canonicalPath = pathname.replace(/^\/katalog(?=\/|$)/, '/materi').replace(/^\/(lab|praktikum)$/, '/laboratorium').replace(/^\/anatomi-3d$/, '/anatomi')
   const [mobileOpen, setMobileOpen] = useState(false)
+  const isMobile = useSyncExternalStore(subscribeMobile, getMobileSnapshot, () => false)
+  const dialogRef = useRef(null)
+  const menuButtonRef = useRef(null)
 
-  const navItems = [
-    { label: 'Beranda', path: '/', icon: 'home' },
-    { label: 'Materi', path: '/materi', icon: 'menu_book' },
-    { label: 'Laboratorium', path: '/laboratorium', icon: 'science' },
-    { label: 'Anatomi 3D', path: '/anatomi', icon: 'view_in_ar' },
-    { label: 'Kuis', path: '/kuis', icon: 'quiz' },
-  ]
-
-  // Close sidebar on route change (mobile)
   useEffect(() => {
-    setMobileOpen(false)
-  }, [location.pathname])
+    if (!isMobile || !mobileOpen) return
+    const dialog = dialogRef.current
+    const returnFocusTarget = menuButtonRef.current
+    const previousOverflow = document.body.style.overflow
+    dialog.showModal()
+    document.body.style.overflow = 'hidden'
+    return () => { dialog.close(); document.body.style.overflow = previousOverflow; returnFocusTarget?.focus() }
+  }, [isMobile, mobileOpen])
 
-  // Lock body scroll when mobile sidebar is open
-  useEffect(() => {
-    if (mobileOpen) {
-      document.body.style.overflow = 'hidden'
-    } else {
-      document.body.style.overflow = ''
-    }
-    return () => { document.body.style.overflow = '' }
-  }, [mobileOpen])
-
-  const toggleMobile = useCallback(() => {
-    setMobileOpen((prev) => !prev)
-  }, [])
-
-  const closeMobile = useCallback(() => {
-    setMobileOpen(false)
-  }, [])
+  const content = (
+    <aside className={`app-sidebar ${isMobile ? 'open' : ''}`}>
+      <div className="sidebar-header">
+        <div className="sidebar-brand-row">
+          <NavLink to="/" onClick={() => setMobileOpen(false)} className="sidebar-logo-link" aria-label="Bio Smart, beranda">
+            <div className="sidebar-logo"><div className="logo-icon-box"><span className="material-symbols-outlined" aria-hidden="true">biotech</span></div><div className="sidebar-logo-text"><div className="logo-brand">Bio Smart</div><div className="logo-sub">Ruang belajar biologi</div></div></div>
+          </NavLink>
+          {isMobile && <button type="button" className="sidebar-close-btn" onClick={() => setMobileOpen(false)} aria-label="Tutup menu"><span aria-hidden="true">×</span></button>}
+        </div>
+        <p className="sidebar-section-label">Menu belajar</p>
+        <nav className="sidebar-nav" aria-label="Menu utama">
+          {navItems.map(item => {
+            const active = canonicalPath === item.path || (item.path !== '/' && canonicalPath.startsWith(`${item.path}/`))
+            return <Link key={item.path} to={item.path} aria-current={active ? 'page' : undefined} onClick={() => setMobileOpen(false)} className={`nav-item ${active ? 'active' : ''}`}><span className="material-symbols-outlined" aria-hidden="true">{item.icon}</span><span>{item.label}</span></Link>
+          })}
+        </nav>
+        <div className="sidebar-cta"><NavLink to="/laboratorium" onClick={() => setMobileOpen(false)} className="btn-practical"><span className="material-symbols-outlined" aria-hidden="true">science</span><span>Mulai praktikum</span></NavLink></div>
+      </div>
+      <div className="sidebar-study-note"><span>Belajar dengan mengamati.</span><p>Hubungkan materi dengan diagram dan percobaan virtual.</p></div>
+    </aside>
+  )
 
   return (
     <>
-      {/* Mobile Hamburger Toggle (only shown when sidebar is closed so it doesn't overlap logo) */}
-      {!mobileOpen && (
-        <button
-          type="button"
-          className="mobile-menu-toggle"
-          onClick={toggleMobile}
-          aria-label="Buka menu navigasi"
-        >
-          <span className="material-symbols-outlined">menu</span>
-        </button>
-      )}
-
-      {/* Backdrop Overlay */}
-      {mobileOpen && (
-        <div
-          className={`sidebar-overlay ${mobileOpen ? 'visible' : ''}`}
-          onClick={closeMobile}
-          aria-hidden="true"
-        />
-      )}
-
-      <aside className={`app-sidebar ${mobileOpen ? 'open' : ''}`}>
-        <div className="sidebar-header">
-          {/* Brand Row: Logo linked to home + Close Button for mobile */}
-          <div className="sidebar-brand-row">
-            <Link 
-              to="/" 
-              onClick={closeMobile} 
-              className="sidebar-logo-link"
-              title="Bio Smart - Menuju Beranda"
-            >
-              <div className="sidebar-logo">
-                <div className="logo-icon-box">
-                  <span
-                    className="material-symbols-outlined"
-                    style={{ fontSize: '24px', fontVariationSettings: "'FILL' 1" }}
-                  >
-                    biotech
-                  </span>
-                </div>
-                <div className="sidebar-logo-text">
-                  <div className="logo-brand">Bio Smart</div>
-                  <div className="logo-sub">Belajar Biologi Interaktif</div>
-                </div>
-              </div>
-            </Link>
-
-            {/* Close Button on Mobile Drawer */}
-            <button
-              type="button"
-              className="sidebar-close-btn"
-              onClick={closeMobile}
-              aria-label="Tutup menu"
-              title="Tutup menu"
-            >
-              <span className="material-symbols-outlined">close</span>
-            </button>
-          </div>
-
-          {/* Navigation Tabs */}
-          <nav className="sidebar-nav" aria-label="Menu Utama">
-            {navItems.map((item) => {
-              const isActive =
-                (item.path === '/' && location.pathname === '/') ||
-                (item.path === '/materi' && (location.pathname === '/materi' || location.pathname === '/katalog' || location.pathname.startsWith('/materi/') || location.pathname.startsWith('/katalog/'))) ||
-                (item.path === '/laboratorium' && (location.pathname === '/laboratorium' || location.pathname === '/lab' || location.pathname === '/praktikum')) ||
-                (item.path === '/anatomi' && (location.pathname === '/anatomi' || location.pathname === '/anatomi-3d')) ||
-                (item.path === '/kuis' && location.pathname === '/kuis')
-              return (
-                <Link
-                  key={item.label}
-                  to={item.path}
-                  onClick={closeMobile}
-                  className={`nav-item ${isActive ? 'active' : ''}`}
-                >
-                  <span className="material-symbols-outlined">{item.icon}</span>
-                  <span>{item.label}</span>
-                </Link>
-              )
-            })}
-          </nav>
-
-          {/* CTA */}
-          <div className="sidebar-cta">
-            <Link to="/laboratorium" onClick={closeMobile} style={{ textDecoration: 'none' }}>
-              <button className="btn-practical" type="button">
-                <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>play_circle</span>
-                <span>Mulai Praktikum</span>
-              </button>
-            </Link>
-          </div>
-        </div>
-      </aside>
+      {isMobile && <button ref={menuButtonRef} type="button" className="mobile-menu-toggle" onClick={() => setMobileOpen(true)} aria-label="Buka menu navigasi" aria-expanded={mobileOpen} aria-controls={mobileOpen ? 'mobile-learning-menu' : undefined}><span className="material-symbols-outlined" aria-hidden="true">menu</span></button>}
+      {isMobile ? mobileOpen && <dialog id="mobile-learning-menu" ref={dialogRef} className="sidebar-dialog" aria-label="Menu belajar" onKeyDown={trapDialogFocus} onCancel={event => { event.preventDefault(); setMobileOpen(false) }} onClick={event => { if (event.target === event.currentTarget) setMobileOpen(false) }}>{content}</dialog> : content}
     </>
   )
 }

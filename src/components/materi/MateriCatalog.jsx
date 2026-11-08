@@ -1,83 +1,53 @@
-import { Link } from 'react-router-dom'
-import materiDataRaw from '../../data/materiData.json'
-
-const modules = materiDataRaw.modules
+import { Link, useSearchParams } from 'react-router-dom'
+import materiData from '../../data/materiData.json'
+import { filterModules } from '../../lib/materialSearch'
 
 export default function MateriCatalog() {
+  const [searchParams, setSearchParams] = useSearchParams()
+  const query = searchParams.get('q') || ''
+  const modules = filterModules(materiData.modules, query)
+
+  function updateQuery(value) {
+    setSearchParams(previous => {
+      const next = new URLSearchParams(previous)
+      if (value) next.set('q', value)
+      else next.delete('q')
+      return next
+    }, { replace: true })
+  }
+
   return (
-    <div className="materi-catalog">
-      <div className="materi-catalog-grid">
-        {modules.map((mod) => {
-          return (
-            <Link
-              key={mod.id}
-              to={`/materi/${mod.id}`}
-              className="materi-card"
-              style={{ textDecoration: 'none' }}
-            >
-              {/* Top accent bar */}
-              <div
-                className="materi-card-accent"
-                style={{ background: mod.gradient }}
-              />
-
-              {/* Card Header */}
-              <div className="materi-card-header">
-                <div
-                  className="materi-card-icon"
-                  style={{ background: `${mod.color}18`, color: mod.color }}
-                >
-                  <span className="material-symbols-outlined">{mod.icon}</span>
-                </div>
-              </div>
-
-              {/* Card Body */}
-              <div className="materi-card-body">
-                <h3 className="materi-card-title">{mod.title}</h3>
-                <p className="materi-card-desc">{mod.description}</p>
-              </div>
-
-              {/* Card Meta */}
-              <div className="materi-card-meta">
-                <div className="materi-meta-item">
-                  <span
-                    className="material-symbols-outlined"
-                    style={{ fontSize: '16px' }}
-                  >
-                    library_books
-                  </span>
-                  <span>{mod.totalSubtopics} Sub-topik</span>
-                </div>
-                <div className="materi-meta-item">
-                  <span
-                    className="material-symbols-outlined"
-                    style={{ fontSize: '16px' }}
-                  >
-                    timer
-                  </span>
-                  <span>{mod.estimatedHours} Jam</span>
-                </div>
-              </div>
-
-              {/* Card Footer CTA */}
-              <div className="materi-card-footer">
-                <span
-                  className="materi-card-cta"
-                  style={{ color: mod.color }}
-                >
-                  Buka Materi
-                  <span
-                    className="material-symbols-outlined"
-                    style={{ fontSize: '18px' }}
-                  >
-                    arrow_forward
-                  </span>
-                </span>
-              </div>
-            </Link>
-          )
-        })}
+    <section className="material-library" aria-labelledby="material-list-title">
+      <form className="catalog-search" role="search" onSubmit={event => event.preventDefault()}>
+        <label htmlFor="catalog-query">Cari modul atau subtopik</label>
+        <div className="catalog-search-field">
+          <input id="catalog-query" type="search" value={query} onChange={event => updateQuery(event.target.value)} placeholder="Misalnya: membran sel, hormon, atau fotosintesis" />
+          {query && <button type="button" onClick={() => updateQuery('')}>Hapus pencarian</button>}
+        </div>
+      </form>
+      <div className="catalog-result-heading">
+        <h2 id="material-list-title">{query.trim() ? 'Hasil pencarian' : 'Pilih modul belajarmu'}</h2>
+        <p role="status" aria-live="polite">{modules.length} dari {materiData.modules.length} modul</p>
       </div>
-    </div>
+      {modules.length ? (
+        <div className="catalog-module-grid">
+          {modules.map(mod => (
+            <Link key={mod.id} to={`/materi/${mod.id}`} className="catalog-module">
+              <div className="catalog-module-top"><span>Modul {materiData.modules.indexOf(mod) + 1}</span><span>{mod.subtopics.length} subtopik</span></div>
+              <h3>{mod.title}</h3>
+              <p>{mod.description}</p>
+              <div className="catalog-module-topics">{mod.subtopics.slice(0, 2).map(sub => <span key={sub.id}>{sub.title}</span>)}</div>
+              <span className="catalog-module-action">Buka materi <span aria-hidden="true">↗</span></span>
+            </Link>
+          ))}
+        </div>
+      ) : (
+        <div className="catalog-empty">
+          <h3>Materi belum ditemukan.</h3>
+          <p>Tidak ada modul yang cocok dengan “{query}”. Coba kata yang lebih singkat atau buka seluruh modul.</p>
+          <button type="button" className="study-button" onClick={() => updateQuery('')}>Tampilkan semua modul</button>
+        </div>
+      )}
+    </section>
   )
 }

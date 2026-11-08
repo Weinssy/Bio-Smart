@@ -12,7 +12,7 @@ export default function MateriDetailPage() {
       <div className="main-wrapper">
         <Header />
 
-        <main className="dashboard-main">
+        <main className="dashboard-main" id="main-content" tabIndex={-1}>
           <MateriDetail />
         </main>
 

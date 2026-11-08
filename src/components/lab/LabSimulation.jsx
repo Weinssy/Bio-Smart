@@ -55,12 +55,11 @@ export default function LabSimulation() {
       direction: waterDirection,
       arrowColor,
       isLysed,
-      waterPotential: (0.9 - concentration).toFixed(2),
     }
   }, [concentration, tonicity, cellType])
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', width: '100%', maxWidth: '1200px', margin: '0 auto' }}>
+    <div className="lab-simulation" style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', width: '100%', maxWidth: '1200px', margin: '0 auto' }}>
       {/* Simulation Header */}
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem' }}>
         <div>
@@ -302,7 +301,7 @@ export default function LabSimulation() {
           {/* Slider Control Card */}
           <div style={{ backgroundColor: 'var(--color-surface-container-lowest)', borderRadius: 'var(--radius-lg)', padding: '1.5rem', border: '1px solid rgba(191, 201, 194, 0.4)', boxShadow: 'var(--shadow-level-1)' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '1.5rem' }}>
-              <label style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--color-on-surface)' }}>
+              <label htmlFor="salt-concentration" style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--color-on-surface)' }}>
                 Konsentrasi Garam (NaCl)
               </label>
               <span style={{ fontFamily: 'var(--font-display)', fontSize: '1.75rem', fontWeight: 800, color: 'var(--color-primary)' }}>
@@ -311,6 +310,7 @@ export default function LabSimulation() {
             </div>
 
             <input
+              id="salt-concentration"
               type="range"
               min="0.0"
               max="5.0"
@@ -367,14 +367,14 @@ export default function LabSimulation() {
 
           {/* Scientific Physics Analysis Card */}
           <div style={{ backgroundColor: 'var(--color-surface-container-lowest)', borderRadius: 'var(--radius-lg)', padding: '1.5rem', border: '1px solid rgba(191, 201, 194, 0.4)', boxShadow: 'var(--shadow-level-1)' }}>
-            <h4 style={{ fontSize: '1rem', fontWeight: 700, color: 'var(--color-on-surface)', marginBottom: '1rem', paddingBottom: '0.75rem', borderBottom: '1px solid rgba(191, 201, 194, 0.3)' }}>
-              Parameter Biofisika Osmosis
-            </h4>
+            <h3 style={{ fontSize: '1rem', fontWeight: 700, color: 'var(--color-on-surface)', marginBottom: '1rem', paddingBottom: '0.75rem', borderBottom: '1px solid rgba(191, 201, 194, 0.3)' }}>
+              Kondisi pada Model Sel
+            </h3>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', fontSize: '0.85rem' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', paddingBottom: '0.5rem', borderBottom: '1px dashed rgba(191,201,194,0.4)' }}>
-                <span style={{ color: 'var(--color-on-surface-variant)' }}>Potensial Air Relatif (Ψ):</span>
+                <span style={{ color: 'var(--color-on-surface-variant)' }}>Acuan konsentrasi simulasi:</span>
                 <span style={{ fontWeight: 700, color: 'var(--color-primary)' }}>
-                  {simulationMetrics.waterPotential} MPa
+                  0,9% NaCl
                 </span>
               </div>
 
@@ -396,9 +396,12 @@ export default function LabSimulation() {
             <div style={{ marginTop: '1.5rem', padding: '1rem', borderRadius: 'var(--radius-md)', backgroundColor: '#eff6ff', border: '1px solid #bfdbfe', position: 'relative' }}>
               <span className="material-symbols-outlined" style={{ fontSize: '18px', color: '#2563eb', position: 'absolute', left: '1rem', top: '1rem' }}>info</span>
               <div style={{ marginLeft: '1.75rem' }}>
-                <h5 style={{ fontSize: '0.85rem', fontWeight: 700, color: '#1e40af', margin: '0 0 0.25rem 0' }}>Prinsip Osmosis</h5>
+                <h4 style={{ fontSize: '0.85rem', fontWeight: 700, color: '#1e40af', margin: '0 0 0.25rem 0' }}>Prinsip Osmosis</h4>
                 <p style={{ fontSize: '0.75rem', color: '#1e3a8a', margin: 0, lineHeight: 1.5 }}>
                   Molekul air (pelarut) berpindah menembus membran selektif permeabel dari larutan dengan konsentrasi zat terlarut rendah menuju larutan dengan konsentrasi zat terlarut tinggi.
+                </p>
+                <p style={{ fontSize: '0.75rem', color: '#1e3a8a', marginTop: '0.75rem', lineHeight: 1.5 }}>
+                  Simulasi ini menggunakan model sederhana dengan acuan NaCl 0,9% untuk kedua jenis sel. Gunakan untuk membandingkan arah perpindahan air pada model sel.
                 </p>
               </div>
             </div>

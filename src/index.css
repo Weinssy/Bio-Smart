@@ -1,5 +1,9 @@
 @import './styles/design-tokens.css';
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
@@ -41,4 +45,14 @@ a {
   display: flex;
   flex-direction: column;
   overflow-x: hidden;
+}
+
+:where(a[href], button, summary, select, label[for], input[type='checkbox'], input[type='radio'], input[type='range'], [role='button'], [role='tab'], [role='switch']) { cursor: pointer; }
+:where(button, input, select, textarea):disabled { cursor: not-allowed; opacity: .6; }
+:root :is(a, button, input, select, textarea, summary):focus-visible { outline: 3px solid #1b7154; outline-offset: 3px; }
+:where(button, a[href]):active { translate: 0 1px; }
+.skip-link { position: fixed; top: .5rem; left: 1rem; transform: translateY(-180%); z-index: 10000; padding: .8rem 1rem; background: #fff; color: #004331; border: 2px solid #004331; border-radius: .5rem; }
+.skip-link:focus { transform: translateY(0); }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
 }

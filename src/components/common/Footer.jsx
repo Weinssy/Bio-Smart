@@ -4,7 +4,7 @@ export default function Footer() {
   return (
     <footer className="app-footer" data-purpose="site-footer">
       <div className="footer-inner">
-        <p>© 2024–2026 BioSMA Indonesia • Modul Biologi Digital Berstandar Kurikulum Merdeka Kemendikbudristek RI.</p>
+        <p>Bio Smart · Ruang belajar biologi SMA · Materi, pengamatan, dan evaluasi mandiri.</p>
         <div className="footer-links">
           <Link to="/materi">Katalog Modul</Link>
           <Link to="/laboratorium">Lab Virtual</Link>

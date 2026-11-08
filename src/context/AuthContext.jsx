@@ -17,7 +17,7 @@ export function AuthProvider({ children }) {
   const [user, setUser] = useState(null)
   const [session, setSession] = useState(null)
   const [profile, setProfile] = useState(null)
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(Boolean(isSupabaseConfigured && supabase))
 
   // Fetch profil pengguna dari tabel public.profiles
   const fetchProfile = useCallback(async (userId) => {
@@ -45,7 +45,6 @@ export function AuthProvider({ children }) {
 
   useEffect(() => {
     if (!isSupabaseConfigured || !supabase) {
-      setLoading(false)
       return
     }
 

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
 
@@ -23,6 +23,10 @@ export default function LoginPage() {
   const [nisn, setNisn] = useState('')
   const [grade, setGrade] = useState('XI')
   const [schoolName, setSchoolName] = useState('')
+
+  useEffect(() => {
+    document.title = `${user ? 'Akun siswa' : mode === 'signin' ? 'Masuk akun' : 'Daftar akun'} · Bio Smart`
+  }, [user, mode])
 
   // Handle Sign In
   const handleSignIn = async (e) => {
@@ -111,7 +115,7 @@ export default function LoginPage() {
   // Jika pengguna sudah login
   if (user) {
     return (
-      <div className="min-h-[100dvh] bg-[#fcfdfc] flex flex-col justify-center py-6 sm:py-12 px-4 sm:px-6 lg:px-8 font-sans">
+      <main id="main-content" tabIndex={-1} className="min-h-[100dvh] bg-[#fcfdfc] flex flex-col justify-center py-6 sm:py-12 px-4 sm:px-6 lg:px-8 font-sans">
         <div className="w-full max-w-md mx-auto">
           <div className="bg-white p-6 sm:p-8 shadow-xl shadow-slate-200/50 rounded-2xl sm:rounded-3xl border border-slate-200 text-center space-y-4">
             <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-emerald-50 text-pine-800 mx-auto flex items-center justify-center">
@@ -119,12 +123,12 @@ export default function LoginPage() {
             </div>
             <div>
               <span className="inline-flex items-center gap-1.5 text-[11px] font-bold px-2.5 py-1 rounded-full bg-emerald-50 text-pine-800 border border-emerald-200/60 uppercase tracking-wider">
-                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                <span className="w-2 h-2 rounded-full bg-emerald-500" />
                 Akun Siswa Aktif
               </span>
-              <h2 className="text-xl sm:text-2xl font-bold text-slate-900 mt-2 break-words">
+              <h1 className="text-xl sm:text-2xl font-bold text-slate-900 mt-2 break-words">
                 {profile?.full_name || user.email}
-              </h2>
+              </h1>
               <p className="text-xs sm:text-sm text-slate-500 mt-1">
                 {profile?.nisn ? `NISN: ${profile.nisn} • ` : ''}Fase F Kelas {profile?.grade || 'XI'} SMA
               </p>
@@ -153,12 +157,12 @@ export default function LoginPage() {
             </div>
           </div>
         </div>
-      </div>
+      </main>
     )
   }
 
   return (
-    <div className="min-h-[100dvh] bg-[#fcfdfc] flex flex-col justify-center py-6 sm:py-12 px-3.5 sm:px-6 lg:px-8 font-sans selection:bg-emerald-100 selection:text-pine-900">
+    <main id="main-content" tabIndex={-1} className="min-h-[100dvh] bg-[#fcfdfc] flex flex-col justify-center py-6 sm:py-12 px-3.5 sm:px-6 lg:px-8 font-sans selection:bg-emerald-100 selection:text-pine-900">
       <div className="w-full max-w-md mx-auto">
         {/* Brand Header */}
         <Link 
@@ -198,13 +202,13 @@ export default function LoginPage() {
             <div className="mb-5 p-3.5 sm:p-4 rounded-xl bg-amber-50 border border-amber-200 text-amber-900 text-xs space-y-1">
               <div className="flex items-center gap-1.5 font-bold text-amber-950 text-xs sm:text-sm">
                 <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>warning</span>
-                Koneksi Supabase Belum Terhubung
+                Layanan akun belum tersedia
               </div>
               <p className="leading-relaxed">
-                Fitur autentikasi membutuhkan kredensial <code>VITE_SUPABASE_URL</code> dan <code>VITE_SUPABASE_ANON_KEY</code>.
+                Kamu tetap dapat membaca materi, mencoba lab virtual, dan mengerjakan kuis tanpa masuk akun.
               </p>
               <p className="text-[11px] text-amber-800 pt-0.5">
-                Pastikan secret telah diatur di GitHub Repository Secrets lalu deploy ulang.
+                Coba masuk kembali setelah pengelola mengaktifkan layanan akun.
               </p>
             </div>
           )}
@@ -237,14 +241,14 @@ export default function LoginPage() {
 
           {/* Error & Success Alerts */}
           {errorMessage && (
-            <div className="mb-4 p-3.5 rounded-xl bg-red-50 border border-red-200 text-red-800 text-xs font-medium flex items-start gap-2.5 animate-in fade-in">
+            <div role="alert" className="mb-4 p-3.5 rounded-xl bg-red-50 border border-red-200 text-red-800 text-xs font-medium flex items-start gap-2.5 animate-in fade-in">
               <span className="material-symbols-outlined text-red-600 shrink-0" style={{ fontSize: '18px' }}>error</span>
               <span className="leading-relaxed break-words">{errorMessage}</span>
             </div>
           )}
 
           {successMessage && (
-            <div className="mb-4 p-3.5 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-medium flex items-start gap-2.5 animate-in fade-in">
+            <div role="status" className="mb-4 p-3.5 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-medium flex items-start gap-2.5 animate-in fade-in">
               <span className="material-symbols-outlined text-emerald-600 shrink-0" style={{ fontSize: '18px' }}>check_circle</span>
               <span className="leading-relaxed break-words">{successMessage}</span>
             </div>
@@ -254,7 +258,7 @@ export default function LoginPage() {
               SIGN IN FORM
              ======================================================== */}
           {mode === 'signin' ? (
-            <form className="space-y-4" onSubmit={handleSignIn} noValidate>
+            <form className="space-y-4" onSubmit={handleSignIn}>
               <div>
                 <label htmlFor="email" className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
                   Alamat Email Siswa
@@ -341,7 +345,7 @@ export default function LoginPage() {
             /* ========================================================
                SIGN UP FORM (Mobile-First Stacked Layout)
                ======================================================== */
-            <form className="space-y-4" onSubmit={handleSignUp} noValidate>
+            <form className="space-y-4" onSubmit={handleSignUp}>
               <div>
                 <label htmlFor="fullName" className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
                   Nama Lengkap Siswa
@@ -551,6 +555,6 @@ export default function LoginPage() {
           </div>
         </div>
       </div>
-    </div>
+    </main>
   )
 }

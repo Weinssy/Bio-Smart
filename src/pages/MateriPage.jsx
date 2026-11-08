@@ -12,7 +12,7 @@ export default function MateriPage() {
       <div className="main-wrapper">
         <Header />
 
-        <main className="dashboard-main">
+        <main className="dashboard-main" id="main-content" tabIndex={-1}>
           {/* Welcome Banner */}
           <section className="welcome-banner" style={{ padding: '1.5rem 2rem' }}>
             <span className="material-symbols-outlined banner-bg-motif">menu_book</span>
@@ -26,7 +26,7 @@ export default function MateriPage() {
                   Katalog Materi Biologi SMA
                 </h1>
                 <p className="banner-sub">
-                  Eksplorasi seluruh modul bahan ajar Biologi interaktif.
+                  Pilih topik yang ingin dipahami. Baca materi dan pelajari diagramnya sesuai ritmemu.
                 </p>
               </div>
             </div>

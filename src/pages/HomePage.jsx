@@ -1,774 +1,90 @@
-import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { useAuth } from '../context/AuthContext';
-import '../styles/home.css';
+import { Link, useNavigate } from 'react-router-dom'
+import { useAuth } from '../context/AuthContext'
+import Sidebar from '../components/common/Sidebar'
+import Header from '../components/common/Header'
+import Footer from '../components/common/Footer'
+import materiData from '../data/materiData.json'
+import quizData from '../data/quizData.json'
+import { resolveAsset } from '../utils/assetResolver'
+import '../styles/home.css'
 
 export default function HomePage() {
-  const navigate = useNavigate();
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const { user, profile } = useAuth();
+  const navigate = useNavigate()
+  const { user, profile } = useAuth()
+  const modules = materiData.modules
+  const subtopicCount = modules.reduce((total, mod) => total + mod.subtopics.length, 0)
+
+  function searchMaterials(event) {
+    event.preventDefault()
+    const query = String(new FormData(event.currentTarget).get('q') || '').trim()
+    navigate(query ? `/materi?q=${encodeURIComponent(query)}` : '/materi')
+  }
 
   return (
-    <div className="home-page-container scroll-smooth text-slate-900 bg-[#fcfdfc] font-sans selection:bg-emerald-100 selection:text-pine-900">
-      {/* Primary Navigation */}
-      <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-100/80 transition-all duration-200" data-purpose="primary-navigation">
-        <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16 sm:h-20 gap-2 sm:gap-4">
-            {/* Logo */}
-            <Link className="flex items-center gap-2.5 sm:gap-3 shrink-0 group focus:outline-none focus:ring-2 focus:ring-pine-800 rounded-lg p-0.5 sm:p-1" to="/" aria-label="Beranda Bio Smart">
-              <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-pine-900 flex items-center justify-center text-white shadow-md shadow-pine-900/15 group-hover:scale-105 transition-transform duration-200 shrink-0">
-                <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 100-6 3 3 0 000 6z" strokeLinecap="round" strokeLinejoin="round" />
-                  <path d="M12 4v4m3-2h-6" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
+    <div className="dashboard-layout">
+      <Sidebar />
+      <div className="main-wrapper">
+        <Header />
+        <main className="dashboard-main study-home" id="main-content" tabIndex={-1}>
+          <div className="study-intro">
+            <div>
+              <p className="study-eyebrow">Ruang belajar biologi · SMA kelas XI & XII</p>
+              <h1>{user ? `Selamat belajar, ${profile?.full_name?.split(' ')[0] || 'Siswa'}.` : 'Ada yang menarik di setiap sel.'}</h1>
+              <p>Pahami konsepnya, amati prosesnya, lalu uji pemahamanmu.</p>
+            </div>
+            <span className="study-curriculum">Kurikulum Merdeka · Fase F</span>
+          </div>
+          <section className="study-feature" aria-labelledby="study-feature-title">
+            <div className="study-feature-copy">
+              <p className="study-eyebrow">Mulai dari unit terkecil kehidupan</p>
+              <h2 id="study-feature-title">Dunia besar,<br />di dalam sebuah sel.</h2>
+              <p>Kenali membran sel dan organelnya. Lihat bagaimana sel mengatur zat yang masuk dan keluar, lalu amati osmosis di lab virtual.</p>
+              <div className="study-feature-actions">
+                <Link to="/materi/mod-1" className="study-button study-button-light">Pelajari biologi sel</Link>
+                <Link to="/laboratorium" className="study-feature-link">Buka lab osmosis <span aria-hidden="true">↗</span></Link>
               </div>
-              <div>
-                <div className="flex items-center gap-1 sm:gap-1.5">
-                  <span className="text-lg sm:text-xl font-bold tracking-tight text-slate-900">Bio&nbsp;<span className="text-pine-800">Smart</span></span>
-                  <span className="text-[9px] sm:text-[10px] font-bold px-1.5 py-0.5 rounded bg-emerald-50 text-pine-800 border border-emerald-200/60 uppercase tracking-wider">SMA</span>
-                </div>
-                <p className="hidden sm:block text-xs text-slate-500 font-medium leading-none mt-0.5">Belajar Biologi Interaktif</p>
-              </div>
-            </Link>
-
-            {/* Quick Search Box (Desktop/Tablet) */}
-            <form 
-              className="hidden md:flex flex-1 max-w-md mx-4 lg:mx-6" 
-              data-purpose="search-box" 
-              onSubmit={(e) => {
-                e.preventDefault();
-                const q = new FormData(e.currentTarget).get('q');
-                if (q) navigate(`/materi?q=${encodeURIComponent(String(q))}`);
-              }}
-            >
-              <div className="relative w-full">
-                <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" aria-hidden="true">
-                    <circle cx="11" cy="11" r="8" />
-                    <path d="M21 21l-4.35-4.35" strokeLinecap="round" />
-                  </svg>
-                </div>
-                <input 
-                  name="q" 
-                  className="w-full pl-10 pr-14 py-2.5 bg-slate-50 hover:bg-slate-100/80 focus:bg-white border border-slate-200 focus:border-pine-800 rounded-xl text-sm transition-all focus:outline-none focus:ring-2 focus:ring-pine-800/15 placeholder-slate-400" 
-                  placeholder="Cari materi sel, genetika, organ tubuh..." 
-                  type="text" 
-                  aria-label="Cari modul materi"
-                />
-                <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
-                  <kbd className="inline-flex items-center border border-slate-200 px-1.5 py-0.5 rounded text-[10px] font-mono text-slate-400 bg-white shadow-xs">Enter</kbd>
-                </div>
+              <p className="study-feature-note">Materi, diagram interaktif, dan praktikum tersedia tanpa masuk akun.</p>
+            </div>
+            <figure className="study-specimen">
+              <div className="study-specimen-heading"><span>Objek pengamatan</span><span>Biologi sel / 01</span></div>
+              <img src={resolveAsset('images/diagrams/sel/membran-sel.svg')} alt="Diagram dwilapis fosfolipid dan protein pada membran sel" width="800" height="600" fetchPriority="high" />
+              <figcaption><span>Membran sel</span><Link to="/materi/mod-1">Amati bagian-bagiannya <span aria-hidden="true">↗</span></Link></figcaption>
+            </figure>
+          </section>
+          <section className="study-library" aria-labelledby="study-library-title">
+            <div className="study-section-heading">
+              <div><p className="study-eyebrow">Bahan belajar</p><h2 id="study-library-title">Apa yang ingin kamu pahami?</h2></div>
+              <Link to="/materi" className="study-text-link">Lihat semua {modules.length} modul</Link>
+            </div>
+            <form className="study-search" onSubmit={searchMaterials} role="search">
+              <label htmlFor="home-material-search">Cari materi atau subtopik</label>
+              <div className="study-search-field">
+                <input id="home-material-search" name="q" type="search" placeholder="Misalnya: membran sel, genetika, atau enzim" />
+                <button className="study-button" type="submit">Cari materi</button>
               </div>
             </form>
-
-            {/* Desktop Navigation Links */}
-            <nav className="hidden lg:flex items-center space-x-1 font-medium text-sm text-slate-600" aria-label="Menu Navigasi Utama">
-              <Link className="px-3.5 py-2 rounded-lg hover:text-pine-900 hover:bg-slate-50 font-semibold text-pine-900 transition" to="/materi">Katalog Modul</Link>
-              <Link className="px-3.5 py-2 rounded-lg hover:text-pine-900 hover:bg-slate-50 transition" to="/laboratorium">Lab Virtual</Link>
-              <Link className="px-3.5 py-2 rounded-lg hover:text-pine-900 hover:bg-slate-50 transition" to="/anatomi">Anatomi 3D</Link>
-              <Link className="px-3.5 py-2 rounded-lg hover:text-pine-900 hover:bg-slate-50 transition" to="/kuis">Bank Kuis</Link>
-            </nav>
-
-            {/* Right Action Buttons */}
-            <div className="flex items-center gap-1.5 sm:gap-3 shrink-0">
-              {/* Direct Login/Profile Pill Button (Always visible on mobile & desktop - No menu click needed!) */}
-              <Link 
-                to="/login" 
-                className="inline-flex items-center gap-1.5 px-3 py-2 sm:px-3.5 sm:py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition tactile-btn shrink-0 min-h-[42px] sm:min-h-[44px] bg-emerald-50/95 hover:bg-emerald-100 text-pine-900 border border-emerald-200/80 active:scale-95 shadow-xs"
-                aria-label={user ? `Profil Akun: ${profile?.full_name || 'Siswa'}` : 'Masuk ke Portal Siswa'}
-              >
-                <span className="material-symbols-outlined text-[18px] sm:text-[20px] text-pine-800">
-                  {user ? 'account_circle' : 'login'}
-                </span>
-                <span className="font-bold">
-                  {user ? (profile?.full_name?.split(' ')[0] || 'Akun') : 'Masuk'}
-                </span>
-              </Link>
-
-              {/* Lab Virtual Shortcut (Hidden on small mobile to avoid header overflow, visible on md+) */}
-              <Link 
-                className="hidden md:inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-pine-900 hover:bg-pine-950 text-white text-sm font-medium shadow-md shadow-pine-950/15 hover:shadow-lg transition-all tactile-btn shrink-0 min-h-[44px]" 
-                to="/laboratorium"
-              >
-                <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z" />
-                </svg>
-                <span>Mulai Praktikum</span>
-              </Link>
-
-              {/* Mobile Menu Hamburger Button (44px touch target, prominent background, never cut off) */}
-              <button 
-                type="button" 
-                onClick={() => setMobileMenuOpen(!mobileMenuOpen)} 
-                className="lg:hidden w-11 h-11 min-w-[44px] min-h-[44px] rounded-xl bg-slate-100 hover:bg-slate-200/90 active:bg-slate-300 active:scale-95 text-slate-800 border border-slate-200/80 flex items-center justify-center transition-all shrink-0 focus:outline-none focus:ring-2 focus:ring-pine-800 shadow-xs"
-                aria-label={mobileMenuOpen ? "Tutup menu navigasi" : "Buka menu navigasi"}
-                aria-expanded={mobileMenuOpen}
-              >
-                {mobileMenuOpen ? (
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24">
-                    <path d="M6 18L18 6M6 6l12 12" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                ) : (
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24">
-                    <path d="M4 6h16M4 12h16M4 18h16" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                )}
-              </button>
-            </div>
-          </div>
-        </div>
-
-        {/* Mobile Navigation Drawer */}
-        {mobileMenuOpen && (
-          <div className="lg:hidden border-t border-slate-100 bg-white px-4 pt-3 pb-6 space-y-3 shadow-xl animate-in slide-in-from-top-2">
-            {/* Student Auth Status Card */}
-            <div className="p-3.5 rounded-2xl bg-gradient-to-r from-emerald-50 to-teal-50/80 border border-emerald-100/90 flex items-center justify-between gap-3 shadow-xs">
-              <div className="flex items-center gap-3 min-w-0">
-                <div className="w-10 h-10 rounded-xl bg-pine-900 text-white flex items-center justify-center shrink-0 shadow-sm font-bold text-sm">
-                  {user ? (profile?.full_name || user.email || 'S')[0].toUpperCase() : (
-                    <span className="material-symbols-outlined text-[20px]">person</span>
-                  )}
-                </div>
-                <div className="min-w-0">
-                  <p className="text-sm font-bold text-slate-900 truncate">
-                    {user ? (profile?.full_name || user.email) : 'Portal Akun Siswa'}
-                  </p>
-                  <p className="text-xs text-slate-500 truncate">
-                    {user ? 'Siswa Terdaftar' : 'Masuk untuk simpan skor & progres'}
-                  </p>
-                </div>
-              </div>
-              <Link
-                to="/login"
-                onClick={() => setMobileMenuOpen(false)}
-                className="px-3.5 py-2 rounded-xl bg-pine-900 text-white font-bold text-xs hover:bg-pine-950 active:scale-95 transition shadow-sm min-h-[40px] flex items-center justify-center shrink-0"
-              >
-                {user ? 'Buka Akun' : 'Masuk / Daftar'}
-              </Link>
-            </div>
-
-            {/* Mobile Quick Search */}
-            <form 
-              className="relative" 
-              onSubmit={(e) => {
-                e.preventDefault();
-                const q = new FormData(e.currentTarget).get('q');
-                if (q) {
-                  setMobileMenuOpen(false);
-                  navigate(`/materi?q=${encodeURIComponent(String(q))}`);
-                }
-              }}
-            >
-              <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
-                <span className="material-symbols-outlined text-[18px]">search</span>
-              </div>
-              <input 
-                name="q" 
-                className="w-full pl-10 pr-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:bg-white focus:outline-none focus:border-pine-800 placeholder-slate-400" 
-                placeholder="Cari materi biologi, sel, DNA..." 
-                type="text" 
-              />
-            </form>
-
-            {/* Navigation links with icons & comfortable >=48px touch heights */}
-            <div className="space-y-1 pt-1">
-              <Link 
-                className="flex items-center gap-3 px-3.5 py-3 rounded-xl text-sm font-bold text-pine-900 bg-emerald-50/70 border border-emerald-100/70 min-h-[48px]" 
-                to="/materi" 
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                <span className="material-symbols-outlined text-[20px] text-pine-800">menu_book</span>
-                <span>Katalog Modul Materi</span>
-              </Link>
-              <Link 
-                className="flex items-center gap-3 px-3.5 py-3 rounded-xl text-sm font-semibold text-slate-700 hover:text-pine-900 hover:bg-slate-50 active:bg-slate-100 min-h-[48px]" 
-                to="/laboratorium" 
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                <span className="material-symbols-outlined text-[20px] text-pine-800">science</span>
-                <span>Lab Virtual Interaktif</span>
-              </Link>
-              <Link 
-                className="flex items-center gap-3 px-3.5 py-3 rounded-xl text-sm font-semibold text-slate-700 hover:text-pine-900 hover:bg-slate-50 active:bg-slate-100 min-h-[48px]" 
-                to="/anatomi" 
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                <span className="material-symbols-outlined text-[20px] text-pine-800">view_in_ar</span>
-                <span>Visualisasi 3D Organ &amp; Sel</span>
-              </Link>
-              <Link 
-                className="flex items-center gap-3 px-3.5 py-3 rounded-xl text-sm font-semibold text-slate-700 hover:text-pine-900 hover:bg-slate-50 active:bg-slate-100 min-h-[48px]" 
-                to="/kuis" 
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                <span className="material-symbols-outlined text-[20px] text-pine-800">quiz</span>
-                <span>Bank Kuis &amp; Evaluasi HOTS</span>
-              </Link>
-            </div>
-
-            {/* Quick Action Button */}
-            <div className="pt-2">
-              <Link 
-                className="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-pine-900 hover:bg-pine-950 text-white text-sm font-bold shadow-md shadow-pine-950/15 active:scale-95 transition-all min-h-[48px]" 
-                to="/laboratorium" 
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                <span className="material-symbols-outlined text-[20px]">science</span>
-                <span>Mulai Praktikum Virtual</span>
-              </Link>
-            </div>
-          </div>
-        )}
-      </header>
-
-      <main className="flex-grow">
-        {/* Split Hero Section */}
-        <section className="relative overflow-hidden pt-12 pb-16 lg:pt-20 lg:pb-24 border-b border-slate-100/80">
-          <div className="absolute -top-32 -left-32 w-96 h-96 bg-emerald-50/70 rounded-full blur-3xl pointer-events-none" />
-          <div className="absolute top-1/2 -right-32 w-96 h-96 bg-emerald-50/50 rounded-full blur-3xl pointer-events-none" />
-          
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-            <div className="grid lg:grid-cols-12 gap-12 lg:gap-8 items-center">
-              {/* Left Column (7 cols) */}
-              <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
-                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 border border-emerald-200/70 text-pine-900 text-xs font-semibold shadow-xs">
-                  <span className="w-2 h-2 rounded-full bg-pine-600 animate-subtle-pulse" />
-                  Kurikulum Merdeka • Fase F Kelas XI &amp; XII SMA
-                </div>
-
-                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight leading-[1.12]">
-                  Eksplorasi Dunia Biologi <span className="text-pine-800">Interaktif,</span> Nyata, &amp; Seru.
-                </h1>
-
-                <p className="text-base sm:text-lg text-slate-600 max-w-[62ch] mx-auto lg:mx-0 leading-relaxed font-normal">
-                  Akses modul pembelajaran digital biologi tingkat SMA berstandar nasional. Dilengkapi simulasi laboratorium virtual, visualisasi sel dan organ tubuh 3D 360°, serta materi berbasis inkuiri sains terpadu.
-                </p>
-
-                <div className="pt-2 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
-                  <Link 
-                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-pine-900 hover:bg-pine-950 text-white font-semibold text-sm shadow-md shadow-pine-950/15 hover:shadow-lg transition-all tactile-btn" 
-                    to="/materi"
-                  >
-                    <span>Eksplorasi Modul Sekarang</span>
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" aria-hidden="true">
-                      <path d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                  </Link>
-                  <Link 
-                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-white hover:bg-slate-50 text-slate-800 border border-slate-200/90 font-semibold text-sm shadow-xs transition-all tactile-btn" 
-                    to="/laboratorium"
-                  >
-                    <svg className="w-4 h-4 text-pine-800" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" aria-hidden="true">
-                      <path d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                    <span>Coba Praktikum Virtual</span>
-                  </Link>
-                </div>
-
-                {/* Academic Metrics Row */}
-                <div className="pt-6 border-t border-slate-200/70 grid grid-cols-3 gap-4 max-w-lg mx-auto lg:mx-0">
-                  <div>
-                    <p className="text-2xl font-bold text-slate-900 tracking-tight">8 Modul</p>
-                    <p className="text-xs text-slate-500 font-medium mt-0.5">Fase F Lengkap</p>
-                  </div>
-                  <div>
-                    <p className="text-2xl font-bold text-slate-900 tracking-tight">40+ Soal</p>
-                    <p className="text-xs text-slate-500 font-medium mt-0.5">Bank Kuis HOTS</p>
-                  </div>
-                  <div>
-                    <p className="text-2xl font-bold text-slate-900 tracking-tight">12 Lab</p>
-                    <p className="text-xs text-slate-500 font-medium mt-0.5">Simulasi Mandiri</p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Right Column (5 cols) - Interactive Microscope Preview */}
-              <div className="lg:col-span-5 relative" data-purpose="microscope-preview-card">
-                <div className="relative bg-white p-5 rounded-3xl border border-slate-200/80 shadow-xl shadow-slate-200/50 tactile-card">
-                  {/* Top Bar with Status */}
-                  <div className="flex items-center justify-between pb-4 border-b border-slate-100">
-                    <div className="flex items-center gap-2">
-                      <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-subtle-pulse" />
-                      <span className="text-xs font-semibold text-slate-700">Mikroskop Digital Biosmart v2.4</span>
-                    </div>
-                    <span className="inline-flex items-center px-2 py-0.5 rounded-md text-[11px] font-semibold bg-emerald-50 text-pine-800 border border-emerald-200/70">
-                      Live 1000x
-                    </span>
-                  </div>
-
-                  {/* Specimen Viewport */}
-                  <div className="relative mt-4 h-64 sm:h-72 rounded-2xl bg-gradient-to-br from-slate-950 via-pine-950 to-slate-900 overflow-hidden flex items-center justify-center p-6 border border-slate-800">
-                    <div className="absolute inset-0 opacity-20 bg-[radial-gradient(#22c55e_1px,transparent_1px)] [background-size:16px_16px]" />
-
-                    {/* Rotating Specimen Diagram */}
-                    <div className="relative w-44 h-44 rounded-full border-2 border-emerald-400/40 flex items-center justify-center animate-microscope-rotate">
-                      <div className="w-36 h-36 rounded-full bg-emerald-800/30 border border-emerald-500/60 backdrop-blur-xs flex items-center justify-center">
-                        <div className="w-14 h-14 rounded-full bg-emerald-400/80 shadow-lg shadow-emerald-400/40 flex items-center justify-center text-slate-950 text-[10px] font-bold">
-                          Nukleus
-                        </div>
-                      </div>
-                      <div className="absolute top-2 left-10 w-5 h-7 bg-emerald-400/90 rounded-full blur-[0.5px]" />
-                      <div className="absolute bottom-4 right-10 w-6 h-8 bg-emerald-300/90 rounded-full blur-[0.5px]" />
-                      <div className="absolute right-3 top-16 w-5 h-7 bg-emerald-500/90 rounded-full blur-[0.5px]" />
-                    </div>
-
-                    {/* Viewport Badges */}
-                    <div className="absolute bottom-3 left-3 bg-black/60 backdrop-blur-md border border-white/10 px-3 py-1.5 rounded-lg text-white text-xs flex items-center gap-2">
-                      <span className="w-2 h-2 rounded-full bg-emerald-400" />
-                      <span>Fokus Halus: <strong>98.4%</strong></span>
-                    </div>
-                    <div className="absolute bottom-3 right-3 bg-black/60 backdrop-blur-md border border-white/10 px-2.5 py-1.5 rounded-lg text-white text-xs flex items-center gap-1.5">
-                      <svg className="w-3.5 h-3.5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                        <path d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" />
-                      </svg>
-                      <span>360° Rotasi</span>
-                    </div>
-                  </div>
-
-                  {/* Card Bottom Meta */}
-                  <div className="mt-4 pt-3 flex items-center justify-between">
-                    <div>
-                      <h4 className="text-sm font-bold text-slate-900">Sel Tumbuhan (Allium Cepa)</h4>
-                      <p className="text-xs text-slate-500">Sub-topik: Dinding Sel, Vakuola &amp; Kloroplas</p>
-                    </div>
-                    <Link to="/laboratorium" className="px-3 py-1.5 text-xs font-semibold text-pine-900 bg-emerald-50 hover:bg-emerald-100 rounded-lg transition inline-flex items-center gap-1 tactile-btn">
-                      <span>Uji Coba Lab</span>
-                      <span>→</span>
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Catalog Section */}
-        <section className="py-12 lg:py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" id="katalog">
-          {/* Announcement Banner */}
-          <div className="relative overflow-hidden rounded-3xl bg-pine-900 text-white p-6 sm:p-8 lg:p-10 shadow-lg shadow-pine-950/10 mb-10" data-purpose="catalog-announcement-banner">
-            <div className="absolute right-0 top-0 bottom-0 w-1/3 opacity-15 pointer-events-none flex items-center justify-end pr-4 sm:pr-10">
-              <svg className="w-64 h-64 text-white" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z" />
-              </svg>
-            </div>
-            <div className="relative z-10 max-w-2xl">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-xs font-semibold text-emerald-100 mb-4">
-                <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-                <span>Bahan Ajar • Kurikulum Merdeka Fase F</span>
-              </div>
-
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-white mb-2">
-                Katalog Materi Biologi SMA
-              </h2>
-              <p className="text-emerald-100/90 text-sm sm:text-base font-normal max-w-xl">
-                Eksplorasi seluruh modul bahan ajar Biologi interaktif lengkap dengan latihan terarah dan panduan praktikum laboratorium.
-              </p>
-            </div>
-          </div>
-
-          {/* Cards Grid: 4 Core Modules + 2 Direct Feature Portals */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {/* Modul 1: Biologi Sel */}
-            <article className="flex flex-col justify-between bg-white rounded-2xl border border-slate-200/90 hover:border-pine-600 transition-all duration-200 hover:shadow-lg hover:shadow-pine-900/5 group overflow-hidden tactile-card" data-purpose="module-card">
-              <div className="h-1.5 w-full bg-pine-600" />
-              <div className="p-6">
-                <div className="w-12 h-12 rounded-xl bg-emerald-50 text-pine-700 flex items-center justify-center mb-4">
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" aria-hidden="true">
-                    <circle cx="12" cy="12" r="9" />
-                    <circle cx="12" cy="12" r="3" />
-                    <path d="M12 3v3m0 12v3m9-9h-3M6 12H3" strokeLinecap="round" />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-bold text-slate-900 group-hover:text-pine-800 transition-colors mb-2">
-                  Biologi Sel
-                </h3>
-                <p className="text-sm text-slate-600 leading-relaxed mb-6">
-                  Memahami unit terkecil kehidupan: struktur, fungsi, dan interaksi antar komponen seluler, membran plasma, serta transpor zat.
-                </p>
-
-                <div className="flex items-center gap-4 text-xs font-semibold text-slate-500 pt-2 border-t border-slate-100">
-                  <span className="flex items-center gap-1.5">
-                    <svg className="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" /></svg>
-                    6 Sub-topik
-                  </span>
-                  <span className="flex items-center gap-1.5">
-                    <svg className="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" /></svg>
-                    16 Jam Belajar
-                  </span>
-                </div>
-              </div>
-
-              <div className="px-6 py-4 bg-slate-50/60 border-t border-slate-100 group-hover:bg-emerald-50/40 transition">
-                <Link className="inline-flex items-center gap-1.5 text-sm font-bold text-pine-800 group-hover:gap-2.5 transition-all" to="/materi/mod-1">
-                  <span>Buka Materi</span>
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" strokeLinecap="round" strokeLinejoin="round" /></svg>
+            <div className="study-topic-list">
+              {modules.slice(0, 4).map((mod, index) => (
+                <Link to={`/materi/${mod.id}`} key={mod.id} className="study-topic">
+                  <span className="study-topic-number" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
+                  <div><h3>{mod.title}</h3><p>{mod.subtopics.length} subtopik</p></div>
+                  <span className="study-topic-open" aria-hidden="true">↗</span>
                 </Link>
-              </div>
-            </article>
-
-            {/* Modul 2: Genetika & Hereditas */}
-            <article className="flex flex-col justify-between bg-white rounded-2xl border border-slate-200/90 hover:border-pine-600 transition-all duration-200 hover:shadow-lg hover:shadow-pine-900/5 group overflow-hidden tactile-card" data-purpose="module-card">
-              <div className="h-1.5 w-full bg-emerald-600" />
-              <div className="p-6">
-                <div className="w-12 h-12 rounded-xl bg-emerald-50 text-pine-700 flex items-center justify-center mb-4">
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M19.5 4.5l-15 15M4.5 4.5l15 15M12 2v20M2 12h20" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-bold text-slate-900 group-hover:text-pine-800 transition-colors mb-2">
-                  Genetika &amp; Hereditas
-                </h3>
-                <p className="text-sm text-slate-600 leading-relaxed mb-6">
-                  Mempelajari mekanisme pewarisan sifat, persilangan hukum Mendel I &amp; II, mutasi genetik, dan ekspresi kode genetika DNA.
-                </p>
-
-                <div className="flex items-center gap-4 text-xs font-semibold text-slate-500 pt-2 border-t border-slate-100">
-                  <span className="flex items-center gap-1.5">
-                    <svg className="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" /></svg>
-                    4 Sub-topik
-                  </span>
-                  <span className="flex items-center gap-1.5">
-                    <svg className="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" /></svg>
-                    12.5 Jam Belajar
-                  </span>
-                </div>
-              </div>
-
-              <div className="px-6 py-4 bg-slate-50/60 border-t border-slate-100 group-hover:bg-emerald-50/40 transition">
-                <Link className="inline-flex items-center gap-1.5 text-sm font-bold text-pine-800 group-hover:gap-2.5 transition-all" to="/materi/mod-2">
-                  <span>Buka Materi</span>
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" strokeLinecap="round" strokeLinejoin="round" /></svg>
-                </Link>
-              </div>
-            </article>
-
-            {/* Modul 3: Sistem Anatomi Tubuh */}
-            <article className="flex flex-col justify-between bg-white rounded-2xl border border-slate-200/90 hover:border-pine-600 transition-all duration-200 hover:shadow-lg hover:shadow-pine-900/5 group overflow-hidden tactile-card" data-purpose="module-card">
-              <div className="h-1.5 w-full bg-teal-600" />
-              <div className="p-6">
-                <div className="w-12 h-12 rounded-xl bg-teal-50 text-teal-700 flex items-center justify-center mb-4">
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" aria-hidden="true">
-                    <circle cx="12" cy="5" r="2" />
-                    <path d="M12 7v10m-4-6h8m-6 9l2-3 2 3" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-bold text-slate-900 group-hover:text-pine-800 transition-colors mb-2">
-                  Sistem Anatomi Tubuh
-                </h3>
-                <p className="text-sm text-slate-600 leading-relaxed mb-6">
-                  Mempelajari organ-organ vital pada anatomi manusia seperti sistem peredaran darah, pencernaan, pernapasan, serta imunitas.
-                </p>
-
-                <div className="flex items-center gap-4 text-xs font-semibold text-slate-500 pt-2 border-t border-slate-100">
-                  <span className="flex items-center gap-1.5">
-                    <svg className="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" /></svg>
-                    8 Sub-topik
-                  </span>
-                  <span className="flex items-center gap-1.5">
-                    <svg className="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" /></svg>
-                    17.8 Jam Belajar
-                  </span>
-                </div>
-              </div>
-
-              <div className="px-6 py-4 bg-slate-50/60 border-t border-slate-100 group-hover:bg-emerald-50/40 transition">
-                <Link className="inline-flex items-center gap-1.5 text-sm font-bold text-teal-800 group-hover:gap-2.5 transition-all" to="/materi/mod-3">
-                  <span>Buka Materi</span>
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" strokeLinecap="round" strokeLinejoin="round" /></svg>
-                </Link>
-              </div>
-            </article>
-
-            {/* Modul 4: Ekologi & Keanekaragaman */}
-            <article className="flex flex-col justify-between bg-white rounded-2xl border border-slate-200/90 hover:border-pine-600 transition-all duration-200 hover:shadow-lg hover:shadow-pine-900/5 group overflow-hidden tactile-card" data-purpose="module-card">
-              <div className="h-1.5 w-full bg-emerald-600" />
-              <div className="p-6">
-                <div className="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-700 flex items-center justify-center mb-4">
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M12 19V5m0 0l-4 4m4-4l4 4m-8 6l-3 3h14l-3-3" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-bold text-slate-900 group-hover:text-pine-800 transition-colors mb-2">
-                  Ekologi &amp; Keanekaragaman
-                </h3>
-                <p className="text-sm text-slate-600 leading-relaxed mb-6">
-                  Mempelajari interaksi makhluk hidup dengan lingkungannya, piramida ekologi, daur biogeokimia, dan isu pelestarian hayati.
-                </p>
-
-                <div className="flex items-center gap-4 text-xs font-semibold text-slate-500 pt-2 border-t border-slate-100">
-                  <span className="flex items-center gap-1.5">
-                    <svg className="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" /></svg>
-                    4 Sub-topik
-                  </span>
-                  <span className="flex items-center gap-1.5">
-                    <svg className="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" /></svg>
-                    9.5 Jam Belajar
-                  </span>
-                </div>
-              </div>
-
-              <div className="px-6 py-4 bg-slate-50/60 border-t border-slate-100 group-hover:bg-emerald-50/40 transition">
-                <Link className="inline-flex items-center gap-1.5 text-sm font-bold text-emerald-800 group-hover:gap-2.5 transition-all" to="/materi/mod-4">
-                  <span>Buka Materi</span>
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" strokeLinecap="round" strokeLinejoin="round" /></svg>
-                </Link>
-              </div>
-            </article>
-
-            {/* Feature Portal Card: Lab Virtual */}
-            <article className="flex flex-col justify-between bg-white rounded-2xl border border-slate-200/90 hover:border-pine-600 transition-all duration-200 hover:shadow-lg hover:shadow-pine-900/5 group overflow-hidden tactile-card" data-purpose="module-card">
-              <div className="h-1.5 w-full bg-pine-800" />
-              <div className="p-6">
-                <div className="w-12 h-12 rounded-xl bg-pine-50 text-pine-900 flex items-center justify-center mb-4">
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-bold text-slate-900 group-hover:text-pine-800 transition-colors mb-2">
-                  Laboratorium Virtual
-                </h3>
-                <p className="text-sm text-slate-600 leading-relaxed mb-6">
-                  Praktikum mandiri tanpa risiko kimia. Kendalikan variabel suhu, pH larutan, konsentrasi substrat, dan amati laju reaksi enzimatik secara kuantitatif.
-                </p>
-
-                <div className="flex items-center gap-4 text-xs font-semibold text-slate-500 pt-2 border-t border-slate-100">
-                  <span className="flex items-center gap-1.5 text-pine-800">
-                    <span className="w-2 h-2 rounded-full bg-pine-600 animate-subtle-pulse" />
-                    Simulasi Aktif
-                  </span>
-                  <span className="flex items-center gap-1.5">
-                    Modul Mandiri
-                  </span>
-                </div>
-              </div>
-
-              <div className="px-6 py-4 bg-slate-50/60 border-t border-slate-100 group-hover:bg-emerald-50/40 transition">
-                <Link className="inline-flex items-center gap-1.5 text-sm font-bold text-pine-800 group-hover:gap-2.5 transition-all" to="/laboratorium">
-                  <span>Masuk Laboratorium</span>
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" strokeLinecap="round" strokeLinejoin="round" /></svg>
-                </Link>
-              </div>
-            </article>
-
-            {/* Feature Portal Card: Anatomi 3D */}
-            <article className="flex flex-col justify-between bg-white rounded-2xl border border-slate-200/90 hover:border-pine-600 transition-all duration-200 hover:shadow-lg hover:shadow-pine-900/5 group overflow-hidden tactile-card" data-purpose="module-card">
-              <div className="h-1.5 w-full bg-blue-600" />
-              <div className="p-6">
-                <div className="w-12 h-12 rounded-xl bg-blue-50 text-blue-700 flex items-center justify-center mb-4">
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M21 7.5l-9-5.25L3 7.5m18 0l-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-bold text-slate-900 group-hover:text-blue-800 transition-colors mb-2">
-                  Diseksi &amp; Anatomi 3D
-                </h3>
-                <p className="text-sm text-slate-600 leading-relaxed mb-6">
-                  Visualisasi 3 dimensi mendalam dari struktur jantung, nefron ginjal, dan alveolus paru-paru dengan kemampuan rotasi penuh 360 derajat.
-                </p>
-
-                <div className="flex items-center gap-4 text-xs font-semibold text-slate-500 pt-2 border-t border-slate-100">
-                  <span className="flex items-center gap-1.5 text-blue-700">
-                    <span className="w-2 h-2 rounded-full bg-blue-500" />
-                    Rotasi 360° Interaktif
-                  </span>
-                  <span className="flex items-center gap-1.5">
-                    3 Model Organ
-                  </span>
-                </div>
-              </div>
-
-              <div className="px-6 py-4 bg-slate-50/60 border-t border-slate-100 group-hover:bg-blue-50/40 transition">
-                <Link className="inline-flex items-center gap-1.5 text-sm font-bold text-blue-800 group-hover:gap-2.5 transition-all" to="/anatomi">
-                  <span>Eksplorasi Anatomi 3D</span>
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" strokeLinecap="round" strokeLinejoin="round" /></svg>
-                </Link>
-              </div>
-            </article>
-          </div>
-        </section>
-
-        {/* Feature Bento Section */}
-        <section className="py-16 bg-slate-50/80 border-y border-slate-200/80" id="lab">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-3xl mx-auto text-center mb-12">
-              <span className="text-xs font-bold uppercase tracking-wider text-pine-800 bg-emerald-50 px-3.5 py-1 rounded-full border border-emerald-200/70">
-                Laboratorium &amp; Eksplorasi Virtual
-              </span>
-              <h2 className="mt-3 text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
-                Pengalaman Belajar Sains Tanpa Batas Fisik
-              </h2>
-              <p className="mt-2 text-slate-600 text-sm sm:text-base">
-                Dirancang agar siswa SMA dapat mempraktikkan konsep biologi abstrak secara empiris melalui simulasi komputer yang presisi.
-              </p>
+              ))}
             </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
-              {/* Bento Card 1: Simulation (Span 2) */}
-              <div className="md:col-span-2 lg:col-span-2 bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/80 shadow-sm flex flex-col justify-between tactile-card" data-purpose="bento-card">
-                <div>
-                  <div className="flex items-center justify-between mb-4">
-                    <span className="w-10 h-10 rounded-xl bg-emerald-50 text-pine-900 flex items-center justify-center">
-                      <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" aria-hidden="true">
-                        <path d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" strokeLinecap="round" strokeLinejoin="round" />
-                      </svg>
-                    </span>
-                    <span className="text-xs font-semibold px-2.5 py-1 rounded-full bg-emerald-50 text-pine-900 border border-emerald-200/70">Interaktif Real-time</span>
-                  </div>
-                  <h3 className="text-xl font-bold text-slate-900 mb-2">Simulasi Osmosis Sel &amp; Uji Enzim Katalase</h3>
-                  <p className="text-sm text-slate-600 leading-relaxed mb-6">
-                    Ubah parameter suhu (0°C – 80°C) dan derajat keasaman pH (2 - 12) secara real-time untuk mengamati denaturasi enzim katalase hati ayam dan gelembung gas oksigen secara kuantitatif.
-                  </p>
-                </div>
-
-                <div className="bg-slate-900 text-white rounded-2xl p-4 text-xs font-mono">
-                  <div className="flex items-center justify-between pb-2 border-b border-slate-800">
-                    <span className="text-emerald-400 font-semibold flex items-center gap-1.5">
-                      <span className="w-2 h-2 rounded-full bg-emerald-400 animate-subtle-pulse" />
-                      STATUS: REAKSI AKTIF
-                    </span>
-                    <span className="text-slate-400">Gas O₂: 42.8 mL/s</span>
-                  </div>
-                  <div className="grid grid-cols-2 gap-3 mt-3">
-                    <div className="bg-slate-800/80 p-2.5 rounded-lg border border-slate-700/50">
-                      <span className="text-slate-400 block text-[10px] mb-0.5">Suhu Reaksi:</span>
-                      <span className="font-bold text-white text-sm">37.0 °C (Optimum)</span>
-                    </div>
-                    <div className="bg-slate-800/80 p-2.5 rounded-lg border border-slate-700/50">
-                      <span className="text-slate-400 block text-[10px] mb-0.5">pH Ekosistem:</span>
-                      <span className="font-bold text-white text-sm">7.2 (Netral)</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Bento Card 2: 3D Anatomy (Span 1) */}
-              <div className="md:col-span-1 lg:col-span-1 bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/80 shadow-sm flex flex-col justify-between tactile-card" data-purpose="bento-card">
-                <div>
-                  <div className="w-10 h-10 rounded-xl bg-amber-50 text-amber-800 flex items-center justify-center mb-4">
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" aria-hidden="true">
-                      <path d="M21 7.5l-9-5.25L3 7.5m18 0l-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                  </div>
-                  <h3 className="text-xl font-bold text-slate-900 mb-2">Diseksi Digital Anatomi 3D</h3>
-                  <p className="text-sm text-slate-600 leading-relaxed">
-                    Eksplorasi lapisan jantung mamalia, paru-paru, dan nefron ginjal layer-by-layer dengan mode visualisasi interaktif tiga dimensi.
-                  </p>
-                </div>
-                <div className="mt-6 pt-4 border-t border-slate-100">
-                  <Link to="/anatomi" className="text-xs font-bold text-amber-800 flex items-center gap-1 hover:gap-2 transition-all">
-                    <span>Akses Model 3D</span>
-                    <span>→</span>
-                  </Link>
-                </div>
-              </div>
-
-              {/* Bento Card 3: Quiz & Assessment (Span 1) */}
-              <div className="md:col-span-1 lg:col-span-1 bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/80 shadow-sm flex flex-col justify-between tactile-card" data-purpose="bento-card">
-                <div>
-                  <div className="w-10 h-10 rounded-xl bg-blue-50 text-blue-800 flex items-center justify-center mb-4">
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" aria-hidden="true">
-                      <path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                  </div>
-                  <h3 className="text-xl font-bold text-slate-900 mb-2">Bank Kuis &amp; Evaluasi Terarah</h3>
-                  <p className="text-sm text-slate-600 leading-relaxed">
-                    Uji pemahaman konsep biologi secara bertahap dengan feedback instan, pembahasan mendalam, dan penilaian kompetensi siswa.
-                  </p>
-                </div>
-                <div className="mt-6 pt-4 border-t border-slate-100">
-                  <Link to="/kuis" className="text-xs font-bold text-blue-800 flex items-center gap-1 hover:gap-2 transition-all">
-                    <span>Mulai Kuis Mandiri</span>
-                    <span>→</span>
-                  </Link>
-                </div>
-              </div>
+            <p className="study-library-note">{modules.length} modul · {subtopicCount} subtopik · {quizData.quizzes.length} kuis formatif</p>
+          </section>
+          <section className="study-practice" aria-labelledby="study-practice-title">
+            <div className="study-practice-intro"><p className="study-eyebrow">Dari teori ke pengamatan</p><h2 id="study-practice-title">Coba, amati,<br />hubungkan.</h2><p>Gunakan alat belajar untuk melihat konsep dari sudut yang berbeda.</p></div>
+            <div className="study-tools">
+              <Link to="/laboratorium" className="study-tool"><span className="study-tool-kind">Praktikum</span><div><h3>Apa yang terjadi jika sel kehilangan air?</h3><p>Ubah konsentrasi larutan dan amati respons sel pada simulasi osmosis.</p></div><span className="study-tool-action">Buka laboratorium <span aria-hidden="true">↗</span></span></Link>
+              <Link to="/anatomi" className="study-tool"><span className="study-tool-kind">Pengamatan 3D</span><div><h3>Lihat susunan organ dari dekat.</h3><p>Putar model tubuh manusia untuk mempelajari letak dan hubungan antarorgan.</p></div><span className="study-tool-action">Buka atlas anatomi <span aria-hidden="true">↗</span></span></Link>
+              <Link to="/kuis" className="study-tool study-tool-quiz"><span className="study-tool-kind">Evaluasi mandiri</span><div><h3>Sudah sejauh mana pemahamanmu?</h3><p>Pilih kuis sesuai materi, lalu periksa jawaban dan pembahasannya.</p></div><span className="study-tool-action">Pilih kuis <span aria-hidden="true">↗</span></span></Link>
             </div>
-          </div>
-        </section>
-
-        {/* CTA Banner Section */}
-        <section className="py-16 bg-white">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="bg-gradient-to-r from-pine-900 via-pine-950 to-emerald-950 rounded-3xl p-8 sm:p-12 text-white relative overflow-hidden flex flex-col lg:flex-row items-center justify-between gap-8 shadow-xl shadow-pine-950/10">
-              <div className="max-w-2xl text-center lg:text-left">
-                <span className="text-xs font-bold tracking-wider text-emerald-300 uppercase">Siap Mulai Pembelajaran?</span>
-                <h2 className="text-3xl sm:text-4xl font-extrabold mt-2 tracking-tight">
-                  Tingkatkan Pemahaman Biologi di Sekolah Sekarang
-                </h2>
-                <p className="text-emerald-100/90 text-sm sm:text-base mt-3 leading-relaxed">
-                  Bergabunglah dalam platform sains interaktif berbasis kurikulum terbaru dengan visualisasi 3D dan laboratorium mandiri.
-                </p>
-              </div>
-              <div className="flex flex-col sm:flex-row gap-3 w-full lg:w-auto shrink-0">
-                <Link 
-                  className="px-6 py-3.5 rounded-xl bg-white text-pine-950 font-bold text-sm text-center shadow-lg hover:bg-slate-100 transition tactile-btn" 
-                  to="/materi"
-                >
-                  Buka Katalog Modul
-                </Link>
-                <Link 
-                  className="px-6 py-3.5 rounded-xl bg-pine-800/80 hover:bg-pine-800 border border-white/20 text-white font-semibold text-sm text-center transition tactile-btn" 
-                  to="/laboratorium"
-                >
-                  Praktikum Virtual
-                </Link>
-              </div>
-            </div>
-          </div>
-        </section>
-      </main>
-
-      {/* Site Footer */}
-      <footer className="bg-white border-t border-slate-100 pt-12 pb-8 text-slate-500 text-sm" data-purpose="site-footer">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 pb-10 border-b border-slate-100">
-            <div className="md:col-span-2 space-y-3">
-              <div className="flex items-center gap-2">
-                <div className="w-8 h-8 rounded-lg bg-pine-900 flex items-center justify-center text-white">
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 100-6 3 3 0 000 6z" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                </div>
-                <span className="text-lg font-bold text-slate-900">Bio <span className="text-pine-800">Smart</span></span>
-              </div>
-              <p className="text-xs text-slate-500 max-w-sm leading-relaxed">
-                Platform Pembelajaran Biologi Interaktif Kurikulum Merdeka Fase F (Kelas XI &amp; XII SMA) dengan visualisasi 3D dan simulasi laboratorium mandiri.
-              </p>
-            </div>
-
-            <div>
-              <h4 className="text-xs font-bold uppercase tracking-wider text-slate-900 mb-3">Materi Utama</h4>
-              <ul className="space-y-2 text-xs">
-                <li><Link to="/materi/mod-1" className="hover:text-pine-800 transition">Biologi Sel</Link></li>
-                <li><Link to="/materi/mod-2" className="hover:text-pine-800 transition">Genetika &amp; Hereditas</Link></li>
-                <li><Link to="/materi/mod-3" className="hover:text-pine-800 transition">Sistem Anatomi Tubuh</Link></li>
-                <li><Link to="/materi/mod-4" className="hover:text-pine-800 transition">Ekologi &amp; Keanekaragaman</Link></li>
-              </ul>
-            </div>
-
-            <div>
-              <h4 className="text-xs font-bold uppercase tracking-wider text-slate-900 mb-3">Fitur Interaktif</h4>
-              <ul className="space-y-2 text-xs">
-                <li><Link to="/laboratorium" className="hover:text-pine-800 transition">Simulasi Lab Virtual</Link></li>
-                <li><Link to="/anatomi" className="hover:text-pine-800 transition">Diseksi Anatomi 3D</Link></li>
-                <li><Link to="/kuis" className="hover:text-pine-800 transition">Bank Kuis Kompetensi</Link></li>
-                <li><Link to="/login" className="hover:text-pine-800 transition">Portal Masuk Siswa</Link></li>
-              </ul>
-            </div>
-          </div>
-
-          <div className="pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-400 gap-4">
-            <p>© 2024–2026 BioSMA Indonesia • Kurikulum Merdeka Kemendikbudristek RI.</p>
-            <div className="flex gap-4">
-              <span>Biologi SMA Fase F</span>
-              <span>•</span>
-              <span>Laboratorium Digital Terpadu</span>
-            </div>
-          </div>
-        </div>
-      </footer>
+          </section>
+        </main>
+        <Footer />
+      </div>
     </div>
-  );
+  )
 }

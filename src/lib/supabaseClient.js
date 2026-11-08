@@ -1,4 +1,5 @@
 import { createClient } from '@supabase/supabase-js'
+import { isPrivilegedSupabaseKey, isPublicSupabaseConfig } from './supabaseConfig'
 
 const rawUrl = (import.meta.env.VITE_SUPABASE_URL || '').trim()
 const rawAnonKey = (import.meta.env.VITE_SUPABASE_ANON_KEY || '').trim()
@@ -7,20 +8,13 @@ const rawAnonKey = (import.meta.env.VITE_SUPABASE_ANON_KEY || '').trim()
 export const supabaseUrl = rawUrl.replace(/\/rest\/v1\/?$/i, '').replace(/\/+$/, '')
 export const supabaseAnonKey = rawAnonKey
 
-export const isSupabaseConfigured = Boolean(
-  supabaseUrl && 
-  supabaseAnonKey && 
-  !supabaseUrl.includes('your-project-id') &&
-  !supabaseAnonKey.includes('your-anon-key')
-)
+export const isSupabaseConfigured = isPublicSupabaseConfig(supabaseUrl, supabaseAnonKey)
 
-if (!isSupabaseConfigured) {
+if (isPrivilegedSupabaseKey(supabaseAnonKey)) {
+  console.error('[Bio Smart] Kunci server Supabase ditolak. Gunakan publishable key atau anon key di aplikasi browser.')
+} else if (!isSupabaseConfigured) {
   console.warn(
     '[Bio-Smart] Supabase credentials belum dikonfigurasi. Pastikan VITE_SUPABASE_URL dan VITE_SUPABASE_ANON_KEY telah diatur di .env (lokal) atau GitHub Secrets (GitHub Pages).'
-  )
-} else if (supabaseAnonKey.startsWith('sb_secret_')) {
-  console.error(
-    '[Bio-Smart] PERINGATAN: Kunci API yang terpasang adalah Secret Key (sb_secret_...). Supabase melarang penggunaan secret key di browser. Pastikan menggunakan Publishable Key (sb_publishable_...).'
   )
 }
 

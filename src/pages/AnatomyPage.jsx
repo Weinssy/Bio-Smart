@@ -11,10 +11,13 @@ export default function AnatomyPage() {
       <div className="main-wrapper" style={{ height: '100vh', display: 'flex', flexDirection: 'column' }}>
         <Header />
 
-        <main className="dashboard-main" style={{ flex: 1, padding: 0, display: 'flex', flexDirection: 'column' }}>
+        <main className="dashboard-main" id="main-content" tabIndex={-1} style={{ flex: 1, padding: 0, display: 'flex', flexDirection: 'column' }}>
+          <h1 className="sr-only">Atlas Anatomi 3D</h1>
           {/* 3D Viewport Module using iframe */}
           <section style={{ flex: 1, width: '100%', position: 'relative', overflow: 'hidden' }}>
             <iframe
+              width="1200"
+              height="800"
               src={`${import.meta.env.BASE_URL}human-atlas/index.html`}
               style={{
                 width: '100%',

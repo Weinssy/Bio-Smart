@@ -1,11 +1,10 @@
 /** @type {import('tailwindcss').Config} */
-module.exports = {
+export default {
   darkMode: ["class"],
   content: [
-    './pages/**/*.{js,jsx}',
-    './components/**/*.{js,jsx}',
-    './app/**/*.{js,jsx}',
-    './src/**/*.{js,jsx}',
+    './src/*.{js,jsx}',
+    './src/pages/**/*.{js,jsx}',
+    './src/components/{common,dashboard,lab,materi,quiz,visual}/**/*.{js,jsx}',
     './index.html',
   ],
   prefix: "",
@@ -19,10 +18,16 @@ module.exports = {
     },
     extend: {
       fontFamily: {
+        sans: ['var(--font-body)', 'system-ui', 'sans-serif'],
         display: ['var(--font-display)', 'system-ui', 'sans-serif'],
         body: ['var(--font-body)', 'system-ui', 'sans-serif'],
       },
       colors: {
+        pine: {
+          50: '#f0fdf4', 100: '#dcfce7', 200: '#bbf7d0',
+          600: '#16a34a', 700: '#15803d', 800: '#166534',
+          900: '#0b4728', 950: '#042f1a',
+        },
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
@@ -78,5 +83,5 @@ module.exports = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [],
 }

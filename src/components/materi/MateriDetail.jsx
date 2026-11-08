@@ -1,5 +1,5 @@
-import { useState, useEffect, useRef } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { useEffect, useRef } from 'react'
+import { Link, useParams, useSearchParams } from 'react-router-dom'
 import materiDataRaw from '../../data/materiData.json'
 import quizDataRaw from '../../data/quizData.json'
 import InteractiveDiagram from '../visual/InteractiveDiagram'
@@ -48,7 +48,18 @@ export default function MateriDetail() {
   const { moduleId } = useParams()
   const mod = allModules.find((m) => m.id === moduleId)
   
-  const [activeSubtopic, setActiveSubtopic] = useState(0)
+  const [searchParams, setSearchParams] = useSearchParams()
+  const requestedSubtopic = mod?.subtopics.findIndex(sub => sub.id === searchParams.get('topik')) ?? -1
+  const activeSubtopic = Math.max(0, requestedSubtopic)
+  function setActiveSubtopic(index) {
+    const subtopic = mod?.subtopics[index]
+    if (!subtopic) return
+    setSearchParams(previous => {
+      const next = new URLSearchParams(previous)
+      next.set('topik', subtopic.id)
+      return next
+    })
+  }
   const contentRef = useRef(null)
   const subtopicListRef = useRef(null)
 
@@ -61,7 +72,7 @@ export default function MateriDetail() {
     if (window.innerWidth <= 768) {
       window.scrollTo({ top: 0, behavior: 'smooth' })
     }
-  }, [activeSubtopic])
+  }, [activeSubtopic, moduleId])
 
   // Auto-scroll active subtopic tab into view on mobile
   useEffect(() => {
@@ -71,7 +82,7 @@ export default function MateriDetail() {
         activeEl.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' })
       }
     }
-  }, [activeSubtopic])
+  }, [activeSubtopic, moduleId])
 
   if (!mod) {
     return (
@@ -195,7 +206,7 @@ export default function MateriDetail() {
         {/* Subtopic Navigation */}
         <aside className="materi-subtopic-nav">
           <div className="materi-subtopic-nav-header">
-            <h4 className="materi-subtopic-nav-title">Daftar Sub-Topik</h4>
+            <h2 className="materi-subtopic-nav-title">Daftar Sub-Topik</h2>
             <span className="materi-subtopic-counter">
               {activeSubtopic + 1}/{totalSubtopics}
             </span>
@@ -269,7 +280,7 @@ export default function MateriDetail() {
                 </button>
               ) : (
                 <Link 
-                  to={`/quiz?quizId=${quizDataRaw.quizzes.find(q => q.moduleId === mod.id)?.id || ''}`} 
+                  to={`/kuis?quizId=${quizDataRaw.quizzes.find(q => q.moduleId === mod.id)?.id || ''}`}
                   className="btn-practical"
                   style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '0.5rem', backgroundColor: '#0d5c46', color: '#fff', padding: '0.75rem 1.25rem', borderRadius: 'var(--radius-md)', fontWeight: 700 }}
                 >
