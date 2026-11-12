@@ -1,8 +1,10 @@
 import Sidebar from '../components/common/Sidebar'
 import Header from '../components/common/Header'
 import Footer from '../components/common/Footer'
+import { Link } from 'react-router-dom'
 
 import LabSimulation from '../components/lab/LabSimulation'
+import '../styles/laboratory.css'
 
 export default function LabPage() {
   return (
@@ -12,30 +14,16 @@ export default function LabPage() {
       <div className="main-wrapper">
         <Header />
 
-        <main className="dashboard-main" id="main-content" tabIndex={-1}>
-          {/* Welcome Banner */}
-          <section className="welcome-banner" style={{ padding: '1.5rem 2rem' }}>
-            <span className="material-symbols-outlined banner-bg-motif">science</span>
-            <div className="banner-content">
-              <div>
-                <div className="curriculum-tag">
-                  <span className="material-symbols-outlined" style={{ fontSize: '16px' }}>experiment</span>
-                  <span>Praktikum Virtual • Eksperimen Membran</span>
-                </div>
-                <h1 className="banner-title" style={{ fontSize: '1.75rem' }}>
-                  Laboratorium Virtual: Transport Pasif (Osmosis)
-                </h1>
-                <p className="banner-sub">
-                  Amati fenomena plasmolisis, turgiditas, dan hemolisis secara interaktif dengan memodifikasi konsentrasi larutan ekstraseluler secara langsung.
-                </p>
-              </div>
+        <main className="dashboard-main laboratory-page" id="main-content" tabIndex={-1}>
+          <div className="lab-page-heading">
+            <div>
+              <p className="lab-eyebrow">Praktikum virtual · Transport membran</p>
+              <h1>Ke mana air bergerak?</h1>
+              <p>Ubah larutan di sekitar sel. Amati osmosis dan respons membrannya.</p>
             </div>
-          </section>
-
-          {/* Interactive Simulation Module */}
-          <section style={{ margin: '1rem 0 2rem' }}>
-            <LabSimulation />
-          </section>
+            <Link to="/materi/mod-1?topik=sub-1-3" className="lab-theory-link">Baca teori osmosis <span aria-hidden="true">↗</span></Link>
+          </div>
+          <LabSimulation />
         </main>
 
         <Footer />

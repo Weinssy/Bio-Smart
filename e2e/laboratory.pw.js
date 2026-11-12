@@ -1,0 +1,71 @@
+import { test, expect } from '@playwright/test'
+
+test.beforeEach(async ({ page }) => {
+  await page.route(/^https:\/\/fonts\.(googleapis|gstatic)\.com\//, route => route.abort())
+  await page.goto('/#/laboratorium')
+})
+
+test('spesimen, preset larutan, animasi, dan reset memperbarui pengamatan', async ({ page }) => {
+  const result = page.locator('.lab-observation-result')
+  await expect(page.getByRole('radio', { name: 'Sel hewan Eritrosit' })).toBeChecked()
+  await expect(result).toContainText('Ukuran sel stabil')
+  await page.getByRole('button', { name: 'Hipotonik 0,1%', exact: true }).click()
+  await expect(result).toContainText('Hemolisis')
+  await expect(result).toContainText('Air masuk ke sel')
+  await expect(page.getByRole('slider')).toHaveAttribute('aria-valuetext', '0,1 persen NaCl')
+  await page.getByRole('radio', { name: 'Sel tumbuhan Dengan dinding sel' }).check()
+  await expect(result).toContainText('Sel turgid')
+  await page.getByRole('button', { name: 'Hipertonik 4,0%', exact: true }).click()
+  await expect(result).toContainText('Plasmolisis')
+  await expect(result).toContainText('Air keluar dari sel')
+  await expect(page.getByRole('img', { name: /Sel tumbuhan dalam larutan hipertonik/ })).toBeVisible()
+  await page.getByRole('radio', { name: 'Sel hewan Eritrosit' }).check()
+  await expect(result).toContainText('Krenasi')
+  await page.getByRole('button', { name: 'Putar animasi' }).click()
+  await expect.poll(() => page.locator('.lab-flow-particle').first().evaluate(el => getComputedStyle(el).animationName)).toBe('lab-water-flow')
+  await page.getByRole('button', { name: 'Jeda animasi' }).click()
+  await expect(page.locator('.lab-stage')).toHaveAttribute('data-playing', 'false')
+  await page.getByRole('button', { name: 'Reset', exact: true }).click()
+  await expect(page.getByRole('slider')).toHaveValue('0.9')
+  await expect(page.getByRole('radio', { name: 'Sel hewan Eritrosit' })).toBeChecked()
+  await expect(result).toContainText('Ukuran sel stabil')
+})
+
+test('slider keyboard mempertahankan satuan dan batas konsentrasi', async ({ page }) => {
+  const slider = page.getByRole('slider', { name: '2. Ubah konsentrasi NaCl' })
+  await slider.focus()
+  await slider.press('ArrowRight')
+  await expect(slider).toHaveValue('1')
+  await expect(slider).toHaveAttribute('aria-valuetext', '1,0 persen NaCl')
+  await expect(page.locator('.lab-concentration-readout output')).toHaveText('1,0%')
+  await slider.press('End')
+  await expect(slider).toHaveValue('5')
+  await expect(page.locator('.lab-observation-result')).toContainText('Krenasi')
+  await slider.press('Home')
+  await expect(slider).toHaveValue('0')
+  await expect(page.locator('.lab-observation-result')).toContainText('Hemolisis')
+})
+
+test('layout desktop mendekatkan kontrol dan ponsel tidak overflow', async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 1000 })
+  const observation = await page.locator('.lab-observation').boundingBox()
+  const controls = await page.locator('.lab-controls').boundingBox()
+  expect(controls.x).toBeGreaterThan(observation.x)
+  expect(Math.abs(controls.y - observation.y)).toBeLessThan(2)
+  for (const width of [320, 390, 768]) {
+    await page.setViewportSize({ width, height: 844 })
+    expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBe(width)
+    await expect(page.getByRole('slider')).toBeVisible()
+  }
+  await page.getByRole('link', { name: 'Baca teori osmosis' }).click()
+  await expect(page).toHaveURL(/#\/materi\/mod-1\?topik=sub-1-3/)
+  await expect(page.getByRole('heading', { name: 'Transport Membran', exact: true })).toBeVisible()
+})
+
+test('preferensi reduced motion menjaga diagram tetap statis', async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: 'reduce' })
+  await page.getByRole('button', { name: 'Putar animasi' }).click()
+  await expect(page.locator('.lab-stage')).toHaveAttribute('data-playing', 'true')
+  await expect.poll(() => page.locator('.lab-flow-particle').first().evaluate(el => getComputedStyle(el).animationName)).toBe('none')
+  await expect(page.getByRole('img', { name: /Eritrosit dalam larutan isotonik/ })).toBeVisible()
+})

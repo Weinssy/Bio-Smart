@@ -1,413 +1,165 @@
-import { useState, useMemo } from 'react'
+import { useId, useState } from 'react'
 
-export default function LabSimulation() {
-  // Konsentrasi garam NaCl dalam % (fisiologis isotonik = 0.9%)
-  const [concentration, setConcentration] = useState(0.9)
-  const [cellType, setCellType] = useState('animal') // 'animal' (eritrosit) atau 'plant' (sel tumbuhan)
-  const [isSimulating] = useState(true)
+const presets = [
+  { value: 0.1, label: 'Hipotonik', detail: '0,1%' },
+  { value: 0.9, label: 'Isotonik', detail: '0,9%' },
+  { value: 4, label: 'Hipertonik', detail: '4,0%' },
+]
+const formatConcentration = value => value.toFixed(1).replace('.', ',')
 
-  // Status osmosis berdasarkan rentang konsentrasi
-  const tonicity = useMemo(() => {
-    if (concentration < 0.8) return 'hypotonic'
-    if (concentration > 1.2) return 'hypertonic'
-    return 'isotonic'
-  }, [concentration])
-
-  // Parameter visual dinamis
-  const simulationMetrics = useMemo(() => {
-    // Skala sel: Hipotonik membesar (hingga 1.4x), Isotonik normal (1.0x), Hipertonik mengerut (hingga 0.6x)
-    let cellScale = 1.0
-    let cellStatus = 'Normal (Bikonkaf Sehat)'
-    let waterDirection = 'Kesetimbangan Dinamis (Masuk = Keluar)'
-    let arrowColor = '#0284c7'
-    let isLysed = false
-
-    if (tonicity === 'hypotonic') {
-      const severity = (0.9 - concentration) / 0.9 // 0 s.d. 1
-      cellScale = 1.0 + severity * 0.45
-      if (cellType === 'animal') {
-        if (concentration <= 0.2) {
-          isLysed = true
-          cellStatus = 'Hemolisis (Sel Pecah/Lisis)'
-        } else {
-          cellStatus = 'Pembengkakan Sel (Turgid Tinggi)'
-        }
-      } else {
-        cellStatus = 'Turgid Maksimal (Dinding Sel Menahan Tekanan)'
-      }
-      waterDirection = 'Netto Air Masuk ke Dalam Sel (Endosmosis)'
-      arrowColor = '#059669'
-    } else if (tonicity === 'hypertonic') {
-      const severity = Math.min(1, (concentration - 0.9) / 4.0)
-      cellScale = Math.max(0.55, 1.0 - severity * 0.45)
-      if (cellType === 'animal') {
-        cellStatus = 'Krenasi (Sel Mengkerut & Berlekuk)'
-      } else {
-        cellStatus = 'Plasmolisis (Protoplas Lepas dari Dinding Sel)'
-      }
-      waterDirection = 'Netto Air Keluar ke Larutan (Eksosmosis)'
-      arrowColor = '#dc2626'
-    }
-
+function getObservation(concentration, cellType) {
+  const plant = cellType === 'plant'
+  if (concentration < 0.8) {
+    const lysed = !plant && concentration <= 0.2
     return {
-      scale: cellScale,
-      status: cellStatus,
-      direction: waterDirection,
-      arrowColor,
-      isLysed,
+      tonicity: 'hypotonic', label: 'Hipotonik', direction: 'Air masuk ke sel',
+      status: plant ? 'Sel turgid' : lysed ? 'Hemolisis' : 'Sel membengkak',
+      description: plant ? 'Air masuk dan vakuola membesar. Dinding sel menahan tekanan turgor.' : lysed ? 'Pada model ini, masuknya air berlebih menyebabkan eritrosit pecah.' : 'Air masuk melalui membran sehingga volume sel meningkat.',
+      scale: plant ? 1 : 1 + ((0.9 - concentration) / 0.9) * 0.35,
+      lysed,
     }
-  }, [concentration, tonicity, cellType])
+  }
+  if (concentration > 1.2) {
+    return {
+      tonicity: 'hypertonic', label: 'Hipertonik', direction: 'Air keluar dari sel',
+      status: plant ? 'Plasmolisis' : 'Krenasi',
+      description: plant ? 'Air keluar dan protoplas menyusut, menjauh dari dinding sel yang tetap.' : 'Air keluar melalui membran. Eritrosit menyusut dan permukaannya berlekuk.',
+      scale: Math.max(0.55, 1 - Math.min(1, (concentration - 0.9) / 4) * 0.45), lysed: false,
+    }
+  }
+  return {
+    tonicity: 'isotonic', label: 'Isotonik', direction: 'Air masuk = air keluar', status: 'Ukuran sel stabil',
+    description: 'Air tetap bergerak melintasi membran. Laju masuk dan keluar seimbang sehingga tidak ada perpindahan netto.',
+    scale: 1, lysed: false,
+  }
+}
+
+function CellIllustration({ cellType, observation, playing, illustrationId }) {
+  const plant = cellType === 'plant'
+  const { tonicity, scale, lysed } = observation
+  const flows = [
+    { x1: 134, y1: 220, x2: 194, y2: 220, inward: true },
+    { x1: 486, y1: 220, x2: 426, y2: 220, inward: false },
+    { x1: 310, y1: 44, x2: 310, y2: 104, inward: true },
+    { x1: 310, y1: 396, x2: 310, y2: 336, inward: false },
+  ]
+  const crenated = Array.from({ length: 32 }, (_, i) => {
+    const angle = i * Math.PI / 16
+    const radius = i % 2 ? 83 : 96
+    return `${Math.cos(angle) * radius},${Math.sin(angle) * radius * 0.88}`
+  }).join(' ')
 
   return (
-    <div className="lab-simulation" style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', width: '100%', maxWidth: '1200px', margin: '0 auto' }}>
-      {/* Simulation Header */}
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem' }}>
-        <div>
-          <span style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--color-primary)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-            Praktikum Virtual • Laboratorium Biologi Sel
-          </span>
-          <h2 style={{ fontSize: '1.5rem', fontWeight: 800, color: 'var(--color-on-surface)', marginTop: '0.25rem', fontFamily: 'var(--font-display)' }}>
-            Simulasi Osmosis & Tekanan Turgor
-          </h2>
-        </div>
+    <div className="lab-stage" data-playing={playing}>
+      <svg className="lab-cell-illustration" viewBox="0 0 620 440" width="620" height="440" role="img" aria-labelledby={`${illustrationId}-title ${illustrationId}-description`}>
+        <title id={`${illustrationId}-title`}>{plant ? 'Sel tumbuhan' : 'Eritrosit'} dalam larutan {observation.label.toLowerCase()}</title>
+        <desc id={`${illustrationId}-description`}>{observation.direction}. {observation.description} Ilustrasi konseptual, tidak berskala.</desc>
+        <defs>
+          <radialGradient id={`${illustrationId}-cell`}>
+            <stop offset="0%" stopColor="#f2b8b3" /><stop offset="52%" stopColor="#e2a09c" /><stop offset="77%" stopColor="#bd5d69" /><stop offset="100%" stopColor="#a74456" />
+          </radialGradient>
+          <marker id={`${illustrationId}-arrow`} markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto" viewBox="0 0 6 6"><path d="M0 0 6 3 0 6" fill="#367e78" /></marker>
+        </defs>
+        <circle cx="310" cy="220" r="199" fill="#f5f9f6" stroke="#d5e1da" />
+        <circle cx="310" cy="220" r="184" fill="#eaf3ee" stroke="#c7dacf" />
+        <g fill="#6d9c96" opacity=".65" aria-hidden="true">
+          {[[188, 114], [414, 103], [448, 300], [180, 319], [383, 355], [237, 64], [470, 158], [142, 274], [235, 362]].map(([x, y]) => <circle key={`${x}-${y}`} cx={x} cy={y} r="3" />)}
+        </g>
+        {plant && <g>
+          <rect x="199" y="109" width="222" height="222" rx="31" fill="#dfedcc" stroke="#587747" strokeWidth="6" />
+          <rect x="207" y="117" width="206" height="206" rx="25" fill="#f2f7e9" stroke="#a9bd8c" />
+        </g>}
+        <g className="lab-cell-body" style={{ transform: `translate(310px, 220px) scale(${scale})` }}>
+          {plant ? <>
+            <rect x="-95" y="-95" width="190" height="190" rx="24" fill="#b9d598" stroke="#6c9053" strokeWidth="3" />
+            <rect x="-69" y="-67" width="138" height="134" rx="37" fill="#d8e9e3" stroke="#85b1a0" strokeWidth="2" />
+            <ellipse cx="-68" cy="-46" rx="12" ry="8" fill="#668c49" transform="rotate(-30 -68 -46)" />
+            <ellipse cx="67" cy="41" rx="12" ry="8" fill="#668c49" transform="rotate(-30 67 41)" />
+            <ellipse cx="53" cy="-68" rx="12" ry="8" fill="#668c49" />
+            <circle cx="-67" cy="57" r="13" fill="#a0b781" stroke="#66824d" strokeWidth="2" />
+            <text x="0" y="5" className="lab-svg-cell-label">Vakuola</text>
+          </> : lysed ? <g fill="#bd5d69" stroke="#a74456" strokeWidth="2">
+            <path d="M-62-57 Q-95-12-65 20 L-43 3 Q-57-22-42-44Z" /><path d="M29-62 Q80-48 82-5 L59 1 Q54-29 19-41Z" /><path d="M-27 46 Q11 74 51 39 L65 60 Q6 105-42 66Z" />
+            <circle cx="-13" cy="-10" r="9" opacity=".55" /><circle cx="28" cy="21" r="6" opacity=".55" />
+          </g> : <>
+            {tonicity === 'hypertonic' ? <polygon points={crenated} fill={`url(#${illustrationId}-cell)`} stroke="#a74456" strokeWidth="3" strokeLinejoin="round" /> : <ellipse rx="96" ry="84" fill={`url(#${illustrationId}-cell)`} stroke="#a74456" strokeWidth="3" />}
+            <ellipse rx="43" ry="33" fill="#edb5ad" opacity=".7" />
+            <path d="M-69-35 Q-38-65-6-61" stroke="#f8d7cc" strokeWidth="5" fill="none" strokeLinecap="round" opacity=".6" />
+          </>}
+        </g>
+        <g stroke="#367e78" strokeWidth="2" fill="none" aria-hidden="true">
+          {flows.map((flow, index) => {
+            const inward = tonicity === 'isotonic' ? flow.inward : tonicity === 'hypotonic'
+            const [x1, y1, x2, y2] = inward ? [flow.x1, flow.y1, flow.x2, flow.y2] : [flow.x2, flow.y2, flow.x1, flow.y1]
+            return <g key={index}>
+              <path d={`M${x1} ${y1} L${x2} ${y2}`} markerEnd={`url(#${illustrationId}-arrow)`} />
+              <circle className="lab-flow-particle" cx={x1} cy={y1} r="4" fill="#367e78" stroke="none" style={{ '--flow-x': `${(x2 - x1) * .7}px`, '--flow-y': `${(y2 - y1) * .7}px`, animationDelay: `${index * -.45}s` }} />
+            </g>
+          })}
+        </g>
+        <text x="101" y="192" className="lab-svg-water-label" textAnchor="middle">H₂O</text>
+        <text x="519" y="192" className="lab-svg-water-label" textAnchor="middle">H₂O</text>
+      </svg>
+    </div>
+  )
+}
 
-        {/* Specimen Switcher */}
-        <div style={{ display: 'flex', backgroundColor: 'var(--color-surface-container-low)', padding: '0.25rem', borderRadius: 'var(--radius-md)', gap: '0.25rem' }}>
-          <button 
-            onClick={() => setCellType('animal')}
-            style={{ 
-              padding: '0.5rem 1rem', border: 'none', borderRadius: 'var(--radius-sm)', fontWeight: 600, fontSize: '0.85rem', cursor: 'pointer',
-              backgroundColor: cellType === 'animal' ? 'var(--color-surface)' : 'transparent',
-              color: cellType === 'animal' ? 'var(--color-primary)' : 'var(--color-on-surface-variant)',
-              boxShadow: cellType === 'animal' ? '0 1px 3px rgba(0,0,0,0.1)' : 'none',
-              transition: 'all 0.2s'
-            }}
-          >
-            Sel Hewan (Eritrosit)
-          </button>
-          <button 
-            onClick={() => setCellType('plant')}
-            style={{ 
-              padding: '0.5rem 1rem', border: 'none', borderRadius: 'var(--radius-sm)', fontWeight: 600, fontSize: '0.85rem', cursor: 'pointer',
-              backgroundColor: cellType === 'plant' ? 'var(--color-surface)' : 'transparent',
-              color: cellType === 'plant' ? 'var(--color-primary)' : 'var(--color-on-surface-variant)',
-              boxShadow: cellType === 'plant' ? '0 1px 3px rgba(0,0,0,0.1)' : 'none',
-              transition: 'all 0.2s'
-            }}
-          >
-            Sel Tumbuhan
-          </button>
-        </div>
+export default function LabSimulation() {
+  const [concentration, setConcentration] = useState(0.9)
+  const [cellType, setCellType] = useState('animal')
+  const [playing, setPlaying] = useState(false)
+  const controlId = useId()
+  const observation = getObservation(concentration, cellType)
+
+  function resetExperiment() {
+    setConcentration(0.9)
+    setCellType('animal')
+    setPlaying(false)
+  }
+
+  return (
+    <div className="lab-simulation osmosis-lab">
+      <div className="lab-workspace">
+        <section className="lab-observation" aria-labelledby={`${controlId}-observation`}>
+          <div className="lab-observation-heading">
+            <div><p className="lab-eyebrow">Simulasi osmosis</p><h2 id={`${controlId}-observation`}>Ruang pengamatan</h2></div>
+            <span className="lab-solution-label">{observation.label}</span>
+          </div>
+          <CellIllustration cellType={cellType} observation={observation} playing={playing} illustrationId={controlId} />
+          <div className="lab-stage-toolbar">
+            <span>Ilustrasi konseptual · Tidak berskala</span>
+            <button type="button" className="lab-animation-toggle" onClick={() => setPlaying(value => !value)}><span className="material-symbols-outlined" aria-hidden="true">{playing ? 'pause' : 'play_arrow'}</span>{playing ? 'Jeda animasi' : 'Putar animasi'}</button>
+          </div>
+          <div className="lab-observation-result" role="status" aria-atomic="true">
+            <span className="lab-result-icon material-symbols-outlined" aria-hidden="true">{observation.tonicity === 'isotonic' ? 'sync_alt' : observation.tonicity === 'hypotonic' ? 'login' : 'logout'}</span>
+            <div><p>{observation.direction}</p><h3>{observation.status}</h3><span>{observation.description}</span></div>
+          </div>
+        </section>
+        <section className="lab-controls" aria-labelledby={`${controlId}-controls`}>
+          <div className="lab-controls-heading"><h2 id={`${controlId}-controls`}>Atur percobaan</h2><button type="button" className="lab-reset" onClick={resetExperiment}><span className="material-symbols-outlined" aria-hidden="true">restart_alt</span>Reset</button></div>
+          <fieldset className="lab-specimen-options"><legend>1. Pilih spesimen</legend>
+            {[{ value: 'animal', label: 'Sel hewan', detail: 'Eritrosit' }, { value: 'plant', label: 'Sel tumbuhan', detail: 'Dengan dinding sel' }].map(option => <label key={option.value} className="lab-specimen-option" htmlFor={`${controlId}-${option.value}`}>
+              <input type="radio" name={`${controlId}-specimen`} id={`${controlId}-${option.value}`} checked={cellType === option.value} onChange={() => setCellType(option.value)} value={option.value} />
+              <span><strong>{option.label}</strong><small>{option.detail}</small></span>
+            </label>)}
+          </fieldset>
+          <div className="lab-concentration-control">
+            <label htmlFor={`${controlId}-concentration`}>2. Ubah konsentrasi NaCl</label>
+            <div className="lab-concentration-readout"><output htmlFor={`${controlId}-concentration`} aria-live="off">{formatConcentration(concentration)}<span>%</span></output><span>larutan di luar sel</span></div>
+            <input className="lab-range" id={`${controlId}-concentration`} type="range" min="0" max="5" step="0.1" value={concentration} onChange={event => setConcentration(Number(event.target.value))} aria-valuetext={`${formatConcentration(concentration)} persen NaCl`} aria-describedby={`${controlId}-reference`} style={{ '--range-fill': `${concentration / 5 * 100}%` }} />
+            <div className="lab-range-labels"><span>0% · Aquades</span><span>5% · Pekat</span></div>
+            <p className="lab-reference" id={`${controlId}-reference`}>Acuan model: 0,9% NaCl</p>
+          </div>
+          <fieldset className="lab-preset-options"><legend>Atau coba larutan berikut</legend>
+            <div>{presets.map(preset => <button type="button" key={preset.value} onClick={() => setConcentration(preset.value)} aria-pressed={concentration === preset.value}><span>{preset.label}</span><strong>{preset.detail}</strong></button>)}</div>
+          </fieldset>
+          <div className="lab-reading-note"><span className="material-symbols-outlined" aria-hidden="true">visibility</span><p>Perhatikan perubahan ukuran sel dan arah panah air setelah mengubah larutan.</p></div>
+        </section>
       </div>
-
-      {/* Main Simulation Workspace Grid */}
-      <div className="lab-sim-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 320px), 1fr))', gap: '1.5rem' }}>
-        
-        {/* Left Column: 2D Interactive SVG Chamber */}
-        <div className="lab-sim-chamber" style={{ 
-          gridColumn: '1 / -1', 
-          backgroundColor: 'var(--color-surface-container-lowest)', 
-          borderRadius: 'var(--radius-lg)', 
-          border: '1px solid rgba(191, 201, 194, 0.4)', 
-          boxShadow: 'var(--shadow-level-1)', 
-          display: 'flex', 
-          flexDirection: 'column', 
-          overflow: 'hidden' 
-        }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '1rem 1.25rem', backgroundColor: 'var(--color-surface-container-low)', borderBottom: '1px solid rgba(191, 201, 194, 0.3)' }}>
-            <div style={{ fontSize: '0.9rem', fontWeight: 700, display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--color-on-surface)' }}>
-              <span className="material-symbols-outlined" style={{ color: 'var(--color-primary)', fontSize: '18px' }}>science</span>
-              Beaker Larutan Ekstraseluler
-            </div>
-            <div style={{
-              padding: '0.25rem 0.75rem', borderRadius: 'var(--radius-full)', fontSize: '0.75rem', fontWeight: 700,
-              border: `1px solid ${tonicity === 'hypotonic' ? '#a7f3d0' : tonicity === 'hypertonic' ? '#fecdd3' : '#bfdbfe'}`,
-              backgroundColor: tonicity === 'hypotonic' ? '#ecfdf5' : tonicity === 'hypertonic' ? '#fff1f2' : '#eff6ff',
-              color: tonicity === 'hypotonic' ? '#047857' : tonicity === 'hypertonic' ? '#b91c1c' : '#1d4ed8'
-            }}>
-              Larutan: {tonicity.toUpperCase()} ({concentration}% NaCl)
-            </div>
-          </div>
-          
-          <div style={{ position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundColor: '#ffffff', minHeight: '360px', padding: '1rem' }}>
-            {/* SVG Canvas Stage */}
-            <div style={{ width: '100%', height: '360px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-              <svg
-                viewBox="0 0 500 360"
-                style={{ width: '100%', height: '100%', overflow: 'visible' }}
-                aria-label="Visualisasi Osmosis Sel"
-              >
-                {/* Beaker Glass Container */}
-                <defs>
-                  <linearGradient id="fluidGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                    <stop offset="0%" stopColor="#e0f2fe" stopOpacity={0.4 + concentration * 0.08} />
-                    <stop offset="100%" stopColor="#bae6fd" stopOpacity={0.6 + concentration * 0.08} />
-                  </linearGradient>
-
-                  <filter id="cellShadow" x="-20%" y="-20%" width="140%" height="140%">
-                    <feDropShadow dx="0" dy="6" stdDeviation="8" floodColor="#0d5c46" floodOpacity="0.15" />
-                  </filter>
-                </defs>
-
-                {/* Background Fluid */}
-                <rect x="40" y="30" width="420" height="300" rx="16" fill="url(#fluidGradient)" stroke="#94a3b8" strokeWidth="2" />
-
-                {/* Water Molecule Particles */}
-                {isSimulating && (
-                  <g opacity="0.6">
-                    <circle cx="80" cy="80" r="3" fill="#0284c7" />
-                    <circle cx="120" cy="190" r="3" fill="#0284c7" />
-                    <circle cx="90" cy="270" r="3" fill="#0284c7" />
-                    <circle cx="410" cy="90" r="3" fill="#0284c7" />
-                    <circle cx="390" cy="220" r="3" fill="#0284c7" />
-                    <circle cx="420" cy="280" r="3" fill="#0284c7" />
-                    <circle cx="250" cy="50" r="3" fill="#0284c7" />
-                    <circle cx="250" cy="310" r="3" fill="#0284c7" />
-                  </g>
-                )}
-
-                {/* CELL MORPHOLOGY REPRESENTATION */}
-                {cellType === 'animal' ? (
-                  <g
-                    transform={`translate(250, 180) scale(${simulationMetrics.scale})`}
-                    style={{ transition: 'transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)' }}
-                    filter="url(#cellShadow)"
-                  >
-                    {!simulationMetrics.isLysed ? (
-                      <>
-                        <path
-                          d={
-                            tonicity === 'hypertonic'
-                              ? 'M -70 0 C -70 -40 -35 -65 0 -60 C 35 -65 70 -40 70 0 C 65 35 40 70 0 65 C -40 70 -65 35 -70 0 Z'
-                              : 'M -75 0 C -75 -45 -45 -75 0 -75 C 45 -75 75 -45 75 0 C 75 45 45 75 0 75 C -45 75 -75 45 -75 0 Z'
-                          }
-                          fill={tonicity === 'hypotonic' ? '#f43f5e' : '#e11d48'}
-                          stroke="#9f1239"
-                          strokeWidth="3.5"
-                        />
-                        <ellipse
-                          cx="0"
-                          cy="0"
-                          rx="32"
-                          ry="24"
-                          fill="#be123c"
-                          opacity={tonicity === 'hypotonic' ? 0.3 : 0.65}
-                        />
-                        <text x="0" y="4" textAnchor="middle" fill="#ffffff" fontSize="11" fontWeight="700">
-                          Eritrosit
-                        </text>
-                      </>
-                    ) : (
-                      <g>
-                        <circle cx="-30" cy="-20" r="22" fill="#e11d48" opacity="0.6" />
-                        <circle cx="35" cy="15" r="18" fill="#e11d48" opacity="0.5" />
-                        <circle cx="0" cy="30" r="14" fill="#e11d48" opacity="0.4" />
-                        <circle cx="-10" cy="-35" r="12" fill="#be123c" opacity="0.7" />
-                        <text x="0" y="5" textAnchor="middle" fill="#b91c1c" fontSize="14" fontWeight="800">
-                          LISIS! (Pecah)
-                        </text>
-                      </g>
-                    )}
-                  </g>
-                ) : (
-                  <g transform="translate(250, 180)">
-                    <rect
-                      x="-95"
-                      y="-95"
-                      width="190"
-                      height="190"
-                      rx="14"
-                      fill="none"
-                      stroke="#15803d"
-                      strokeWidth="6"
-                    />
-                    <rect
-                      x="-88"
-                      y="-88"
-                      width="176"
-                      height="176"
-                      rx="10"
-                      fill="#f0fdf4"
-                      stroke="#86efac"
-                      strokeWidth="2"
-                    />
-                    <g
-                      transform={`scale(${simulationMetrics.scale * 0.95})`}
-                      style={{ transition: 'transform 0.4s ease' }}
-                    >
-                      <rect
-                        x="-80"
-                        y="-80"
-                        width="160"
-                        height="160"
-                        rx="12"
-                        fill="#bbf7d0"
-                        stroke="#16a34a"
-                        strokeWidth="3"
-                      />
-                      <circle
-                        cx="0"
-                        cy="0"
-                        r={36 * simulationMetrics.scale}
-                        fill="#38bdf8"
-                        opacity="0.6"
-                        stroke="#0284c7"
-                        strokeWidth="2"
-                      />
-                      <text x="0" y="4" textAnchor="middle" fill="#0369a1" fontSize="10" fontWeight="700">
-                        Vakuola
-                      </text>
-                    </g>
-                    <circle cx="-50" cy="-50" r="8" fill="#15803d" />
-                    <circle cx="50" cy="-45" r="8" fill="#15803d" />
-                    <circle cx="-45" cy="50" r="8" fill="#15803d" />
-                  </g>
-                )}
-
-                {/* Water Flux Arrows */}
-                {tonicity === 'hypotonic' && (
-                  <g stroke="#059669" strokeWidth="2.5" markerEnd="url(#arrow)">
-                    <line x1="120" y1="180" x2="165" y2="180" />
-                    <line x1="380" y1="180" x2="335" y2="180" />
-                    <line x1="250" y1="80" x2="250" y2="115" />
-                    <line x1="250" y1="280" x2="250" y2="245" />
-                  </g>
-                )}
-
-                {tonicity === 'hypertonic' && (
-                  <g stroke="#dc2626" strokeWidth="2.5">
-                    <line x1="180" y1="180" x2="135" y2="180" />
-                    <line x1="320" y1="180" x2="365" y2="180" />
-                    <line x1="250" y1="130" x2="250" y2="90" />
-                    <line x1="250" y1="230" x2="250" y2="270" />
-                  </g>
-                )}
-              </svg>
-            </div>
-          </div>
-
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '0.75rem 1.25rem', backgroundColor: 'var(--color-surface-container-low)', borderTop: '1px solid rgba(191, 201, 194, 0.3)', fontSize: '0.85rem' }}>
-            <span style={{ fontWeight: 600, color: 'var(--color-on-surface)' }}>
-              Kondisi Sel: <strong style={{ marginLeft: '0.25rem' }}>{simulationMetrics.status}</strong>
-            </span>
-            <span style={{ fontWeight: 700, color: simulationMetrics.arrowColor }}>
-              {simulationMetrics.direction}
-            </span>
-          </div>
-        </div>
-
-        {/* Right Column: Controls & Scientific Measurement Panel */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-          {/* Slider Control Card */}
-          <div style={{ backgroundColor: 'var(--color-surface-container-lowest)', borderRadius: 'var(--radius-lg)', padding: '1.5rem', border: '1px solid rgba(191, 201, 194, 0.4)', boxShadow: 'var(--shadow-level-1)' }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '1.5rem' }}>
-              <label htmlFor="salt-concentration" style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--color-on-surface)' }}>
-                Konsentrasi Garam (NaCl)
-              </label>
-              <span style={{ fontFamily: 'var(--font-display)', fontSize: '1.75rem', fontWeight: 800, color: 'var(--color-primary)' }}>
-                {concentration}%
-              </span>
-            </div>
-
-            <input
-              id="salt-concentration"
-              type="range"
-              min="0.0"
-              max="5.0"
-              step="0.1"
-              value={concentration}
-              onChange={(e) => setConcentration(parseFloat(e.target.value))}
-              style={{ width: '100%', margin: '1rem 0', accentColor: 'var(--color-primary)' }}
-            />
-
-            <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.7rem', color: 'var(--color-on-surface-variant)', marginTop: '0.5rem', textTransform: 'uppercase', fontWeight: 700 }}>
-              <span>0% (Aquades)</span>
-              <span style={{ color: 'var(--color-primary)' }}>0.9% (Iso)</span>
-              <span>5% (Pekat)</span>
-            </div>
-
-            <div style={{ marginTop: '2rem' }}>
-              <span style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--color-on-surface-variant)', display: 'block', marginBottom: '0.75rem' }}>
-                Preset Larutan Standar:
-              </span>
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
-                <button
-                  onClick={() => setConcentration(0.1)}
-                  style={{
-                    padding: '0.35rem 0.75rem', borderRadius: 'var(--radius-sm)', fontSize: '0.75rem', fontWeight: 700, cursor: 'pointer', border: '1px solid #a7f3d0',
-                    backgroundColor: concentration === 0.1 ? '#059669' : 'transparent',
-                    color: concentration === 0.1 ? '#ffffff' : '#047857'
-                  }}
-                >
-                  Hipotonik (0.1%)
-                </button>
-                <button
-                  onClick={() => setConcentration(0.9)}
-                  style={{
-                    padding: '0.35rem 0.75rem', borderRadius: 'var(--radius-sm)', fontSize: '0.75rem', fontWeight: 700, cursor: 'pointer', border: '1px solid #bfdbfe',
-                    backgroundColor: concentration === 0.9 ? '#2563eb' : 'transparent',
-                    color: concentration === 0.9 ? '#ffffff' : '#1d4ed8'
-                  }}
-                >
-                  Isotonik (0.9%)
-                </button>
-                <button
-                  onClick={() => setConcentration(4.0)}
-                  style={{
-                    padding: '0.35rem 0.75rem', borderRadius: 'var(--radius-sm)', fontSize: '0.75rem', fontWeight: 700, cursor: 'pointer', border: '1px solid #fecdd3',
-                    backgroundColor: concentration === 4.0 ? '#dc2626' : 'transparent',
-                    color: concentration === 4.0 ? '#ffffff' : '#b91c1c'
-                  }}
-                >
-                  Hipertonik (4.0%)
-                </button>
-              </div>
-            </div>
-          </div>
-
-          {/* Scientific Physics Analysis Card */}
-          <div style={{ backgroundColor: 'var(--color-surface-container-lowest)', borderRadius: 'var(--radius-lg)', padding: '1.5rem', border: '1px solid rgba(191, 201, 194, 0.4)', boxShadow: 'var(--shadow-level-1)' }}>
-            <h3 style={{ fontSize: '1rem', fontWeight: 700, color: 'var(--color-on-surface)', marginBottom: '1rem', paddingBottom: '0.75rem', borderBottom: '1px solid rgba(191, 201, 194, 0.3)' }}>
-              Kondisi pada Model Sel
-            </h3>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', fontSize: '0.85rem' }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', paddingBottom: '0.5rem', borderBottom: '1px dashed rgba(191,201,194,0.4)' }}>
-                <span style={{ color: 'var(--color-on-surface-variant)' }}>Acuan konsentrasi simulasi:</span>
-                <span style={{ fontWeight: 700, color: 'var(--color-primary)' }}>
-                  0,9% NaCl
-                </span>
-              </div>
-
-              <div style={{ display: 'flex', justifyContent: 'space-between', paddingBottom: '0.5rem', borderBottom: '1px dashed rgba(191,201,194,0.4)' }}>
-                <span style={{ color: 'var(--color-on-surface-variant)' }}>Tekanan Turgor Dinding:</span>
-                <span style={{ fontWeight: 700, color: 'var(--color-on-surface)' }}>
-                  {cellType === 'plant' && tonicity === 'hypotonic' ? 'Maksimal (Tegak)' : 'Rendah/Nol'}
-                </span>
-              </div>
-
-              <div style={{ display: 'flex', justifyContent: 'space-between', paddingBottom: '0.5rem', borderBottom: '1px dashed rgba(191,201,194,0.4)' }}>
-                <span style={{ color: 'var(--color-on-surface-variant)' }}>Integritas Membran:</span>
-                <span style={{ fontWeight: 700, color: simulationMetrics.isLysed ? '#dc2626' : '#059669' }}>
-                  {simulationMetrics.isLysed ? 'Robek (Lisis)' : 'Utuh Terjaga'}
-                </span>
-              </div>
-            </div>
-
-            <div style={{ marginTop: '1.5rem', padding: '1rem', borderRadius: 'var(--radius-md)', backgroundColor: '#eff6ff', border: '1px solid #bfdbfe', position: 'relative' }}>
-              <span className="material-symbols-outlined" style={{ fontSize: '18px', color: '#2563eb', position: 'absolute', left: '1rem', top: '1rem' }}>info</span>
-              <div style={{ marginLeft: '1.75rem' }}>
-                <h4 style={{ fontSize: '0.85rem', fontWeight: 700, color: '#1e40af', margin: '0 0 0.25rem 0' }}>Prinsip Osmosis</h4>
-                <p style={{ fontSize: '0.75rem', color: '#1e3a8a', margin: 0, lineHeight: 1.5 }}>
-                  Molekul air (pelarut) berpindah menembus membran selektif permeabel dari larutan dengan konsentrasi zat terlarut rendah menuju larutan dengan konsentrasi zat terlarut tinggi.
-                </p>
-                <p style={{ fontSize: '0.75rem', color: '#1e3a8a', marginTop: '0.75rem', lineHeight: 1.5 }}>
-                  Simulasi ini menggunakan model sederhana dengan acuan NaCl 0,9% untuk kedua jenis sel. Gunakan untuk membandingkan arah perpindahan air pada model sel.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <aside className="lab-principle" aria-labelledby={`${controlId}-principle`}>
+        <div><p className="lab-eyebrow">Apa yang sedang terjadi?</p><h2 id={`${controlId}-principle`}>Air mengikuti perbedaan konsentrasi.</h2></div>
+        <div><p>Air bergerak melalui membran selektif permeabel dari larutan dengan konsentrasi zat terlarut lebih rendah ke larutan dengan konsentrasi lebih tinggi.</p><small>Model pembelajaran sederhana: acuan NaCl 0,9% digunakan untuk kedua jenis sel. Rentang respons pada simulasi bukan ambang fisiologis universal.</small></div>
+      </aside>
     </div>
   )
 }
