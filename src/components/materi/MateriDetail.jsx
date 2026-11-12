@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState, useId } from 'react'
 import { Link, useParams, useSearchParams } from 'react-router-dom'
 import materiDataRaw from '../../data/materiData.json'
 import quizDataRaw from '../../data/quizData.json'
@@ -7,6 +7,18 @@ import { resolveAsset } from '../../utils/assetResolver'
 
 const allModules = materiDataRaw.modules
 const glossary = materiDataRaw.glossary || []
+
+function GlossaryTerm({ term, definition }) {
+  const [expanded, setExpanded] = useState(false)
+  const definitionId = useId()
+
+  return (
+    <>
+      <button type="button" className="glossary-term" aria-expanded={expanded} aria-controls={definitionId} aria-describedby={expanded ? definitionId : undefined} onClick={() => setExpanded(open => !open)}>{term}</button>
+      <span id={definitionId} className="glossary-definition" hidden={!expanded}> ({definition})</span>
+    </>
+  )
+}
 
 function TooltipText({ text }) {
   // Parse bold **text** first
@@ -30,9 +42,7 @@ function TooltipText({ text }) {
           const foundItem = glossary.find(g => g.term.toLowerCase() === part.toLowerCase());
           if (foundItem) {
             return (
-              <span key={i} className="glossary-term" title={foundItem.definition}>
-                {part}
-              </span>
+              <GlossaryTerm key={i} term={part} definition={foundItem.definition} />
             );
           }
           return <span key={i}>{part}</span>;
@@ -145,6 +155,8 @@ export default function MateriDetail() {
               <img
                 src={resolveAsset(contentBlock.src)}
                 alt={contentBlock.caption || 'Ilustrasi'}
+                width={contentBlock.width}
+                height={contentBlock.height}
                 loading="lazy"
                 style={{ width: '100%', height: 'auto', display: 'block', borderRadius: 'var(--radius-md)' }}
               />
@@ -158,7 +170,7 @@ export default function MateriDetail() {
         )
       case 'interactiveImage':
         return (
-          <div key={index} className="materi-interactive-diagram-wrapper">
+          <div key={`${moduleId}:${subtopic.id}:${index}`} className="materi-interactive-diagram-wrapper">
             <InteractiveDiagram diagram={contentBlock} />
           </div>
         )
@@ -204,7 +216,7 @@ export default function MateriDetail() {
       {/* Two-column layout: Sidebar Tabs + Content Area */}
       <div className="materi-detail-layout">
         {/* Subtopic Navigation */}
-        <aside className="materi-subtopic-nav">
+        <aside className="materi-subtopic-nav" aria-label="Navigasi subtopik">
           <div className="materi-subtopic-nav-header">
             <h2 className="materi-subtopic-nav-title">Daftar Sub-Topik</h2>
             <span className="materi-subtopic-counter">
@@ -220,6 +232,7 @@ export default function MateriDetail() {
                   <button
                     type="button"
                     className={`materi-subtopic-btn ${isActive ? 'active' : ''}`}
+                    aria-current={isActive ? 'true' : undefined}
                     onClick={() => setActiveSubtopic(idx)}
                     title={st.title}
                   >

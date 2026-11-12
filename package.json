@@ -10,6 +10,7 @@
     "deploy": "gh-pages -d dist",
     "lint": "oxlint",
     "test": "node --test",
+    "test:browser": "npm run build && playwright test",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -24,6 +25,7 @@
     "three": "^0.186.1"
   },
   "devDependencies": {
+    "@playwright/test": "^1.65.0",
     "@types/node": "^26.6.4",
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.7",

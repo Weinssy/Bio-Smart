@@ -342,6 +342,12 @@
 }
 
 .legend-item {
+  width: 100%;
+  min-height: 44px;
+  border: 0;
+  font-family: inherit;
+  color: inherit;
+  text-align: left;
   display: flex;
   align-items: center;
   gap: 0.6rem;

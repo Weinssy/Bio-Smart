@@ -164,6 +164,7 @@ export default function InteractiveDiagram({ diagram }) {
             <button
               type="button"
               className={`mode-btn ${mode === 'explore' ? 'active' : ''}`}
+              aria-pressed={mode === 'explore'}
               onClick={() => handleSwitchMode('explore')}
             >
               Eksplorasi
@@ -171,6 +172,7 @@ export default function InteractiveDiagram({ diagram }) {
             <button
               type="button"
               className={`mode-btn ${mode === 'identify' ? 'active' : ''}`}
+              aria-pressed={mode === 'identify'}
               onClick={() => handleSwitchMode('identify')}
             >
               Kenali Bagian
@@ -219,6 +221,8 @@ export default function InteractiveDiagram({ diagram }) {
                         src={imageSrc}
                         alt={diagram?.title || 'Diagram visual'}
                         className="diagram-image"
+                        width={diagram.width}
+                        height={diagram.height}
                         loading="lazy"
                         onError={() => setImageError(true)}
                       />
@@ -362,12 +366,10 @@ export default function InteractiveDiagram({ diagram }) {
                     <strong>{getLegendTitle()}</strong>
                     <ul>
                       {parts.map((part, idx) => (
-                        <li
-                          key={part.id || idx}
-                          onClick={() => setActivePartId(part.id)}
-                          className="legend-item"
-                        >
-                          <span className="legend-number">{idx + 1}</span> {part.label}
+                        <li key={part.id || idx}>
+                          <button type="button" className="legend-item" onClick={() => setActivePartId(part.id)}>
+                            <span className="legend-number">{idx + 1}</span> {part.label}
+                          </button>
                         </li>
                       ))}
                     </ul>

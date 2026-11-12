@@ -29,7 +29,9 @@ export default defineConfig(() => {
         ]
       },
       workbox: {
-        globPatterns: ['**/*.{js,css,html,ico,png,svg,json}']
+        globPatterns: ['**/*.{js,css,html,ico,png,svg,json,woff2}'],
+        globIgnores: ['human-atlas/**', 'draco/**'],
+        navigateFallbackDenylist: [/\/human-atlas\//],
       }
     })
   ],

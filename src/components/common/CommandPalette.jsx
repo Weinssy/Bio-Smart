@@ -2,7 +2,6 @@ import { useState, useEffect, useRef } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import materiData from '../../data/materiData.json'
 import { findMaterialResults } from '../../lib/materialSearch'
-import { trapDialogFocus } from '../../lib/dialogFocus'
 
 export default function CommandPalette({ onClose, returnFocusRef }) {
   const [query, setQuery] = useState('')
@@ -29,7 +28,7 @@ export default function CommandPalette({ onClose, returnFocusRef }) {
   }
 
   return (
-    <dialog ref={dialogRef} className="material-search-dialog" aria-labelledby="search-dialog-title" onKeyDown={trapDialogFocus} onCancel={event => { event.preventDefault(); onClose() }} onClick={event => { if (event.target === event.currentTarget) onClose() }}>
+    <dialog ref={dialogRef} className="material-search-dialog" aria-labelledby="search-dialog-title" onCancel={event => { event.preventDefault(); onClose() }} onClick={event => { if (event.target === event.currentTarget) onClose() }}>
       <div className="material-search-panel">
         <div className="material-search-heading"><h2 id="search-dialog-title">Cari di ruang belajar</h2><button type="button" onClick={onClose} aria-label="Tutup pencarian">Tutup <kbd>Esc</kbd></button></div>
         <form onSubmit={submitSearch}>

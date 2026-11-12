@@ -26,6 +26,8 @@
             {
               "type": "interactiveImage",
               "src": "/images/diagrams/sel/membran-sel.svg",
+              "width": 800,
+              "height": 600,
               "title": "Struktur Membran Sel",
               "caption": "Diagram interaktif Model Mosaik Cair (Fluid Mosaic Model)",
               "description": "Klik pada titik-titik penanda untuk mempelajari komponen membran sel secara lebih detail.",
@@ -257,6 +259,8 @@
             {
               "type": "interactiveImage",
               "src": "/images/diagrams/sel/mitosis.svg",
+              "width": 960,
+              "height": 600,
               "variant": "process",
               "title": "Tahapan Pembelahan Sel (Mitosis)",
               "caption": "Diagram alur 6 tahapan mitosis sel eukariotik",
@@ -578,6 +582,8 @@
             {
               "type": "interactiveImage",
               "src": "/images/diagrams/sistem-organ/anatomi-jantung.svg",
+              "width": 800,
+              "height": 800,
               "title": "Anatomi Jantung Manusia",
               "caption": "Struktur internal jantung manusia",
               "description": "Jantung memompa darah ke seluruh tubuh. Klik area penanda untuk mengenali ruang dan katupnya.",
@@ -660,6 +666,8 @@
             {
               "type": "interactiveImage",
               "src": "/images/diagrams/sistem-organ/sistem-pernapasan.svg",
+              "width": 800,
+              "height": 800,
               "title": "Sistem Pernapasan Manusia",
               "caption": "Struktur paru-paru dan saluran udara",
               "description": "Sistem ini memfasilitasi masuknya oksigen dan pengeluaran karbon dioksida.",
@@ -746,6 +754,8 @@
             {
               "type": "interactiveImage",
               "src": "/images/diagrams/reproduksi/fertilisasi.svg",
+              "width": 960,
+              "height": 600,
               "variant": "process",
               "title": "Proses Perjalanan & Fertilisasi Manusia",
               "caption": "Diagram proses biologis fertilisasi sel telur oleh sperma hingga implantasi",
@@ -845,6 +855,8 @@
             {
               "type": "interactiveImage",
               "src": "/images/diagrams/ekologi/piramida-makanan.svg",
+              "width": 960,
+              "height": 620,
               "variant": "layered",
               "title": "Piramida Makanan & Gizi Seimbang",
               "caption": "Diagram berjenjang proporsi makronutrien dan mikronutrien tubuh",

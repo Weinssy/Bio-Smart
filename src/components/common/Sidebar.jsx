@@ -1,6 +1,5 @@
 import { useState, useEffect, useRef, useSyncExternalStore } from 'react'
 import { Link, NavLink, useLocation } from 'react-router-dom'
-import { trapDialogFocus } from '../../lib/dialogFocus'
 
 const mobileQuery = '(max-width: 768px)'
 const subscribeMobile = listener => {
@@ -36,7 +35,7 @@ export default function Sidebar() {
   }, [isMobile, mobileOpen])
 
   const content = (
-    <aside className={`app-sidebar ${isMobile ? 'open' : ''}`}>
+    <aside className={`app-sidebar ${isMobile ? 'open' : ''}`} aria-label="Navigasi aplikasi">
       <div className="sidebar-header">
         <div className="sidebar-brand-row">
           <NavLink to="/" onClick={() => setMobileOpen(false)} className="sidebar-logo-link" aria-label="Bio Smart, beranda">
@@ -60,7 +59,7 @@ export default function Sidebar() {
   return (
     <>
       {isMobile && <button ref={menuButtonRef} type="button" className="mobile-menu-toggle" onClick={() => setMobileOpen(true)} aria-label="Buka menu navigasi" aria-expanded={mobileOpen} aria-controls={mobileOpen ? 'mobile-learning-menu' : undefined}><span className="material-symbols-outlined" aria-hidden="true">menu</span></button>}
-      {isMobile ? mobileOpen && <dialog id="mobile-learning-menu" ref={dialogRef} className="sidebar-dialog" aria-label="Menu belajar" onKeyDown={trapDialogFocus} onCancel={event => { event.preventDefault(); setMobileOpen(false) }} onClick={event => { if (event.target === event.currentTarget) setMobileOpen(false) }}>{content}</dialog> : content}
+      {isMobile ? mobileOpen && <dialog id="mobile-learning-menu" ref={dialogRef} className="sidebar-dialog" aria-label="Menu belajar" onCancel={event => { event.preventDefault(); setMobileOpen(false) }} onClick={event => { if (event.target === event.currentTarget) setMobileOpen(false) }}>{content}</dialog> : content}
     </>
   )
 }

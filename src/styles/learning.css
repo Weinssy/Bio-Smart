@@ -78,6 +78,29 @@ html, body, #root { overflow-x: clip; }
 .footer-links { flex-wrap: wrap; gap: .5rem 1.2rem; }
 .footer-links a { display: inline-flex; align-items: center; min-height: 44px; }
 .quiz-engine-card button, .materi-nav-btn, .btn-practical { min-height: 44px; }
+.quiz-answer-group { border: 0; min-inline-size: 0; display: flex; flex-direction: column; gap: .75rem; margin-bottom: 2.5rem; }
+.quiz-answer-option { display: flex; align-items: center; gap: 1rem; padding: 1rem 1.25rem; border: 2px solid rgba(191, 201, 194, .4); border-radius: var(--radius-lg); background: var(--color-surface-container-lowest); color: var(--color-on-surface); text-align: left; cursor: pointer; transition: border-color 150ms, background-color 150ms; }
+.quiz-answer-option:has(input:checked) { border-color: var(--color-primary-container); background: rgba(181, 235, 212, .25); }
+.quiz-answer-letter { display: flex; align-items: center; justify-content: center; flex-shrink: 0; width: 2rem; height: 2rem; border-radius: 50%; font-size: .85rem; font-weight: 700; background: var(--color-surface-container-low); }
+.quiz-answer-option:has(input:checked) .quiz-answer-letter { background: var(--color-primary-container); color: #fff; }
+.quiz-answer-text { flex: 1; min-width: 0; font-size: .95rem; line-height: 1.5; }
+.quiz-answer-option:has(input:focus-visible) { outline: 3px solid #1b7154; outline-offset: 3px; }
+.quiz-engine-card h3[tabindex]:focus-visible { outline: 3px solid #1b7154; outline-offset: 3px; }
+.quiz-answer-option:hover { outline: 1px solid var(--color-primary); }
+.quiz-answer-option input { flex-shrink: 0; width: 1.2rem; height: 1.2rem; accent-color: var(--color-primary); }
+.quiz-progress { display: block; width: 100%; height: 8px; accent-color: var(--color-primary); }
+.atlas-connection-note { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: .75rem; padding: .75rem 1rem; border-bottom: 1px solid #d0ddd3; background: #f1f5ef; color: #31523c; font-size: .85rem; }
+.atlas-connection-note p { flex: 1 1 18rem; }
+.atlas-connection-note button, .atlas-offline-actions button, .atlas-offline-actions a { min-height: 44px; padding: .6rem 1rem; border: 1px solid #0d5c46; border-radius: .5rem; font: inherit; }
+.atlas-connection-note button { background: #fff; color: #004331; }
+.atlas-offline { max-width: 42rem; margin: 3rem auto; padding: 1.5rem; }
+.atlas-offline h2 { font-size: 1.5rem; }
+.atlas-offline p { margin-block: 1rem; line-height: 1.7; color: #475569; }
+.atlas-offline-actions { display: flex; flex-wrap: wrap; gap: .75rem; }
+.atlas-offline-actions button { background: #004331; color: #fff; }
+.atlas-offline-actions a { display: inline-flex; align-items: center; color: #004331; background: #fff; }
+.atlas-connection-note button:hover, .atlas-offline-actions a:hover { background: #d1fae5; }
+.atlas-offline-actions button:hover { background: #0d5c46; }
 .lab-sim-grid input[type='range'] { min-height: 44px; }
 .lab-simulation button { min-height: 44px; }
 .page-load-error { width: min(100% - 2rem, 640px); margin: 12vh auto; padding: 2rem; border: 1px solid #d0ddd3; border-radius: 1rem; background: #fff; }

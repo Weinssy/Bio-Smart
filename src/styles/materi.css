@@ -503,8 +503,14 @@
 
 /* Glossary Tooltip */
 .glossary-term {
+  display: inline;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  font: inherit;
+  text-align: inherit;
   border-bottom: 1.5px dotted var(--color-primary);
-  cursor: help;
+  cursor: pointer;
   position: relative;
   font-weight: 600;
   color: var(--color-on-surface);
@@ -514,6 +520,11 @@
 .glossary-term:hover {
   color: var(--color-primary);
   background-color: rgba(170, 241, 212, 0.2);
+}
+
+.glossary-definition {
+  color: var(--color-on-surface-variant);
+  font-weight: 400;
 }
 
 /* Keypoint callout */

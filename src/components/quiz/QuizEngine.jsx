@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react'
+import { useState, useMemo, useEffect, useRef, useId } from 'react'
 import quizDataset from '../../data/quizData.json'
 
 export default function QuizEngine({ quizId = 'quiz-sel' }) {
@@ -14,11 +14,16 @@ export default function QuizEngine({ quizId = 'quiz-sel' }) {
   const [userAnswers, setUserAnswers] = useState({}) // { [questionId]: optionIndex }
   const [isSubmitted, setIsSubmitted] = useState(false)
   const [submissionResult, setSubmissionResult] = useState(null)
+  const stepHeadingRef = useRef(null)
+  const questionId = useId()
+
+  useEffect(() => {
+    stepHeadingRef.current?.focus()
+  }, [currentIndex, isSubmitted])
 
   const currentQuestion = questions[currentIndex]
   const isLastQuestion = currentIndex === questions.length - 1
   const answeredCount = Object.keys(userAnswers).length
-  const progressPercent = Math.round(((currentIndex + 1) / questions.length) * 100)
 
   const handleSelectOption = (optionIndex) => {
     if (isSubmitted) return
@@ -93,75 +98,45 @@ export default function QuizEngine({ quizId = 'quiz-sel' }) {
                 Terjawab: {answeredCount} / {questions.length}
               </span>
             </div>
-            <div className="progress-track" style={{ height: '8px' }}>
-              <div
-                className="progress-fill"
-                style={{ width: `${progressPercent}%`, backgroundColor: 'var(--color-primary-container)' }}
-              />
-            </div>
+            <progress className="quiz-progress" value={currentIndex + 1} max={questions.length} aria-label="Kemajuan kuis" />
           </div>
 
           {/* Question Text */}
           <div style={{ marginBottom: '2rem' }}>
-            <h3 style={{ fontSize: '1.15rem', fontWeight: 600, color: 'var(--color-on-surface)', lineHeight: 1.6 }}>
+            <h3 ref={stepHeadingRef} tabIndex={-1} id={questionId} style={{ fontSize: '1.15rem', fontWeight: 600, color: 'var(--color-on-surface)', lineHeight: 1.6 }}>
               {currentQuestion.question}
             </h3>
           </div>
 
           {/* Options Grid */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', marginBottom: '2.5rem' }}>
+          <fieldset className="quiz-answer-group" aria-labelledby={questionId}>
+            <legend className="sr-only">Pilih satu jawaban</legend>
             {currentQuestion.options.map((option, optIdx) => {
               const isSelected = userAnswers[currentQuestion.id] === optIdx
               const optionLetters = ['A', 'B', 'C', 'D']
 
               return (
-                <button
-                  key={optIdx}
-                  type="button"
-                  onClick={() => handleSelectOption(optIdx)}
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '1rem',
-                    padding: '1rem 1.25rem',
-                    borderRadius: 'var(--radius-lg)',
-                    border: isSelected
-                      ? '2px solid var(--color-primary-container)'
-                      : '1px solid rgba(191,201,194,0.4)',
-                    backgroundColor: isSelected
-                      ? 'rgba(181, 235, 212, 0.25)'
-                      : 'var(--color-surface-container-lowest)',
-                    color: 'var(--color-on-surface)',
-                    textAlign: 'left',
-                    cursor: 'pointer',
-                    transition: 'all 0.15s ease',
-                    boxShadow: isSelected ? '0 2px 8px rgba(13,92,70,0.08)' : 'none',
-                  }}
+                <label
+                  key={`${currentQuestion.id}:${optIdx}`}
+                  htmlFor={`${questionId}-${currentQuestion.id}-${optIdx}`}
+                  className="quiz-answer-option"
                 >
-                  <span
-                    style={{
-                      width: '2rem',
-                      height: '2rem',
-                      borderRadius: '50%',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      fontWeight: 700,
-                      fontSize: '0.85rem',
-                      flexShrink: 0,
-                      backgroundColor: isSelected
-                        ? 'var(--color-primary-container)'
-                        : 'var(--color-surface-container-low)',
-                      color: isSelected ? '#ffffff' : 'var(--color-on-surface)',
-                    }}
-                  >
+                  <input
+                    id={`${questionId}-${currentQuestion.id}-${optIdx}`}
+                    type="radio"
+                    name={`${questionId}-${currentQuestion.id}`}
+                    value={optIdx}
+                    checked={isSelected}
+                    onChange={() => handleSelectOption(optIdx)}
+                  />
+                  <span className="quiz-answer-letter">
                     {optionLetters[optIdx]}
                   </span>
-                  <span style={{ fontSize: '0.95rem', lineHeight: 1.5, flex: 1 }}>{option}</span>
-                </button>
+                  <span className="quiz-answer-text">{option}</span>
+                </label>
               )
             })}
-          </div>
+          </fieldset>
 
           {/* Wizard Footer Navigation */}
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: '1.25rem', borderTop: '1px solid rgba(191,201,194,0.3)' }}>
@@ -282,7 +257,7 @@ export default function QuizEngine({ quizId = 'quiz-sel' }) {
               {submissionResult?.isPassed ? 'LULUS KKM' : 'BELUM MEMENUHI KKM'}
             </span>
 
-            <h3 style={{ fontSize: '2.5rem', fontWeight: 800, fontFamily: 'var(--font-display)', color: 'var(--color-on-surface)' }}>
+            <h3 ref={stepHeadingRef} tabIndex={-1} aria-label={`Hasil kuis: ${submissionResult?.score} dari 100`} style={{ fontSize: '2.5rem', fontWeight: 800, fontFamily: 'var(--font-display)', color: 'var(--color-on-surface)' }}>
               {submissionResult?.score} <span style={{ fontSize: '1.25rem', fontWeight: 500, color: 'var(--color-on-surface-variant)' }}>/ 100</span>
             </h3>
 
