@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="890" height="500" viewBox="0 0 890 500">
+  <title>Neuron bermielin</title>
+  <desc>Badan sel bercabang di sebelah kiri. Akson memanjang ke kanan, diselubungi mielin dengan celah di antaranya, lalu bercabang menjadi terminal.</desc>
+  <defs>
+    <radialGradient id="paper" cx="42%" cy="38%" r="76%">
+      <stop stop-color="#f9fbf8" />
+      <stop offset="1" stop-color="#e1eee7" />
+    </radialGradient>
+    <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <circle cx="1" cy="1" r="1" fill="#4c7765" opacity=".13" />
+    </pattern>
+    <linearGradient id="body" x1="0" x2="1" y1="0" y2="1" gradientUnits="objectBoundingBox">
+      <stop stop-color="#e0d1ed" />
+      <stop offset="1" stop-color="#a58ac4" />
+    </linearGradient>
+    <linearGradient id="myelin" x1="0" x2="1" y1="0" y2="1" gradientUnits="objectBoundingBox">
+      <stop stop-color="#d1efdf" />
+      <stop offset="1" stop-color="#85c1ad" />
+    </linearGradient>
+    <marker id="signal" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto" viewBox="0 0 8 8">
+      <path d="M1 1 7 4 1 7" fill="none" stroke="#72558e" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+    </marker>
+    <g id="sheath">
+      <rect x="-36" y="-13" width="72" height="26" rx="13" fill="url(#myelin)" stroke="#4f8d7e" stroke-width="2.5" />
+      <path d="M-27-5q27-7 54 0" fill="none" stroke="#f6fcf5" stroke-width="3" stroke-linecap="round" />
+    </g>
+  </defs>
+  <path fill="url(#paper)" d="M0 0h890v500H0Z" />
+  <path fill="url(#grid)" d="M0 0h890v500H0Z" />
+  <path d="M247 244C333 243 364 258 439 244S568 228 626 241s101 13 120 5" fill="none" stroke="#796397" stroke-width="14" stroke-linecap="round" />
+  <g fill="none" stroke="#8972a7" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M224 214Q196 170 144 150l-66-6m70 10-20-41-31-23m49 59-58 31-32 6m164 2-8-64 12-62m-13 69-40-32m18 153q-47 5-75 41l-42 39m41-38-35 4-32-8m161-15q-22 39-12 83l-17 43m16-50 27 24m25-106 35 61 35 22" stroke-width="7" />
+    <path d="M77 145l-20-23m40-32L75 79m-18 107-17 13m46 94-34 16m-6-19-19-12m150 126-2 18m67-56 16 19m-34-323 21-16m-75 53-22-10" stroke-width="3.5" />
+    <path d="M732 248q48-11 73-46l28-13m-26 13 2-27m-77 73q29 4 63 38l30 14m-30-14 2 29m-65-67 73 1 29-17" stroke-width="6" />
+  </g>
+  <g fill="#a88fc5" stroke="#796397" stroke-width="2">
+    <circle cx="834" cy="189" r="8" />
+    <circle cx="809" cy="173" r="8" />
+    <circle cx="835" cy="232" r="8" />
+    <circle cx="827" cy="300" r="8" />
+    <circle cx="798" cy="317" r="8" />
+  </g>
+  <path d="M174 240q-1-31 19-53 26-28 59-12 22 10 23 38 0 17 27 33-25 6-31 26-10 28-43 32-45 6-55-25-6-16 1-39z" fill="url(#body)" stroke="#7e669f" stroke-width="3" />
+  <ellipse cx="224" cy="233" rx="28" ry="26" fill="#ebdff1" stroke="#8b73a5" stroke-width="2.5" />
+  <circle cx="226" cy="235" r="10" fill="#a98bbd" />
+  <use href="#sheath" x="343" y="248" transform="rotate(3 343 248)" />
+  <use href="#sheath" x="432" y="244" transform="rotate(-10 432 244)" />
+  <use href="#sheath" x="522" y="236" transform="rotate(0 522 236)" />
+  <use href="#sheath" x="612" y="238" transform="rotate(10 612 238)" />
+  <use href="#sheath" x="702" y="248" transform="rotate(2 702 248)" />
+  <path d="M313 339h382" fill="none" stroke="#72558e" stroke-dasharray="6 8" stroke-width="3.5" marker-end="url(#signal)" />
+  <path d="M101 66v15l24 31M288 133h-24l-21 64M372 386v-24l15-107M509 128v36l10 57M762 388v-34l40-38" fill="none" stroke="#496e60" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+</svg>

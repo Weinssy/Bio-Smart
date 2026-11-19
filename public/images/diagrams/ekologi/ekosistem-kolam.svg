@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="610" viewBox="0 0 880 610">
+  <title>Tingkat organisasi di ekosistem kolam</title>
+  <desc>Di kolam yang sama, ilustrasi berturut-turut memperlihatkan seekor katak, sekelompok katak, beberapa spesies, serta hubungan organisme dengan kolam dan cahaya.</desc>
+  <defs>
+    <radialGradient id="paper" cx="42%" cy="38%" r="76%">
+      <stop stop-color="#f9fbf8" />
+      <stop offset="1" stop-color="#e1eee7" />
+    </radialGradient>
+    <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <circle cx="1" cy="1" r="1" fill="#4c7765" opacity=".13" />
+    </pattern>
+    <linearGradient id="water" x1="0" x2="1" y1="0" y2="1" gradientUnits="objectBoundingBox">
+      <stop stop-color="#c0e8df" />
+      <stop offset="1" stop-color="#7ab4b5" />
+    </linearGradient>
+    <linearGradient id="leaf" x1="0" x2="1" y1="0" y2="1" gradientUnits="objectBoundingBox">
+      <stop stop-color="#dbe6a8" />
+      <stop offset="1" stop-color="#82ae77" />
+    </linearGradient>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto" viewBox="0 0 8 8">
+      <path d="M1 1 7 4 1 7" fill="none" stroke="#4f7769" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+    </marker>
+    <g id="frog">
+      <ellipse cx="2" cy="11" rx="27" ry="17" fill="#8bb778" stroke="#4b795a" stroke-width="2.5" />
+      <path d="M-20 9q-18-8-20 7-2 8 18 9m28-14q22-13 28 1 4 12-16 15" fill="#a7c781" stroke="#4b795a" stroke-width="2.5" stroke-linecap="round" />
+      <path d="M-27 4q-4-20 12-21 3-9 12-8 7 0 9 7 10-4 14 4 3 11-11 20-21 12-36-2Z" fill="url(#leaf)" stroke="#4b795a" stroke-width="2.5" />
+      <circle cx="-5" cy="-14" r="3" fill="#264b40" />
+      <path d="M-25 0q13 5 23-3" stroke="#4b795a" stroke-width="2" fill="none" stroke-linecap="round" />
+    </g>
+    <g id="reed">
+      <path d="M0 32Q8-16-17-37M2 31Q-12-11 9-60M1 31Q11 0 32-24" stroke="#507d63" stroke-width="3" fill="none" stroke-linecap="round" />
+      <path d="M8-56q-7-20 2-25 8 8-2 25m-24 25q-12-5-14-22 13 4 14 22m43 12q3-14 20-18-4 14-20 18" fill="#7eae6d" stroke="#507d63" stroke-width="2" />
+    </g>
+    <g id="fish">
+      <path d="M-24 0q18-24 42-2l14-12v26L18 2Q-6 23-24 0Z" fill="#e8b895" stroke="#9a6e65" stroke-width="2.4" />
+      <circle cx="-13" cy="-1" r="2.6" fill="#4a4b51" />
+    </g>
+  </defs>
+  <path fill="url(#paper)" d="M0 0h880v610H0Z" />
+  <path fill="url(#grid)" d="M0 0h880v610H0Z" />
+  <g fill="#f7fbf5" stroke="#a9c5b3" stroke-width="2.5">
+    <rect x="45" y="50" width="362" height="214" rx="34" />
+    <rect x="473" y="50" width="362" height="214" rx="34" />
+    <rect x="473" y="346" width="362" height="214" rx="34" />
+    <rect x="45" y="346" width="362" height="214" rx="34" />
+  </g>
+  <g stroke="#588174" stroke-width="3.5" stroke-dasharray="4 5" fill="none">
+    <path d="M414 157h48" marker-end="url(#arrow)" />
+    <path d="M654 276v57" marker-end="url(#arrow)" />
+    <path d="M462 454h-48" marker-end="url(#arrow)" />
+  </g>
+  <g fill="url(#water)" stroke="#6da79f" stroke-width="2">
+    <ellipse cx="215" cy="185" rx="117" ry="35" />
+    <ellipse cx="632" cy="184" rx="126" ry="35" />
+    <ellipse cx="632" cy="474" rx="126" ry="43" />
+    <ellipse cx="227" cy="480" rx="138" ry="45" />
+  </g>
+  <use href="#frog" x="215" y="156" transform="translate(-108 -78) scale(1.5)" />
+  <use href="#frog" x="565" y="168" />
+  <use href="#frog" x="628" y="140" />
+  <use href="#frog" x="707" y="179" />
+  <use href="#frog" x="649" y="191" />
+  <use href="#reed" x="565" y="457" />
+  <use href="#frog" x="643" y="441" />
+  <use href="#fish" x="697" y="483" />
+  <use href="#fish" x="594" y="493" />
+  <use href="#reed" x="146" y="451" />
+  <use href="#frog" x="215" y="448" />
+  <use href="#fish" x="249" y="493" />
+  <path d="M96 490q52 25 136 22t103-23l-10 29q-66 23-127 20-77-4-102-48Z" fill="#c0a485" stroke="#aa886d" stroke-width="2.5" />
+  <circle cx="303" cy="409" r="24" fill="#f8d887" stroke="#d1a552" stroke-width="2.5" />
+  <path d="M302 375v-12m-33 17-12-9m78 9 12-9m-10 36h16m-98 0h13" fill="none" stroke="#d1a552" stroke-width="3" stroke-linecap="round" />
+  <path d="M318 177l45 31M747 181l43 27M747 474l43 27M318 476l45 25" fill="none" stroke="#496e60" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+</svg>

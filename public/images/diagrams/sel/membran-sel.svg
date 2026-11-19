@@ -1,93 +1,103 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="100%" height="100%">
-  <!-- Background -->
-  <rect width="100%" height="100%" fill="#f0fdf4" rx="20"/>
-  
-  <!-- Title -->
-  <text x="400" y="50" font-family="sans-serif" font-size="24" font-weight="bold" fill="#065f46" text-anchor="middle">Model Mosaik Cair Membran Sel</text>
-  
-  <!-- Phospholipid Heads (Top Layer) -->
-  <g fill="#34d399">
-    <!-- Generating circles for top layer -->
-    <circle cx="100" cy="200" r="15"/><circle cx="140" cy="200" r="15"/><circle cx="180" cy="200" r="15"/>
-    <circle cx="220" cy="200" r="15"/><circle cx="260" cy="200" r="15"/><circle cx="300" cy="200" r="15"/>
-    <!-- Gap for integral protein -->
-    <circle cx="500" cy="200" r="15"/><circle cx="540" cy="200" r="15"/><circle cx="580" cy="200" r="15"/>
-    <circle cx="620" cy="200" r="15"/><circle cx="660" cy="200" r="15"/><circle cx="700" cy="200" r="15"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="480" viewBox="0 0 800 480">
+  <title>Model mosaik cair membran sel</title>
+  <desc>Dua baris kepala fosfolipid menghadap cairan. Ekor hidrofobik mengarah ke tengah bersama kolesterol, sementara protein integral melintasi membran.</desc>
+  <defs>
+    <radialGradient id="paper" cx="42%" cy="38%" r="76%">
+      <stop stop-color="#f9fbf8" />
+      <stop offset="1" stop-color="#e1eee7" />
+    </radialGradient>
+    <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <circle cx="1" cy="1" r="1" fill="#4c7765" opacity=".13" />
+    </pattern>
+    <linearGradient id="lipid" x1="0" x2="1" y1="0" y2="1" gradientUnits="objectBoundingBox">
+      <stop stop-color="#eef3ae" />
+      <stop offset="1" stop-color="#77ad75" />
+    </linearGradient>
+    <linearGradient id="protein" x1="0" x2="1" y1="0" y2="1" gradientUnits="objectBoundingBox">
+      <stop stop-color="#a6a5d8" />
+      <stop offset="1" stop-color="#5a528e" />
+    </linearGradient>
+    <linearGradient id="depth" x1="0" x2="1" y1="0" y2="1" gradientUnits="objectBoundingBox">
+      <stop stop-color="#f6eccc" />
+      <stop offset="1" stop-color="#d4e9d1" />
+    </linearGradient>
+    <g id="phospholipid">
+      <path d="M-4 1q-9 16-2 30t-3 24M4 1q8 12 3 26t4 29" fill="none" stroke="#6c915d" stroke-width="3.4" stroke-linecap="round" />
+      <ellipse rx="11" ry="8.5" fill="url(#lipid)" stroke="#5c8755" stroke-width="1.3" />
+      <path d="M-6-2q4-4 9-3" fill="none" stroke="#fff" stroke-width="1.5" opacity=".8" />
+    </g>
+  </defs>
+  <path fill="url(#paper)" d="M0 0h800v480H0Z" />
+  <path fill="url(#grid)" d="M0 0h800v480H0Z" />
+  <path d="M116 180Q384 150 686 180L689 331Q406 356 108 331Z" fill="url(#depth)" opacity=".72" />
+  <path d="M113 193Q411 166 688 200M112 322Q410 346 688 317" fill="none" stroke="#83ac7b" stroke-width="2" opacity=".55" />
+  <use href="#phospholipid" x="115" y="199" />
+  <use href="#phospholipid" x="0" y="0" transform="translate(115 312) rotate(180)" />
+  <use href="#phospholipid" x="143" y="197" />
+  <use href="#phospholipid" x="0" y="0" transform="translate(143 313) rotate(180)" />
+  <use href="#phospholipid" x="171" y="195" />
+  <use href="#phospholipid" x="0" y="0" transform="translate(171 315) rotate(180)" />
+  <use href="#phospholipid" x="199" y="193" />
+  <use href="#phospholipid" x="0" y="0" transform="translate(199 317) rotate(180)" />
+  <use href="#phospholipid" x="227" y="190" />
+  <use href="#phospholipid" x="0" y="0" transform="translate(227 320) rotate(180)" />
+  <use href="#phospholipid" x="255" y="187" />
+  <use href="#phospholipid" x="0" y="0" transform="translate(255 323) rotate(180)" />
+  <use href="#phospholipid" x="283" y="185" />
+  <use href="#phospholipid" x="0" y="0" transform="translate(283 325) rotate(180)" />
+  <use href="#phospholipid" x="311" y="182" />
+  <use href="#phospholipid" x="0" y="0" transform="translate(311 327) rotate(180)" />
+  <use href="#phospholipid" x="339" y="180" />
+  <use href="#phospholipid" x="0" y="0" transform="translate(339 329) rotate(180)" />
+  <use href="#phospholipid" x="367" y="179" />
+  <use href="#phospholipid" x="0" y="0" transform="translate(367 330) rotate(180)" />
+  <use href="#phospholipid" x="395" y="178" />
+  <use href="#phospholipid" x="0" y="0" transform="translate(395 331) rotate(180)" />
+  <use href="#phospholipid" x="423" y="178" />
+  <use href="#phospholipid" x="0" y="0" transform="translate(423 331) rotate(180)" />
+  <use href="#phospholipid" x="451" y="179" />
+  <use href="#phospholipid" x="0" y="0" transform="translate(451 330) rotate(180)" />
+  <use href="#phospholipid" x="479" y="180" />
+  <use href="#phospholipid" x="0" y="0" transform="translate(479 329) rotate(180)" />
+  <use href="#phospholipid" x="507" y="182" />
+  <use href="#phospholipid" x="0" y="0" transform="translate(507 327) rotate(180)" />
+  <use href="#phospholipid" x="535" y="185" />
+  <use href="#phospholipid" x="0" y="0" transform="translate(535 325) rotate(180)" />
+  <use href="#phospholipid" x="563" y="188" />
+  <use href="#phospholipid" x="0" y="0" transform="translate(563 322) rotate(180)" />
+  <use href="#phospholipid" x="591" y="191" />
+  <use href="#phospholipid" x="0" y="0" transform="translate(591 320) rotate(180)" />
+  <use href="#phospholipid" x="619" y="193" />
+  <use href="#phospholipid" x="0" y="0" transform="translate(619 317) rotate(180)" />
+  <use href="#phospholipid" x="647" y="196" />
+  <use href="#phospholipid" x="0" y="0" transform="translate(647 315) rotate(180)" />
+  <use href="#phospholipid" x="675" y="198" />
+  <use href="#phospholipid" x="0" y="0" transform="translate(675 313) rotate(180)" />
+  <g fill="#e4b354" stroke="#9d6e2f" stroke-width="1.5" stroke-linejoin="round">
+    <path d="M540 232l9-7 10 4 2 10-8 7-10-3-2-10m2 10-8 8 2 10 9 4 8-7-1-12m-7 19 2 10 10 4 8-7-2-10-10-4" />
+    <path d="M257 252l10-6 9 5v10l-9 5-10-5zm-1 10-10 5v10l10 5 10-5v-10m-20 10-9 6v10l9 5 10-5v-11" />
+    <path d="M623 243l9-6 9 5v11l-9 5-9-5zm9 15v10l9 5 9-5v-11l-9-4" />
   </g>
-  
-  <!-- Phospholipid Heads (Bottom Layer) -->
-  <g fill="#34d399">
-    <circle cx="100" cy="350" r="15"/><circle cx="140" cy="350" r="15"/><circle cx="180" cy="350" r="15"/>
-    <circle cx="220" cy="350" r="15"/><circle cx="260" cy="350" r="15"/><circle cx="300" cy="350" r="15"/>
-    <!-- Gap for integral protein -->
-    <circle cx="500" cy="350" r="15"/><circle cx="540" cy="350" r="15"/><circle cx="580" cy="350" r="15"/>
-    <circle cx="620" cy="350" r="15"/><circle cx="660" cy="350" r="15"/><circle cx="700" cy="350" r="15"/>
+  <path d="M325 177q13-38 47-33 25 1 37 25 9 18 1 42-14 41 3 78 16 34-13 57-22 17-49 9-34-8-35-33-1-19 11-42 14-30-1-62-12-22-1-41z" fill="url(#protein)" stroke="#554980" stroke-width="2.4" />
+  <path d="M360 161c-20 22 9 55 9 88s-27 73-4 91M381 160c-15 21 9 58 10 89s-21 70-8 88" fill="none" stroke="#eeeafd" stroke-opacity=".67" stroke-width="5" stroke-linecap="round" />
+  <path d="M487 188q-11-18 4-31 21-13 43 4 13 13 4 27-9 15-29 13-14-1-22-13z" fill="url(#protein)" stroke="#554980" stroke-width="2" />
+  <g fill="none" stroke="#9b6355" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M513 159l-9-25 11-29-10-24m10 24 26-6 17-19m-54 54-25-8-10-20m149 75-6-26 14-22 17-5" />
   </g>
-
-  <!-- Phospholipid Tails (Top) -->
-  <g stroke="#059669" stroke-width="3" fill="none">
-    <path d="M100 215 L90 260 M100 215 L110 260" />
-    <path d="M140 215 L130 260 M140 215 L150 260" />
-    <path d="M180 215 L170 260 M180 215 L190 260" />
-    <path d="M220 215 L210 260 M220 215 L230 260" />
-    <path d="M260 215 L250 260 M260 215 L270 260" />
-    <path d="M300 215 L290 260 M300 215 L310 260" />
-    
-    <path d="M500 215 L490 260 M500 215 L510 260" />
-    <path d="M540 215 L530 260 M540 215 L550 260" />
-    <path d="M580 215 L570 260 M580 215 L590 260" />
-    <path d="M620 215 L610 260 M620 215 L630 260" />
-    <path d="M660 215 L650 260 M660 215 L670 260" />
-    <path d="M700 215 L690 260 M700 215 L710 260" />
+  <g fill="#f0a983" stroke="#ab6b55" stroke-width="1.5">
+    <circle cx="505" cy="81" r="10" />
+    <circle cx="541" cy="99" r="9" />
+    <circle cx="558" cy="80" r="9" />
+    <circle cx="504" cy="134" r="9" />
+    <circle cx="469" cy="106" r="9" />
+    <circle cx="626" cy="133" r="8" />
+    <circle cx="643" cy="128" r="8" />
   </g>
-
-  <!-- Phospholipid Tails (Bottom) -->
-  <g stroke="#059669" stroke-width="3" fill="none">
-    <path d="M100 335 L90 290 M100 335 L110 290" />
-    <path d="M140 335 L130 290 M140 335 L150 290" />
-    <path d="M180 335 L170 290 M180 335 L190 290" />
-    <path d="M220 335 L210 290 M220 335 L230 290" />
-    <path d="M260 335 L250 290 M260 335 L270 290" />
-    <path d="M300 335 L290 290 M300 335 L310 290" />
-
-    <path d="M500 335 L490 290 M500 335 L510 290" />
-    <path d="M540 335 L530 290 M540 335 L550 290" />
-    <path d="M580 335 L570 290 M580 335 L590 290" />
-    <path d="M620 335 L610 290 M620 335 L630 290" />
-    <path d="M660 335 L650 290 M660 335 L670 290" />
-    <path d="M700 335 L690 290 M700 335 L710 290" />
-  </g>
-
-  <!-- Integral Protein (Channel) -->
-  <path d="M360 160 Q340 275 360 390 L390 390 Q380 275 390 160 Z" fill="#6366f1" />
-  <path d="M440 160 Q460 275 440 390 L410 390 Q420 275 410 160 Z" fill="#6366f1" />
-  
-  <!-- Peripheral Protein -->
-  <ellipse cx="220" cy="400" rx="40" ry="20" fill="#f59e0b" />
-  <ellipse cx="600" cy="150" rx="35" ry="18" fill="#f59e0b" />
-
-  <!-- Glycoprotein Chain -->
-  <g stroke="#0284c7" stroke-width="4" fill="none">
-    <path d="M600 132 L600 100 L580 80 M600 100 L620 70 M620 70 L640 50 M620 70 L610 40" />
-    <circle cx="600" cy="100" r="5" fill="#38bdf8" />
-    <circle cx="580" cy="80" r="5" fill="#38bdf8" />
-    <circle cx="620" cy="70" r="5" fill="#38bdf8" />
-    <circle cx="640" cy="50" r="5" fill="#38bdf8" />
-    <circle cx="610" cy="40" r="5" fill="#38bdf8" />
-  </g>
-
-  <!-- Glycolipid Chain -->
-  <g stroke="#0284c7" stroke-width="4" fill="none">
-    <path d="M260 185 L260 140 L280 110 M260 140 L240 100" />
-    <circle cx="260" cy="140" r="5" fill="#38bdf8" />
-    <circle cx="280" cy="110" r="5" fill="#38bdf8" />
-    <circle cx="240" cy="100" r="5" fill="#38bdf8" />
-  </g>
-
-  <!-- Cholesterol -->
-  <g fill="#eab308">
-    <rect x="145" y="270" width="10" height="20" rx="2" />
-    <rect x="525" y="260" width="10" height="20" rx="2" />
-    <rect x="645" y="280" width="10" height="20" rx="2" />
+  <path d="M161 112h31l34 72M362 402v-49M641 263h-44l-33-12M465 65h15l19 14" fill="none" stroke="#496e60" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+  <g fill="#496e60">
+    <circle cx="226" cy="184" r="3.5" />
+    <circle cx="362" cy="353" r="3.5" />
+    <circle cx="564" cy="251" r="3.5" />
+    <circle cx="499" cy="79" r="3.5" />
   </g>
 </svg>

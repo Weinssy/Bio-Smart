@@ -1,33 +1,67 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" width="100%" height="100%">
-  <rect width="100%" height="100%" fill="#f0f9ff" rx="20"/>
-  <text x="400" y="60" font-family="sans-serif" font-size="28" font-weight="bold" fill="#0369a1" text-anchor="middle">Sistem Pernapasan Manusia</text>
-
-  <g transform="translate(400, 300) scale(1.3)">
-    <!-- Pharynx / Larynx -->
-    <path d="M -15 -180 L 15 -180 L 15 -120 L -15 -120 Z" fill="#bae6fd" stroke="#0284c7" stroke-width="2"/>
-    
-    <!-- Trachea (Cartilage rings) -->
-    <path d="M -15 -120 L 15 -120 L 15 20 L -15 20 Z" fill="#e0f2fe" stroke="#0284c7" stroke-width="2"/>
-    <line x1="-15" y1="-100" x2="15" y2="-100" stroke="#0284c7" stroke-width="3"/>
-    <line x1="-15" y1="-80" x2="15" y2="-80" stroke="#0284c7" stroke-width="3"/>
-    <line x1="-15" y1="-60" x2="15" y2="-60" stroke="#0284c7" stroke-width="3"/>
-    <line x1="-15" y1="-40" x2="15" y2="-40" stroke="#0284c7" stroke-width="3"/>
-    <line x1="-15" y1="-20" x2="15" y2="-20" stroke="#0284c7" stroke-width="3"/>
-    <line x1="-15" y1="0" x2="15" y2="0" stroke="#0284c7" stroke-width="3"/>
-    
-    <!-- Left Bronchus -->
-    <path d="M 0 10 L 15 20 L 60 70 L 40 85 L 0 40 Z" fill="#e0f2fe" stroke="#0284c7" stroke-width="2"/>
-    
-    <!-- Right Bronchus (shorter and wider in reality, simplified here) -->
-    <path d="M 0 10 L -15 20 L -50 70 L -30 85 L 0 40 Z" fill="#e0f2fe" stroke="#0284c7" stroke-width="2"/>
-
-    <!-- Left Lung -->
-    <path d="M 40 50 C 90 20 130 80 140 160 C 150 240 100 280 40 270 C 10 265 -10 200 10 120 C 15 100 25 70 40 50 Z" fill="#fca5a5" stroke="#be123c" stroke-width="2" opacity="0.8"/>
-    
-    <!-- Right Lung (has 3 lobes, simplified) -->
-    <path d="M -40 50 C -90 20 -140 80 -150 160 C -160 240 -110 280 -40 270 C -10 265 10 200 -10 120 C -15 100 -25 70 -40 50 Z" fill="#fca5a5" stroke="#be123c" stroke-width="2" opacity="0.8"/>
-    
-    <!-- Diaphragm -->
-    <path d="M -160 280 Q 0 220 160 280" fill="none" stroke="#64748b" stroke-width="8" stroke-linecap="round"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="620" viewBox="0 0 800 620">
+  <title>Sistem pernapasan manusia</title>
+  <desc>Trakea bercabang ke dua paru. Pembesaran menampilkan gugus alveolus dan kapiler. Diafragma melengkung di bawah paru.</desc>
+  <defs>
+    <radialGradient id="paper" cx="42%" cy="38%" r="76%">
+      <stop stop-color="#f9fbf8" />
+      <stop offset="1" stop-color="#e1eee7" />
+    </radialGradient>
+    <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <circle cx="1" cy="1" r="1" fill="#4c7765" opacity=".13" />
+    </pattern>
+    <linearGradient id="lung" x1="0" x2="1" y1="0" y2="1" gradientUnits="objectBoundingBox">
+      <stop stop-color="#f3c6bc" />
+      <stop offset="1" stop-color="#c87079" />
+    </linearGradient>
+    <linearGradient id="breath" x1="0" x2="1" y1="0" y2="1" gradientUnits="objectBoundingBox">
+      <stop stop-color="#c1e4df" />
+      <stop offset="1" stop-color="#74b4ae" />
+    </linearGradient>
+    <linearGradient id="muscle" x1="0" x2="1" y1="0" y2="1" gradientUnits="objectBoundingBox">
+      <stop stop-color="#e3a47f" />
+      <stop offset="1" stop-color="#aa584f" />
+    </linearGradient>
+    <marker id="air" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto" viewBox="0 0 8 8">
+      <path d="M1 1 7 4 1 7" fill="none" stroke="#337d7c" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+    </marker>
+  </defs>
+  <path fill="url(#paper)" d="M0 0h800v620H0Z" />
+  <path fill="url(#grid)" d="M0 0h800v620H0Z" />
+  <path d="M196 497c-12-51-34-181-1-266 27-71 86-109 122-100 36 9 47 74 44 147-4 121-30 215-94 232-22 6-51 4-71-13zM463 491c-23-30-29-82-25-114 4-42 33-58 29-83-3-30-34-65-30-110 3-33 24-59 49-61 71-5 129 69 150 156 14 55 8 149-8 206-58 28-127 21-165 6z" fill="url(#lung)" stroke="#a75f68" stroke-width="3.5" />
+  <path d="M191 309c29-17 85-11 147 20m-139 70c44-22 87-22 125 4m145-8c68-24 116-58 150-92" fill="none" stroke="#9a5161" stroke-width="2.5" opacity=".55" />
+  <path d="M402 78v142q-3 19-16 29l-77 48m94-77q1 20 21 29l85 47" fill="none" stroke="#597b81" stroke-width="37" stroke-linecap="round" />
+  <path d="M402 78v142q-3 19-16 29l-77 48m94-77q1 20 21 29l85 47" fill="none" stroke="url(#breath)" stroke-width="29" stroke-linecap="round" />
+  <path d="M388 95h28m-28 23h28m-28 23h28m-28 23h28m-28 23h28m-28 24h28" stroke="#4c8b89" stroke-width="3.5" stroke-linecap="round" />
+  <g fill="none" stroke="url(#breath)" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M314 294l-48 28-35 63m40-65 3 48 35 35m-43-81-53 2m289-33 49 23 37 65m-40-64-6 48-40 51m53-98 53 10" stroke-width="16" />
+    <path d="M231 385l-20 33m24-42-31-5m101 29 4 34m-5-35 30 7m256-26 12 38m-15-34 30-7m-105 23-3 35m0-28-29 9" stroke-width="8" />
+  </g>
+  <path d="M189 537q102-43 200-28 116 22 241 11l-7 25q-126 20-242-1-107-16-182 15z" fill="url(#muscle)" stroke="#9c564e" stroke-width="3" />
+  <g fill="none" stroke="#337d7c" stroke-width="4" marker-end="url(#air)">
+    <path d="M401 53v113" />
+    <path d="M394 241l-54 36" />
+    <path d="M423 241l47 35" />
+  </g>
+  <path d="M552 373l92-39" stroke="#5a8474" stroke-width="2.5" stroke-dasharray="5 6" fill="none" />
+  <circle cx="556" cy="369" r="12" stroke="#4a7465" stroke-width="2.5" fill="none" />
+  <circle cx="682" cy="303" r="78" fill="#f8faf5" stroke="#5b8779" stroke-width="3" />
+  <path d="M649 261l24 30 28 16" fill="none" stroke="#528e88" stroke-width="11" stroke-linecap="round" />
+  <g fill="#f5b4ac" stroke="#a85c65" stroke-width="2">
+    <circle cx="682" cy="289" r="14" />
+    <circle cx="705" cy="291" r="14" />
+    <circle cx="719" cy="310" r="15" />
+    <circle cx="709" cy="333" r="16" />
+    <circle cx="682" cy="335" r="15" />
+    <circle cx="666" cy="313" r="14" />
+  </g>
+  <path d="M652 303c-11 18 4 43 22 47 24 16 55 0 62-20" fill="none" stroke="#5487a5" stroke-width="4" stroke-linecap="round" />
+  <path d="M736 330q18-34-14-53" fill="none" stroke="#b85d68" stroke-width="4" stroke-linecap="round" />
+  <path d="M433 97h66l35-26M128 308h49l50 24M596 453l73 49M721 357l20 20M396 531l-20 55" fill="none" stroke="#496e60" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+  <g fill="#496e60">
+    <circle cx="433" cy="97" r="3.5" />
+    <circle cx="227" cy="332" r="3.5" />
+    <circle cx="596" cy="453" r="3.5" />
+    <circle cx="721" cy="357" r="3.5" />
+    <circle cx="396" cy="531" r="3.5" />
   </g>
 </svg>

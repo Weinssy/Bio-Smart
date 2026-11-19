@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="540" viewBox="0 0 900 540">
+  <title>Saat lapisan kulit terluka</title>
+  <desc>Tiga potongan kulit menunjukkan penghalang utuh, masuknya partikel melalui luka, lalu satu sel imun mengelilingi partikel.</desc>
+  <defs>
+    <radialGradient id="paper" cx="42%" cy="38%" r="76%">
+      <stop stop-color="#f9fbf8" />
+      <stop offset="1" stop-color="#ede6df" />
+    </radialGradient>
+    <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <circle cx="1" cy="1" r="1" fill="#4c7765" opacity=".13" />
+    </pattern>
+    <linearGradient id="skin" x1="0" x2="1" y1="0" y2="1" gradientUnits="objectBoundingBox">
+      <stop stop-color="#f6cfc2" />
+      <stop offset="1" stop-color="#e3a19c" />
+    </linearGradient>
+    <linearGradient id="dermis" x1="0" x2="1" y1="0" y2="1" gradientUnits="objectBoundingBox">
+      <stop stop-color="#f5baac" />
+      <stop offset="1" stop-color="#e2a195" />
+    </linearGradient>
+    <linearGradient id="phagocyte" x1="0" x2="1" y1="0" y2="1" gradientUnits="objectBoundingBox">
+      <stop stop-color="#e5daf4" />
+      <stop offset="1" stop-color="#ad92c8" />
+    </linearGradient>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto" viewBox="0 0 8 8">
+      <path d="M1 1 7 4 1 7" fill="none" stroke="#4f7769" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+    </marker>
+    <g id="particle">
+      <rect x="-12" y="-6" width="24" height="12" rx="6" fill="#86a875" stroke="#476f54" stroke-width="2.2" />
+      <path d="M-6-1h12" stroke="#d3e7bb" stroke-width="2" stroke-linecap="round" />
+    </g>
+    <g id="skin-section">
+      <path d="M-109 0q53-15 109-1 59 14 109-3v86h-218Z" fill="url(#dermis)" stroke="#ae746e" stroke-width="2.5" />
+      <path d="M-109-19q56-17 111-4 53 13 107-4V2Q54 17 0 4q-56-14-109 1Z" fill="url(#skin)" stroke="#ae746e" stroke-width="2.5" />
+      <path d="M-101-10q53-14 96-3 62 16 106-1" fill="none" stroke="#fff1e8" stroke-width="3" stroke-linecap="round" />
+    </g>
+  </defs>
+  <path fill="url(#paper)" d="M0 0h900v540H0Z" />
+  <path fill="url(#grid)" d="M0 0h900v540H0Z" />
+  <path d="M39 403q411-36 822 0" fill="none" stroke="#c0d4ca" stroke-width="2" />
+  <g fill="none" stroke="#608779" stroke-width="3.5" stroke-dasharray="4 6">
+    <path d="M269 241h59" marker-end="url(#arrow)" />
+    <path d="M572 241h59" marker-end="url(#arrow)" />
+  </g>
+  <use href="#skin-section" x="150" y="247" />
+  <use href="#skin-section" x="450" y="247" />
+  <use href="#skin-section" x="750" y="247" />
+  <path d="M419 220q16 10 27 53 6 22 15 12 6-7 8-27 5-26 18-31l-14-2-21 4z" fill="#f3ede7" stroke="#ae746e" stroke-width="2.5" stroke-linejoin="round" />
+  <use href="#particle" x="108" y="195" transform="rotate(-20 108 195)" />
+  <use href="#particle" x="151" y="173" transform="rotate(28 151 173)" />
+  <use href="#particle" x="195" y="193" transform="rotate(13 195 193)" />
+  <use href="#particle" x="429" y="179" transform="rotate(26 429 179)" />
+  <use href="#particle" x="453" y="243" transform="rotate(75 453 243)" />
+  <use href="#particle" x="471" y="291" transform="rotate(25 471 291)" />
+  <use href="#particle" x="771" y="280" transform="rotate(15 771 280)" />
+  <path d="M736 272q-17-21-34-8-17 12-15 35 3 26 31 32 25 7 40-13 10-13 7-23-15 8-26-2-9-9 2-22Z" fill="url(#phagocyte)" stroke="#8064a1" stroke-width="2.8" />
+  <path d="M710 289q22-12 27 5 5 14-11 19-18 6-20-7-2-8 4-17z" fill="#9173ab" />
+  <g fill="none" stroke="#ab5662" stroke-width="4" stroke-linecap="round" marker-end="url(#arrow)">
+    <path d="M391 302q27 8 38-5" />
+    <path d="M552 301q-32 2-54-6" />
+  </g>
+  <path d="M150 349v29M450 349v29M750 349v29" fill="none" stroke="#496e60" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+</svg>

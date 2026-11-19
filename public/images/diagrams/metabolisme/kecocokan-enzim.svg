@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="490" viewBox="0 0 900 490">
+  <title>Model kecocokan terinduksi pada enzim</title>
+  <desc>Tiga gambar menunjukkan substrat mendekat, enzim berubah bentuk saat mengikatnya, dan produk lepas dari enzim.</desc>
+  <defs>
+    <radialGradient id="paper" cx="42%" cy="38%" r="76%">
+      <stop stop-color="#f9fbf8" />
+      <stop offset="1" stop-color="#e1eee7" />
+    </radialGradient>
+    <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <circle cx="1" cy="1" r="1" fill="#4c7765" opacity=".13" />
+    </pattern>
+    <linearGradient id="enzyme" x1="0" x2="1" y1="0" y2="1" gradientUnits="objectBoundingBox">
+      <stop stop-color="#c6e9da" />
+      <stop offset="1" stop-color="#77b8ae" />
+    </linearGradient>
+    <linearGradient id="substrate" x1="0" x2="1" y1="0" y2="1" gradientUnits="objectBoundingBox">
+      <stop stop-color="#f4d08d" />
+      <stop offset="1" stop-color="#db965d" />
+    </linearGradient>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto" viewBox="0 0 8 8">
+      <path d="M1 1 7 4 1 7" fill="none" stroke="#4f7769" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+    </marker>
+    <path id="open" d="M-71 13q-11-45 31-64 8-3 15 6l18 23q7 8 15 1l16-17q7-7 17-3 34 14 34 50-2 51-42 65-36 13-67-3-25-12-37-58Z" />
+    <g id="substrate-shape">
+      <path d="M-27-12q3-17 16-17 11 0 17 14 8-4 16 2 15 12 1 25L0 30q-5 5-10-2l-15-25q-4-8-2-15Z" fill="url(#substrate)" stroke="#a16b42" stroke-width="2.5" />
+      <path d="M-10-17q7 6 10 13" stroke="#fce6b6" stroke-width="3" fill="none" stroke-linecap="round" />
+    </g>
+  </defs>
+  <path fill="url(#paper)" d="M0 0h900v490H0Z" />
+  <path fill="url(#grid)" d="M0 0h900v490H0Z" />
+  <g stroke="#608879" stroke-width="3.5" stroke-dasharray="5 7" fill="none">
+    <path d="M245 239h88" marker-end="url(#arrow)" />
+    <path d="M555 239h91" marker-end="url(#arrow)" />
+  </g>
+  <use href="#open" x="150" y="244" fill="url(#enzyme)" stroke="#508a7e" stroke-width="3" />
+  <use href="#open" x="750" y="244" fill="url(#enzyme)" stroke="#508a7e" stroke-width="3" />
+  <use href="#substrate-shape" x="141" y="135" />
+  <path d="M141 174v30" fill="none" stroke="#608879" stroke-width="3" stroke-dasharray="4 4" marker-end="url(#arrow)" />
+  <g transform="translate(448 244)">
+    <path d="M-78 7q-16-51 34-73 13-4 15 5l3 21q-2 9 17 29 8 9 15 2 30-21 29-40l-2-11q3-6 16-2Q87-44 83 8c-4 45-46 75-83 73-46-3-71-33-78-74Z" fill="url(#enzyme)" stroke="#508a7e" stroke-width="3" />
+    <use href="#substrate-shape" x="0" y="-43" />
+    <path d="M-56 19q16 43 54 45" stroke="#def5e7" stroke-width="4" fill="none" stroke-linecap="round" />
+  </g>
+  <g fill="url(#substrate)" stroke="#a16b42" stroke-width="2.5">
+    <path d="M715 116q9-12 23-3 10 7 4 20l-9 15q-4 6-10-1l-11-15q-4-7 3-16Z" />
+    <path d="M777 119q10-7 20 2 9 9 0 18l-14 13q-6 4-10-4l-5-11q-5-12 9-18Z" />
+  </g>
+  <g fill="none" stroke="#608879" stroke-width="3" stroke-dasharray="4 4" marker-end="url(#arrow)">
+    <path d="M742 194q-6-14-9-29" />
+    <path d="M756 194q14-13 25-26" />
+  </g>
+  <path d="M150 325v33" fill="none" stroke="#496e60" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+  <path d="M450 325v33" fill="none" stroke="#496e60" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+  <path d="M750 325v33" fill="none" stroke="#496e60" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+</svg>

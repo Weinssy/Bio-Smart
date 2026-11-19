@@ -12,40 +12,55 @@ Seluruh diagram interaktif disimpan langsung di dalam repositori (`public/images
 1. **Model Mosaik Cair Membran Sel**
    * **File Lokal**: `public/images/diagrams/sel/membran-sel.svg`
    * **Status Karya**: *Adapted / Inspired Educational Vector Artwork*
-   * **Deskripsi**: Vektor SVG edukasi mandiri (`viewBox="0 0 800 600"`), menggambarkan dwilapis fosfolipid, protein integral, protein perifer, glikoprotein, glikolipid, dan kolesterol.
+   * **Deskripsi**: Vektor SVG edukasi mandiri (`viewBox="0 0 800 480"`), menggambarkan dwilapis fosfolipid, protein integral, glikoprotein, glikolipid, dan kolesterol.
    * **Referensi Asal**: Terinspirasi oleh skema *Cell membrane detailed diagram* karya Mariana Ruiz Villarreal (LadyofHats) di Wikimedia Commons (Public Domain).
 
 2. **Anatomi Jantung Manusia**
    * **File Lokal**: `public/images/diagrams/sistem-organ/anatomi-jantung.svg`
    * **Status Karya**: *Adapted / Inspired Educational Vector Artwork*
-   * **Deskripsi**: Vektor SVG edukasi mandiri (`viewBox="0 0 800 800"`), menggambarkan 4 ruang jantung utama, pembuluh darah besar (Aorta, Vena Kava, Arteri & Vena Pulmonalis), dan Septum Interventrikular.
+   * **Deskripsi**: Vektor SVG edukasi mandiri (`viewBox="0 0 800 620"`) dengan empat ruang jantung dan panah penunjuk aliran darah.
    * **Referensi Asal**: Disesuaikan dari diagram jantung manusia oleh Wapcaplet di Wikimedia Commons (CC BY-SA 3.0).
 
 3. **Sistem Pernapasan Manusia**
    * **File Lokal**: `public/images/diagrams/sistem-organ/sistem-pernapasan.svg`
    * **Status Karya**: *Adapted / Inspired Educational Vector Artwork*
-   * **Deskripsi**: Vektor SVG edukasi mandiri (`viewBox="0 0 800 800"`), menggambarkan Laring/Faring, Trakea bercincin kartilago, Bronkus, Paru-paru (Pulmo), dan Diafragma.
+   * **Deskripsi**: Vektor SVG edukasi mandiri (`viewBox="0 0 800 620"`) dengan trakea, bronkus, paru-paru, pembesaran alveolus, dan diafragma.
    * **Referensi Asal**: Terinspirasi oleh diagram respirasi karya Mariana Ruiz Villarreal (LadyofHats) di Wikimedia Commons (Public Domain).
 
 ### B. Diagram Alur & Proses Biologis (Variant: `process`)
 4. **Tahapan Pembelahan Sel (Mitosis)**
    * **File Lokal**: `public/images/diagrams/sel/mitosis.svg`
    * **Status Karya**: *Original Educational Vector Artwork*
-   * **Deskripsi**: Vektor SVG edukasi mandiri (`viewBox="0 0 960 600"`), menggambarkan 6 tahapan runtut mitosis eukariotik: Interfase, Profase, Metafase, Anafase, Telofase, dan Sitokinesis lengkap dengan representasi kromatid, gelendong spindel, dan sentrosom.
+   * **Deskripsi**: Vektor SVG edukasi mandiri (`viewBox="0 0 960 590"`) dengan urutan pembelahan sel dari interfase hingga sitokinesis.
    * **Referensi Konseptual**: Kurikulum Biologi SMA (Campbell Biology & materi pembelajaran nasional). Bebas dari elemen pihak ketiga berhak cipta tertutup.
 
 5. **Proses Perjalanan & Fertilisasi Manusia**
    * **File Lokal**: `public/images/diagrams/reproduksi/fertilisasi.svg`
    * **Status Karya**: *Original Educational Vector Artwork*
-   * **Deskripsi**: Vektor SVG edukasi mandiri (`viewBox="0 0 960 600"`), memetakan perjalanan ovum dari ovulasi di Ovarium, Fimbriae, migrasi sperma di Tuba Fallopi, penetrasi akrosom/fertilisasi zigot, pembelahan morula, hingga implantasi blastokista di endometrium rahim.
+   * **Deskripsi**: Vektor SVG edukasi mandiri (`viewBox="0 0 960 670"`) dengan skema organ reproduksi dan pembesaran pembuahan, morula, serta implantasi.
    * **Referensi Konseptual**: Konsep fisiologi reproduksi manusia Biologi SMA.
 
 ### C. Diagram Berlapis / Berjenjang (Variant: `layered`)
 6. **Piramida Makanan & Gizi Seimbang**
    * **File Lokal**: `public/images/diagrams/ekologi/piramida-makanan.svg`
    * **Status Karya**: *Original Educational Vector Artwork*
-   * **Deskripsi**: Vektor SVG berjenjang simetris (`viewBox="0 0 960 620"`), memetakan 4 tingkatan piramida gizi seimbang: Lapisan Dasar (Karbohidrat Makanan Pokok), Lapisan Kedua (Sayur & Buah), Lapisan Ketiga (Lauk-Pauk Protein), dan Lapisan Puncak (Gula, Garam, Minyak yang dibatasi).
+   * **Deskripsi**: Vektor SVG berjenjang (`viewBox="0 0 800 580"`) dengan contoh makanan pokok, sayur dan buah, lauk-pauk, serta gula, garam, dan minyak.
    * **Referensi Konseptual**: Panduan Gizi Seimbang Kementerian Kesehatan RI & materi nutrisi biologi SMA.
+
+---
+
+### D. Ilustrasi modul tambahan
+
+Enam ilustrasi ini dibuat sebagai vektor edukasi orisinal berdasarkan konsep dalam materi Bio Smart.
+
+| Ilustrasi | Aset lokal |
+| --- | --- |
+| Kotak Punnett untuk persilangan ercis | `diagrams/genetika/persilangan-ercis.svg` |
+| Tingkat organisasi di ekosistem kolam | `diagrams/ekologi/ekosistem-kolam.svg` |
+| Peran miselium dalam pembentukan tempe | `diagrams/bioteknologi/fermentasi-tempe.svg` |
+| Struktur neuron bermielin | `diagrams/regulasi/struktur-neuron.svg` |
+| Pertahanan bawaan saat kulit terluka | `diagrams/imunologi/pertahanan-bawaan.svg` |
+| Model kecocokan terinduksi pada enzim | `diagrams/metabolisme/kecocokan-enzim.svg` |
 
 ---
 

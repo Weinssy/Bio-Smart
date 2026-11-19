@@ -1,40 +1,65 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" width="100%" height="100%">
-  <rect width="100%" height="100%" fill="#fef2f2" rx="20"/>
-  <text x="400" y="60" font-family="sans-serif" font-size="28" font-weight="bold" fill="#991b1b" text-anchor="middle">Anatomi Jantung Manusia</text>
-
-  <g transform="translate(400, 420) scale(1.5)">
-    <!-- Superior Vena Cava -->
-    <path d="M -90 -80 L -90 -180 C -90 -200 -70 -200 -70 -180 L -70 -80 Z" fill="#3b82f6" />
-    
-    <!-- Inferior Vena Cava -->
-    <path d="M -80 120 L -80 200 C -80 220 -60 220 -60 200 L -60 120 Z" fill="#3b82f6" />
-    
-    <!-- Aorta -->
-    <path d="M -30 -120 C -30 -220 70 -220 70 -150 L 50 -150 C 50 -190 -10 -190 -10 -120 Z" fill="#ef4444" />
-    
-    <!-- Pulmonary Artery -->
-    <path d="M -10 -80 L -30 -160 L -10 -160 L 20 -110 Z" fill="#3b82f6" />
-    
-    <!-- Right Atrium -->
-    <path d="M -100 -50 C -120 -20 -120 40 -80 60 C -50 60 -50 0 -80 -50 Z" fill="#93c5fd" stroke="#1e3a8a" stroke-width="2"/>
-    
-    <!-- Right Ventricle -->
-    <path d="M -80 60 C -100 90 -70 180 0 170 C -40 100 -50 80 -20 60 Z" fill="#60a5fa" stroke="#1e3a8a" stroke-width="2"/>
-    
-    <!-- Left Atrium -->
-    <path d="M 20 -60 C 60 -60 90 -20 80 40 C 40 40 10 -20 20 -60 Z" fill="#fca5a5" stroke="#7f1d1d" stroke-width="2"/>
-    
-    <!-- Left Ventricle -->
-    <path d="M 80 40 C 100 90 60 180 0 170 C 30 150 40 100 20 60 Z" fill="#f87171" stroke="#7f1d1d" stroke-width="2"/>
-    
-    <!-- Septum -->
-    <path d="M -20 60 C -40 100 -10 160 0 170 C 20 160 30 100 20 60 Z" fill="#d1d5db" stroke="#4b5563" stroke-width="2"/>
-    
-    <!-- Pulmonary Veins (Left & Right) -->
-    <circle cx="90" cy="-20" r="10" fill="#ef4444" />
-    <circle cx="110" cy="0" r="10" fill="#ef4444" />
-    
-    <circle cx="-100" cy="-10" r="10" fill="#ef4444" />
-    <circle cx="-110" cy="10" r="10" fill="#ef4444" />
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="620" viewBox="0 0 800 620">
+  <title>Anatomi jantung manusia</title>
+  <desc>Tampak depan empat ruang jantung. Aliran kanan berwarna biru dan aliran kiri berwarna merah, dengan panah yang menunjukkan arah peredaran.</desc>
+  <defs>
+    <radialGradient id="paper" cx="42%" cy="38%" r="76%">
+      <stop stop-color="#f9fbf8" />
+      <stop offset="1" stop-color="#e1eee7" />
+    </radialGradient>
+    <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <circle cx="1" cy="1" r="1" fill="#4c7765" opacity=".13" />
+    </pattern>
+    <linearGradient id="wall" x1="0" x2="1" y1="0" y2="1" gradientUnits="objectBoundingBox">
+      <stop stop-color="#f3b1a4" />
+      <stop offset="1" stop-color="#a95160" />
+    </linearGradient>
+    <linearGradient id="blue" x1="0" x2="1" y1="0" y2="1" gradientUnits="objectBoundingBox">
+      <stop stop-color="#9dd4ec" />
+      <stop offset="1" stop-color="#41799f" />
+    </linearGradient>
+    <linearGradient id="red" x1="0" x2="1" y1="0" y2="1" gradientUnits="objectBoundingBox">
+      <stop stop-color="#f5b1a7" />
+      <stop offset="1" stop-color="#c75660" />
+    </linearGradient>
+    <marker id="blueArrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto" viewBox="0 0 8 8">
+      <path d="M1 1 7 4 1 7" fill="none" stroke="#285c7a" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+    </marker>
+    <marker id="redArrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto" viewBox="0 0 8 8">
+      <path d="M1 1 7 4 1 7" fill="none" stroke="#8f314a" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+    </marker>
+  </defs>
+  <path fill="url(#paper)" d="M0 0h800v620H0Z" />
+  <path fill="url(#grid)" d="M0 0h800v620H0Z" />
+  <ellipse cx="401" cy="535" rx="239" ry="38" fill="#608677" opacity=".11" />
+  <path d="M260 292V104q24-19 54 0v156M286 374l-15 128q-24 17-52-5l29-147" fill="url(#blue)" stroke="#5787a2" stroke-width="4" />
+  <path d="M417 294c25-60 43-88 18-139-18-36-6-77 29-98 50-30 116-7 129 48l10 72-47 9-11-60c-4-23-24-34-41-24-12 8-13 21-6 36 35 65 13 128-23 191z" fill="url(#red)" stroke="#9d4a58" stroke-width="4" />
+  <path d="M545 192l92-28 13 37-91 35m-4 7 96-7 4 38-91 13" fill="url(#red)" stroke="#a6515f" stroke-width="4" />
+  <path d="M410 205c-38-42-72-48-121-32-62 20-98 84-84 159 14 105 143 174 259 222 28 11 58 8 78-15 63-74 79-184 65-251-16-77-61-118-126-113-25 2-47 11-71 30z" fill="url(#wall)" stroke="#884b57" stroke-width="4" />
+  <path d="M241 296c-8-51 23-91 63-92 36-1 58 23 70 49l-11 61c-42 29-97 15-122-18z" fill="url(#blue)" stroke="#416f8c" stroke-width="3" />
+  <path d="M269 344c42 15 72 5 91-7 21 38 43 90 79 157-54-26-130-61-159-108-11-17-15-29-11-42z" fill="url(#blue)" stroke="#416f8c" stroke-width="3" />
+  <path d="M480 224c26-25 60-15 82 12 19 24 26 54 20 77-48 17-83-5-107-28z" fill="url(#red)" stroke="#984252" stroke-width="3" />
+  <path d="M471 311c25 25 61 47 111 25-1 63-25 130-63 176-9 11-22 10-29 7-47-37-70-117-92-173 22-21 44-25 73-35z" fill="url(#red)" stroke="#984252" stroke-width="3" />
+  <path d="M347 343c14 2 41 69 59 106m7-129c-29 23-58 13-84-4m129-18q37 46 83 40" fill="none" stroke="#fff0e4" stroke-width="6" stroke-linecap="round" opacity=".88" />
+  <path d="M358 417c-4-77-11-139 29-195 37-53 98-68 155-49l-13 42c-38-13-77 2-96 32-29 45-23 100-28 149" fill="none" stroke="#507c96" stroke-width="24" stroke-linecap="round" opacity=".36" />
+  <g fill="none" stroke-width="4" stroke-linecap="round">
+    <g stroke="#285c7a" marker-end="url(#blueArrow)">
+      <path d="M282 131v82" />
+      <path d="M299 244c-3 70 23 81 34 107" />
+      <path d="M332 394c40-21 15-102 62-161 19-24 45-37 80-42" />
+    </g>
+    <g stroke="#8f314a" marker-end="url(#redArrow)">
+      <path d="M632 187l-59 28" />
+      <path d="M535 248q-8 43 10 79" />
+      <path d="M528 427q-29 1-47-22" />
+      <path d="M479 126c-18-32 6-53 37-49 31 3 52 22 57 48" />
+    </g>
+  </g>
+  <path d="M137 253h64l61 18M161 431h66l76-35M674 256h-56l-53 19M668 435h-62l-79 24M459 56h-77l-28 27" fill="none" stroke="#496e60" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+  <g fill="#496e60">
+    <circle cx="262" cy="271" r="3.5" />
+    <circle cx="303" cy="396" r="3.5" />
+    <circle cx="565" cy="275" r="3.5" />
+    <circle cx="527" cy="459" r="3.5" />
+    <circle cx="459" cy="56" r="3.5" />
   </g>
 </svg>

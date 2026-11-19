@@ -32,7 +32,16 @@ test('media materi lokal tersedia dan jawaban kuis valid', () => {
     for (const sub of mod.subtopics) {
       for (const block of sub.content || []) {
         if (block.src && !/^(https?:|data:)/.test(block.src)) {
-          assert.ok(existsSync(new URL(`../public/${block.src.replace(/^\/+/, '')}`, import.meta.url)), block.src)
+          const asset = new URL(`../public/${block.src.replace(/^\/+/, '')}`, import.meta.url)
+          assert.ok(existsSync(asset), block.src)
+          if (block.src.endsWith('.svg')) {
+            const svg = readFileSync(asset, 'utf8')
+            const ids = Array.from(svg.matchAll(/\bid="([^"]+)"/g), match => match[1])
+            assert.equal(new Set(ids).size, ids.length, `ID SVG unik dalam ${block.src}`)
+            for (const [, target] of svg.matchAll(/(?:href="#|url\(#)([^")]+)[")]/g)) {
+              assert.ok(ids.includes(target), `Target #${target} tersedia dalam ${block.src}`)
+            }
+          }
         }
       }
     }

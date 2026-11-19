@@ -27,10 +27,10 @@
               "type": "interactiveImage",
               "src": "/images/diagrams/sel/membran-sel.svg",
               "width": 800,
-              "height": 600,
+              "height": 480,
               "title": "Struktur Membran Sel",
-              "caption": "Diagram interaktif Model Mosaik Cair (Fluid Mosaic Model)",
-              "description": "Klik pada titik-titik penanda untuk mempelajari komponen membran sel secara lebih detail.",
+              "caption": "Kepala fosfolipid menghadap cairan di kedua sisi. Ekor mengarah ke bagian dalam membran.",
+              "description": "Amati susunan fosfolipid dan posisi molekul lain di dalam membran.",
               "parts": [
                 {
                   "id": "fosfolipid",
@@ -38,8 +38,8 @@
                   "description": "Dua lapisan molekul lemak yang membungkus sel. Bagian kepala menyukai air (hidrofilik), sedangkan bagian ekor menjauhi air (hidrofobik).",
                   "function": "Membentuk penghalang utama yang sangat selektif, mencegah zat terlarut masuk/keluar tanpa kontrol.",
                   "hotspot": {
-                    "x": 30,
-                    "y": 50
+                    "x": 20.13,
+                    "y": 23.33
                   }
                 },
                 {
@@ -48,8 +48,8 @@
                   "description": "Molekul protein besar yang menembus seluruh lapisan ganda fosfolipid, membentang dari luar ke dalam sel.",
                   "function": "Berfungsi sebagai saluran (channel) atau transporter untuk memindahkan molekul/ion tertentu melewati membran.",
                   "hotspot": {
-                    "x": 45,
-                    "y": 40
+                    "x": 45.25,
+                    "y": 83.75
                   }
                 },
                 {
@@ -58,8 +58,8 @@
                   "description": "Molekul lipid yang terselip di antara celah-celah ekor fosfolipid, umumnya ditemukan pada membran sel hewan.",
                   "function": "Menjaga fleksibilitas dan fluiditas membran agar tidak terlalu kaku pada suhu rendah, serta menjaga integritas membran di suhu tinggi.",
                   "hotspot": {
-                    "x": 70,
-                    "y": 65
+                    "x": 80.13,
+                    "y": 54.79
                   }
                 },
                 {
@@ -68,11 +68,12 @@
                   "description": "Rantai karbohidrat (gula) pendek yang menempel pada protein (glikoprotein) atau langsung pada lipid (glikolipid) di permukaan luar membran.",
                   "function": "Berfungsi sebagai reseptor sinyal luar sel dan penanda identitas (antigen) agar sel dapat saling mengenali.",
                   "hotspot": {
-                    "x": 60,
-                    "y": 15
+                    "x": 58.13,
+                    "y": 13.54
                   }
                 }
-              ]
+              ],
+              "alt": "Dua baris fosfolipid hijau mengapit ekor lipid. Protein ungu melintasi kedua lapisan, kolesterol terselip di antara ekor, dan rantai karbohidrat menonjol ke luar."
             },
             {
               "type": "keypoint",
@@ -260,79 +261,80 @@
               "type": "interactiveImage",
               "src": "/images/diagrams/sel/mitosis.svg",
               "width": 960,
-              "height": 600,
+              "height": 590,
               "variant": "process",
               "title": "Tahapan Pembelahan Sel (Mitosis)",
-              "caption": "Diagram alur 6 tahapan mitosis sel eukariotik",
-              "description": "Mitosis menghasilkan 2 sel anak diploid (2n) yang identik secara genetik. Klik setiap tahapan untuk mempelajari proses dan perubahan kromosomnya.",
+              "caption": "Interfase berlangsung sebelum mitosis. Sitokinesis membagi sitoplasma menjadi dua sel.",
+              "description": "Ikuti panah dari interfase hingga sitokinesis dan amati perubahan kromosom.",
               "parts": [
                 {
                   "id": "interfase",
-                  "label": "1. Interfase",
+                  "label": "Interfase",
                   "description": "Fase persiapan sebelum pembelahan sel (fase G1, S, dan G2). Membran inti dan nukleolus masih utuh.",
                   "process": "Materi genetik berupa benang kromatin menduplikasi diri (replikasi DNA) dan sentrosom mengganda.",
                   "function": "Memastikan sel memiliki massa dan materi genetik ganda yang cukup sebelum membelah.",
                   "hotspot": {
-                    "x": 16.7,
-                    "y": 26.7
+                    "x": 16.67,
+                    "y": 44.41
                   }
                 },
                 {
                   "id": "profase",
-                  "label": "2. Profase",
+                  "label": "Profase",
                   "description": "Tahap awal mitosis di mana kromatin mulai memadat menjadi kromosom ganda berbentuk X (kromatid saudara).",
                   "process": "Membran inti mulai terurai, nukleolus lenyap, dan sentrosom bergerak ke kutub berlawanan sambil membentuk benang spindel.",
                   "function": "Mempersiapkan kromosom agar kompak dan mudah dipisahkan tanpa kusut.",
                   "hotspot": {
                     "x": 50,
-                    "y": 26.7
+                    "y": 44.41
                   }
                 },
                 {
                   "id": "metafase",
-                  "label": "3. Metafase",
+                  "label": "Metafase",
                   "description": "Tahap di mana seluruh kromosom berjejer rapi di bidang ekuator (pelat metafase).",
                   "process": "Kinetokor pada sentromer setiap kromosom terikat kuat oleh mikrotubulus benang spindel dari kedua kutub.",
                   "function": "Memastikan kedua kromatid tersambung ke kutub berbeda sebelum dipisahkan (titik pengecekan M-checkpoint).",
                   "hotspot": {
-                    "x": 83.3,
-                    "y": 26.7
+                    "x": 83.33,
+                    "y": 44.41
                   }
                 },
                 {
                   "id": "anafase",
-                  "label": "4. Anafase",
+                  "label": "Anafase",
                   "description": "Tahap pemisahan kromatid saudara menjadi kromosom anak individual.",
                   "process": "Benang spindel memendek, menarik kromatid saudara bergerak ke kutub sel yang berlawanan (berbentuk huruf V).",
                   "function": "Menjamin setiap kutub sel menerima salinan genetik dalam jumlah yang persis sama.",
                   "hotspot": {
-                    "x": 83.3,
-                    "y": 73.3
+                    "x": 83.33,
+                    "y": 88.14
                   }
                 },
                 {
                   "id": "telofase",
-                  "label": "5. Telofase",
+                  "label": "Telofase",
                   "description": "Tahap akhir pembelahan inti (kariokinesis) di mana kromosom telah berkumpul di kutub masing-masing.",
                   "process": "Membran inti baru mulai terbentuk kembali di sekitar masing-masing set kromosom, dan kromosom mulai terurai kembali menjadi kromatin.",
                   "function": "Membentuk kembali dua inti sel anak yang terpisah secara fisik.",
                   "hotspot": {
                     "x": 50,
-                    "y": 73.3
+                    "y": 88.14
                   }
                 },
                 {
                   "id": "sitokinesis",
-                  "label": "6. Sitokinesis",
+                  "label": "Sitokinesis",
                   "description": "Pembelahan sitoplasma sel secara tuntas melalui cincin pembelahan (cleavage furrow).",
                   "process": "Mikrofilamen aktin dan miosin menjepit membran sel hingga terbelah menjadi dua sel anak diploid (2n).",
                   "function": "Menghasilkan 2 sel anak identik yang siap tumbuh dan menjalankan fungsi jaringan.",
                   "hotspot": {
-                    "x": 16.7,
-                    "y": 73.3
+                    "x": 16.67,
+                    "y": 88.14
                   }
                 }
-              ]
+              ],
+              "alt": "Enam gambar sel tersusun mengikuti panah berkelok. Kromosom memadat, berjajar di tengah, terpisah, lalu masuk ke dua inti sel anak."
             },
             {
               "type": "list",
@@ -384,6 +386,55 @@
             {
               "type": "paragraph",
               "text": "Persilangan monohibrid melibatkan satu pasang sifat beda. Contoh klasik: P (Parental) = BB (bunga ungu) × bb (bunga putih). F₁: semua Bb (ungu, heterozigot). F₂: rasio fenotipe 3 ungu : 1 putih (rasio genotipe 1 BB : 2 Bb : 1 bb)."
+            },
+            {
+              "type": "interactiveImage",
+              "src": "/images/diagrams/genetika/persilangan-ercis.svg",
+              "width": 800,
+              "height": 570,
+              "variant": "anatomy",
+              "title": "Kotak Punnett untuk persilangan ercis",
+              "caption": "Pada persilangan Bb × Bb dengan dominansi penuh, peluang fenotipe ungu dan putih berbanding 3:1.",
+              "description": "Gabungkan satu alel dari baris dan satu dari kolom untuk membaca kemungkinan keturunannya.",
+              "alt": "Kotak Punnett berisi empat kombinasi. Baris pertama menghasilkan BB dan Bb dengan bunga ungu. Baris kedua menghasilkan Bb ungu dan bb putih.",
+              "parts": [
+                {
+                  "id": "bb-dominan",
+                  "label": "Homozigot dominan (BB)",
+                  "description": "Keturunan mendapat alel B dari kedua induk. Bunganya ungu.",
+                  "hotspot": {
+                    "x": 47.88,
+                    "y": 42.63
+                  }
+                },
+                {
+                  "id": "b-kolom",
+                  "label": "Heterozigot (B dari baris)",
+                  "description": "Alel B dari baris bertemu alel b dari kolom. Alel B dominan sehingga bunganya ungu.",
+                  "hotspot": {
+                    "x": 80.63,
+                    "y": 42.63
+                  }
+                },
+                {
+                  "id": "b-baris",
+                  "label": "Heterozigot (B dari kolom)",
+                  "description": "Alel b dari baris bertemu alel B dari kolom. Genotipenya tetap Bb dan bunganya ungu.",
+                  "hotspot": {
+                    "x": 47.88,
+                    "y": 78.25
+                  }
+                },
+                {
+                  "id": "bb-resesif",
+                  "label": "Homozigot resesif (bb)",
+                  "description": "Keturunan mendapat alel b dari kedua induk. Bunganya putih.",
+                  "hotspot": {
+                    "x": 80.63,
+                    "y": 78.25
+                  }
+                }
+              ]
             },
             {
               "type": "highlight",
@@ -583,10 +634,10 @@
               "type": "interactiveImage",
               "src": "/images/diagrams/sistem-organ/anatomi-jantung.svg",
               "width": 800,
-              "height": 800,
+              "height": 620,
               "title": "Anatomi Jantung Manusia",
-              "caption": "Struktur internal jantung manusia",
-              "description": "Jantung memompa darah ke seluruh tubuh. Klik area penanda untuk mengenali ruang dan katupnya.",
+              "caption": "Pada tampak depan ini, sisi kanan tubuh berada di kiri gambar. Biru menandai darah yang lebih miskin oksigen dan merah menandai darah yang lebih kaya oksigen.",
+              "description": "Ikuti panah untuk memahami arah aliran darah di empat ruang jantung.",
               "parts": [
                 {
                   "id": "atrium-kanan",
@@ -594,8 +645,8 @@
                   "description": "Ruang jantung kanan atas yang menerima aliran darah kotor (rendah oksigen) dari seluruh tubuh via vena kava.",
                   "function": "Mengumpulkan darah kotor lalu memompanya ke bilik kanan melewati katup trikuspidalis.",
                   "hotspot": {
-                    "x": 30,
-                    "y": 40
+                    "x": 17.13,
+                    "y": 40.81
                   }
                 },
                 {
@@ -604,8 +655,8 @@
                   "description": "Ruang berdinding tebal di kanan bawah yang memompa darah kotor ke paru-paru.",
                   "function": "Memompa darah miskin oksigen ke paru-paru untuk pertukaran gas (sirkulasi pulmonal).",
                   "hotspot": {
-                    "x": 40,
-                    "y": 70
+                    "x": 20.13,
+                    "y": 69.52
                   }
                 },
                 {
@@ -614,8 +665,8 @@
                   "description": "Ruang kiri atas yang menerima aliran darah bersih (kaya oksigen) dari paru-paru.",
                   "function": "Mengalirkan darah beroksigen dari paru-paru menuju ventrikel kiri.",
                   "hotspot": {
-                    "x": 70,
-                    "y": 45
+                    "x": 84.25,
+                    "y": 41.29
                   }
                 },
                 {
@@ -624,8 +675,8 @@
                   "description": "Ruang bawah bagian kiri dengan otot dinding yang paling tebal dan kuat.",
                   "function": "Memompa darah bersih (kaya oksigen) ke seluruh tubuh via aorta (sirkulasi sistemik).",
                   "hotspot": {
-                    "x": 65,
-                    "y": 75
+                    "x": 83.5,
+                    "y": 70.16
                   }
                 },
                 {
@@ -634,11 +685,12 @@
                   "description": "Pembuluh nadi (arteri) utama dan terbesar pada tubuh manusia.",
                   "function": "Mendistribusikan darah beroksigen tinggi dari jantung ke semua sel, jaringan, dan organ tubuh.",
                   "hotspot": {
-                    "x": 55,
-                    "y": 15
+                    "x": 44.25,
+                    "y": 13.39
                   }
                 }
-              ]
+              ],
+              "alt": "Penampang jantung dari depan. Dua ruang di kiri gambar berwarna biru dan dua ruang di kanan berwarna merah. Aorta melengkung di atas jantung."
             },
             {
               "type": "paragraph",
@@ -667,10 +719,10 @@
               "type": "interactiveImage",
               "src": "/images/diagrams/sistem-organ/sistem-pernapasan.svg",
               "width": 800,
-              "height": 800,
+              "height": 620,
               "title": "Sistem Pernapasan Manusia",
-              "caption": "Struktur paru-paru dan saluran udara",
-              "description": "Sistem ini memfasilitasi masuknya oksigen dan pengeluaran karbon dioksida.",
+              "caption": "Pertukaran oksigen dan karbon dioksida terjadi antara alveolus dan kapiler di sekitarnya.",
+              "description": "Ikuti jalur udara dari trakea ke bronkus. Lihat pembesaran alveolus di sisi kanan.",
               "parts": [
                 {
                   "id": "trakea",
@@ -678,8 +730,8 @@
                   "description": "Tabung utama yang diperkuat oleh cincin-cincin tulang rawan berbentuk huruf C.",
                   "function": "Menjadi saluran utama udara pernapasan menuju bronkus paru-paru.",
                   "hotspot": {
-                    "x": 50,
-                    "y": 30
+                    "x": 66.75,
+                    "y": 11.45
                   }
                 },
                 {
@@ -688,8 +740,8 @@
                   "description": "Organ pernapasan sebelah kanan, terdiri dari 3 lobus (superior, medialis, inferior). Lebih besar dibanding paru kiri.",
                   "function": "Menampung volume udara besar untuk menukar oksigen dan CO2.",
                   "hotspot": {
-                    "x": 30,
-                    "y": 60
+                    "x": 16,
+                    "y": 49.68
                   }
                 },
                 {
@@ -698,8 +750,8 @@
                   "description": "Terdiri dari 2 lobus saja (karena berbagai ruang dengan letak jantung di dada sebelah kiri).",
                   "function": "Mendukung proses pertukaran gas dalam pernapasan.",
                   "hotspot": {
-                    "x": 70,
-                    "y": 60
+                    "x": 83.63,
+                    "y": 80.97
                   }
                 },
                 {
@@ -708,8 +760,8 @@
                   "description": "Kantung-kantung kecil di ujung saluran bronkiolus, dibalut oleh jaringan kapiler pembuluh darah.",
                   "function": "Situs atau tempat terjadinya difusi (pertukaran) oksigen masuk ke darah dan CO2 keluar dari darah.",
                   "hotspot": {
-                    "x": 80,
-                    "y": 75
+                    "x": 92.63,
+                    "y": 60.81
                   }
                 },
                 {
@@ -718,11 +770,12 @@
                   "description": "Otot berbentuk kubah di bawah rongga dada yang memisahkan area dada dengan rongga perut.",
                   "function": "Berkontraksi (turun) saat menarik napas agar paru-paru mengembang, berelaksasi (naik) saat menghembuskan napas.",
                   "hotspot": {
-                    "x": 50,
-                    "y": 90
+                    "x": 47,
+                    "y": 94.52
                   }
                 }
-              ]
+              ],
+              "alt": "Trakea bercabang ke kedua paru-paru. Sebuah garis menghubungkan ujung cabang paru dengan pembesaran alveolus dan kapiler. Diafragma melengkung di bawah paru."
             },
             {
               "type": "paragraph",
@@ -755,79 +808,80 @@
               "type": "interactiveImage",
               "src": "/images/diagrams/reproduksi/fertilisasi.svg",
               "width": 960,
-              "height": 600,
+              "height": 670,
               "variant": "process",
               "title": "Proses Perjalanan & Fertilisasi Manusia",
-              "caption": "Diagram proses biologis fertilisasi sel telur oleh sperma hingga implantasi",
-              "description": "Perjalanan sel gamet dari ovulasi di ovarium, pembuahan di tuba fallopi, pembelahan zigot, hingga tertanam di dinding rahim (uterus).",
+              "caption": "Pembuahan umumnya terjadi di tuba fallopi. Embrio membelah selama perjalanan ke rahim dan menempel pada dinding rahim sebagai blastokista.",
+              "description": "Ikuti jalur sel telur pada skema organ, lalu amati tiga pembesaran di bawahnya.",
               "parts": [
                 {
                   "id": "ovarium",
-                  "label": "1. Ovarium (Ovulasi)",
+                  "label": "Ovarium (Ovulasi)",
                   "description": "Kelenjar reproduksi wanita yang mematangkan folikel dan melepaskan sel telur matang (oosit sekunder).",
                   "process": "Lonjakan hormon LH memicu pecahnya folikel de Graaf dan pelepasan ovum ke rongga pelvis.",
                   "function": "Menghasilkan sel gamet betina (ovum haploid/n) dan hormon reproduksi (estrogen & progesteron).",
                   "hotspot": {
-                    "x": 18.5,
-                    "y": 72
+                    "x": 9.69,
+                    "y": 45.22
                   }
                 },
                 {
                   "id": "fimbriae",
-                  "label": "2. Fimbriae & Infundibulum",
+                  "label": "Fimbriae & Infundibulum",
                   "description": "Rumbai-rumbai mirip jari di ujung corong saluran tuba yang aktif bergerak saat ovulasi.",
                   "process": "Menyapu permukaan ovarium dan menangkap ovum yang baru dilepaskan menuju infundibulum.",
                   "function": "Mengarahkan sel telur masuk ke dalam saluran tuba fallopi agar tidak hilang di rongga abdomen.",
                   "hotspot": {
-                    "x": 18,
-                    "y": 47
+                    "x": 18.44,
+                    "y": 16.57
                   }
                 },
                 {
                   "id": "tuba-fallopi",
-                  "label": "3. Tuba Fallopi (Oviduk)",
+                  "label": "Tuba Fallopi (Oviduk)",
                   "description": "Saluran berotot yang dilengkapi silia untuk mendorong ovum menuju rahim.",
                   "process": "Menjadi tempat bertemunya jutaan sperma yang berenang ke atas dengan sel telur yang turun.",
                   "function": "Saluran transit gamet dan lingkungan biologis pendukung proses fertilisasi.",
                   "hotspot": {
-                    "x": 36,
-                    "y": 26
+                    "x": 36.04,
+                    "y": 13.28
                   }
                 },
                 {
                   "id": "fertilisasi",
-                  "label": "4. Fertilisasi (Pembuahan)",
+                  "label": "Fertilisasi (Pembuahan)",
                   "description": "Peristiwa bertemunya sel sperma dan ovum (umumnya terjadi di 1/3 bagian ampula tuba fallopi).",
                   "process": "Reaksi akrosom melarutkan zona pelusida ovum; satu sperma menyatukan materi genetiknya (n) dengan ovum (n).",
                   "function": "Peleburan genom haploid menghasilkan sel zigot diploid (2n) dengan 46 kromosom baru.",
                   "hotspot": {
-                    "x": 54,
-                    "y": 26
+                    "x": 18.75,
+                    "y": 87.16
                   }
                 },
                 {
                   "id": "morula",
-                  "label": "5. Pembelahan Zigot (Morula)",
+                  "label": "Pembelahan Zigot (Morula)",
                   "description": "Tahap pembelahan mitosis awal (cleavage) zigot menjadi bola sel padat menyerupai buah arbei.",
                   "process": "Zigot membelah berulang (2, 4, 8, hingga 16+ sel) tanpa bertambah ukuran total sambil menggelinding di tuba.",
                   "function": "Menggandakan jumlah sel calon embrio sebelum tiba di rongga rahim.",
                   "hotspot": {
-                    "x": 71,
-                    "y": 38
+                    "x": 50,
+                    "y": 87.16
                   }
                 },
                 {
                   "id": "implantasi",
-                  "label": "6. Implantasi di Uterus",
+                  "label": "Implantasi di Uterus",
                   "description": "Tahap di mana embrio berkembang menjadi blastokista berongga dan menempel pada dinding rahim.",
                   "process": "Lapisan trofoblas blastokista mensekresikan enzim untuk membenamkan diri ke dalam lapisan endometrium rahim.",
                   "function": "Memulai kehamilan, tempat embrio memperoleh nutrisi darah ibu dan kelak berkembang menjadi plasenta.",
                   "hotspot": {
-                    "x": 80,
-                    "y": 65
+                    "x": 81.25,
+                    "y": 87.16
                   }
                 }
-              ]
+              ],
+              "alt": "Skema menampilkan ovarium, tuba, dan rahim di bagian atas. Tiga lingkaran di bawah menunjukkan pertemuan sperma dan ovum, morula, serta implantasi."
             },
             {
               "type": "list",
@@ -855,58 +909,59 @@
             {
               "type": "interactiveImage",
               "src": "/images/diagrams/ekologi/piramida-makanan.svg",
-              "width": 960,
-              "height": 620,
+              "width": 800,
+              "height": 580,
               "variant": "layered",
               "title": "Piramida Makanan & Gizi Seimbang",
-              "caption": "Diagram berjenjang proporsi makronutrien dan mikronutrien tubuh",
-              "description": "Panduan porsi dan jenis makanan harian manusia. Semakin ke bawah lapisannya, semakin besar porsi yang dibutuhkan tubuh.",
+              "caption": "Lapisan paling atas berisi gula, garam, dan minyak yang konsumsinya perlu dibatasi. Luas lapisan bersifat skematis.",
+              "description": "Kenali contoh dan peran kelompok pangan pada setiap lapisan.",
               "parts": [
                 {
                   "id": "tier-dasar",
-                  "label": "1. Lapisan Dasar: Makanan Pokok (Karbohidrat)",
-                  "description": "Lapisan paling bawah dan paling luas pada piramida makanan, membutuhkan 3–4 porsi per hari.",
+                  "label": "Makanan pokok",
+                  "description": "Lapisan dasar berisi aneka makanan pokok yang umumnya kaya karbohidrat.",
                   "examples": "Nasi, jagung, roti gandum, singkong, ubi, kentang, dan oatmeal.",
                   "function": "Sebagai sumber energi utama (glukosa) bagi respirasi seluler, fungsi otak, dan aktivitas fisik.",
                   "hotspot": {
-                    "x": 50,
-                    "y": 86
+                    "x": 87.88,
+                    "y": 82.07
                   }
                 },
                 {
                   "id": "tier-sayur-buah",
-                  "label": "2. Lapisan Kedua: Sayur & Buah (Serat, Vitamin, Mineral)",
-                  "description": "Lapisan penyedia zat pengatur tubuh, dianjurkan 3–4 porsi sayur dan 2–3 porsi buah per hari.",
+                  "label": "Sayur dan buah",
+                  "description": "Kelompok ini menyumbang serat serta berbagai vitamin dan mineral.",
                   "examples": "Bayam, brokoli, wortel, pisang, jeruk, pepaya, dan apel.",
                   "function": "Menyediakan vitamin (A, C, E), antioksidan, dan serat alami untuk imunitas dan kesehatan saluran pencernaan.",
                   "hotspot": {
-                    "x": 50,
-                    "y": 63
+                    "x": 10.13,
+                    "y": 61.55
                   }
                 },
                 {
                   "id": "tier-protein",
-                  "label": "3. Lapisan Ketiga: Lauk-Pauk (Protein Hewani & Nabati)",
-                  "description": "Lapisan zat pembangun tubuh, dianjurkan 2–4 porsi per hari secara bergantian.",
+                  "label": "Lauk-pauk",
+                  "description": "Lauk hewani dan nabati menyumbang protein serta zat gizi lain dengan jumlah yang berbeda-beda.",
                   "examples": "Ikan, telur, daging ayam/sapi, tempe, tahu, susu, dan kacang-kacangan.",
                   "function": "Zat pembangun untuk regenerasi sel, pembentukan antibodi, enzim, dan sintesis hemoglobin darah (zat besi Fe).",
                   "hotspot": {
-                    "x": 50,
-                    "y": 42
+                    "x": 78.5,
+                    "y": 38.28
                   }
                 },
                 {
                   "id": "tier-puncak",
-                  "label": "4. Lapisan Puncak: Gula, Garam & Minyak (Dibatasi)",
-                  "description": "Lapisan teratas dengan volume terkecil, menunjukkan kebutuhan konsumsi yang paling sedikit.",
-                  "examples": "Gula pasir/sirup (< 4 sdm/hari), garam dapur (< 1 sdt/hari), minyak/lemak (< 5 sdm/hari).",
+                  "label": "Gula, garam, dan minyak",
+                  "description": "Lapisan teratas mengelompokkan gula, garam, dan minyak yang konsumsinya perlu dibatasi.",
+                  "examples": "Gula pasir, sirup, garam dapur, dan minyak goreng.",
                   "function": "Pelengkap energi dan cita rasa, namun harus dibatasi guna mencegah risiko obesitas, diabetes, dan hipertensi.",
                   "hotspot": {
-                    "x": 50,
-                    "y": 24
+                    "x": 25.38,
+                    "y": 18.45
                   }
                 }
-              ]
+              ],
+              "alt": "Empat lapisan dari bawah ke atas menampilkan makanan pokok, sayur dan buah, lauk sumber protein, serta gula, garam dan minyak."
             },
             {
               "type": "list",
@@ -952,6 +1007,55 @@
                 "**Ekosistem** — Komunitas biotik + lingkungan abiotik (cahaya, air, tanah, suhu) yang berinteraksi sebagai satu kesatuan fungsional.",
                 "**Bioma** — Kumpulan ekosistem dengan karakteristik iklim dan vegetasi serupa (hutan hujan tropis, sabana, tundra, dll.).",
                 "**Biosfer** — Seluruh zona di Bumi tempat kehidupan dapat ditemukan."
+              ]
+            },
+            {
+              "type": "interactiveImage",
+              "src": "/images/diagrams/ekologi/ekosistem-kolam.svg",
+              "width": 880,
+              "height": 610,
+              "variant": "process",
+              "title": "Dari seekor katak ke ekosistem kolam",
+              "caption": "Komunitas meliputi semua makhluk hidup yang berinteraksi. Ekosistem juga mencakup lingkungan fisiknya.",
+              "description": "Ikuti panah untuk melihat apa saja yang ditambahkan pada setiap tingkat organisasi.",
+              "alt": "Empat panel menunjukkan satu katak, beberapa katak, katak bersama ikan dan tumbuhan, lalu semua organisme beserta air, tanah, dan cahaya.",
+              "parts": [
+                {
+                  "id": "individu",
+                  "label": "Individu",
+                  "description": "Satu katak merupakan satu individu.",
+                  "hotspot": {
+                    "x": 41.25,
+                    "y": 34.1
+                  }
+                },
+                {
+                  "id": "populasi",
+                  "label": "Populasi",
+                  "description": "Beberapa katak dari spesies yang sama hidup di kolam yang sama.",
+                  "hotspot": {
+                    "x": 89.77,
+                    "y": 34.1
+                  }
+                },
+                {
+                  "id": "komunitas",
+                  "label": "Komunitas",
+                  "description": "Populasi katak, ikan, tumbuhan, dan organisme lain hidup serta berinteraksi di kolam.",
+                  "hotspot": {
+                    "x": 89.77,
+                    "y": 82.13
+                  }
+                },
+                {
+                  "id": "ekosistem",
+                  "label": "Ekosistem",
+                  "description": "Komunitas berinteraksi dengan air, tanah, cahaya matahari, dan unsur tak hidup lain.",
+                  "hotspot": {
+                    "x": 41.25,
+                    "y": 82.13
+                  }
+                }
               ]
             },
             {
@@ -1090,6 +1194,46 @@
                 "**Kecap** — Fermentasi kedelai oleh jamur *Aspergillus wentii* atau *Aspergillus oryzae* dalam larutan garam pekat.",
                 "**Nata de Coco** — Pembentukan pelikel selulosa ekstraseluler oleh bakteri *Acetobacter xylinum* pada air kelapa bergula.",
                 "**Antibiotik Penisilin** — Biosintesis senyawa antimikroba metabolit sekunder oleh kapang *Penicillium notatum* dan *Penicillium chrysogenum*."
+              ]
+            },
+            {
+              "type": "interactiveImage",
+              "src": "/images/diagrams/bioteknologi/fermentasi-tempe.svg",
+              "width": 900,
+              "height": 490,
+              "variant": "process",
+              "title": "Bagaimana kedelai menyatu menjadi tempe",
+              "caption": "Jaringan hifa jamur disebut miselium. Jaringan inilah yang merekatkan biji kedelai pada tempe.",
+              "description": "Amati perubahan dari biji terpisah menjadi potongan yang padat.",
+              "alt": "Tiga bidang pembesaran memperlihatkan biji kedelai, jaringan benang putih di sekitar biji, dan potongan tempe yang masih memperlihatkan bentuk bijinya.",
+              "parts": [
+                {
+                  "id": "kedelai",
+                  "label": "Biji kedelai",
+                  "description": "Pada awal ilustrasi, biji terlihat terpisah dan batas tiap biji masih jelas.",
+                  "hotspot": {
+                    "x": 16.67,
+                    "y": 71.63
+                  }
+                },
+                {
+                  "id": "miselium",
+                  "label": "Jaringan miselium",
+                  "process": "Hifa jamur tumbuh di permukaan dan ruang antarbiji, membentuk jaringan putih.",
+                  "hotspot": {
+                    "x": 50,
+                    "y": 71.63
+                  }
+                },
+                {
+                  "id": "tempe",
+                  "label": "Tempe",
+                  "description": "Jaringan miselium menahan biji bersama sehingga tempe dapat dipotong.",
+                  "hotspot": {
+                    "x": 83.33,
+                    "y": 71.63
+                  }
+                }
               ]
             },
             {
@@ -1233,6 +1377,64 @@
               ]
             },
             {
+              "type": "interactiveImage",
+              "src": "/images/diagrams/regulasi/struktur-neuron.svg",
+              "width": 890,
+              "height": 500,
+              "variant": "anatomy",
+              "title": "Struktur neuron bermielin",
+              "caption": "Panah ungu mengikuti arah penghantaran impuls di sepanjang akson.",
+              "description": "Telusuri neuron dari percabangan penerima sinyal hingga ujung akson.",
+              "alt": "Dendrit mengelilingi badan sel di kiri. Akson memanjang ke kanan dengan segmen mielin dan berakhir pada beberapa terminal.",
+              "parts": [
+                {
+                  "id": "dendrit",
+                  "label": "Dendrit",
+                  "function": "Menerima sinyal dan meneruskannya ke badan sel.",
+                  "hotspot": {
+                    "x": 11.35,
+                    "y": 13.2
+                  }
+                },
+                {
+                  "id": "badan-sel",
+                  "label": "Badan sel",
+                  "description": "Bagian yang mengandung inti serta organel yang menunjang kegiatan sel.",
+                  "hotspot": {
+                    "x": 32.36,
+                    "y": 26.6
+                  }
+                },
+                {
+                  "id": "akson",
+                  "label": "Akson",
+                  "function": "Menghantarkan impuls dari badan sel menuju terminal akson.",
+                  "hotspot": {
+                    "x": 41.8,
+                    "y": 77.2
+                  }
+                },
+                {
+                  "id": "mielin",
+                  "label": "Selubung mielin",
+                  "function": "Menyekat akson dan mempercepat penghantaran impuls di antara nodus Ranvier.",
+                  "hotspot": {
+                    "x": 57.19,
+                    "y": 25.6
+                  }
+                },
+                {
+                  "id": "terminal-akson",
+                  "label": "Terminal akson",
+                  "function": "Pada sinapsis kimiawi, terminal melepaskan neurotransmiter untuk meneruskan sinyal.",
+                  "hotspot": {
+                    "x": 85.62,
+                    "y": 77.6
+                  }
+                }
+              ]
+            },
+            {
               "type": "heading",
               "text": "Mekanisme Potensial Aksi"
             },
@@ -1369,6 +1571,46 @@
               "text": "Mekanisme Inflamasi (Peradangan Akut)"
             },
             {
+              "type": "interactiveImage",
+              "src": "/images/diagrams/imunologi/pertahanan-bawaan.svg",
+              "width": 900,
+              "height": 540,
+              "variant": "process",
+              "title": "Pertahanan tubuh ketika kulit terluka",
+              "caption": "Kulit utuh menghalangi masuknya mikroorganisme. Setelah terjadi luka, sel imun bawaan dapat mendatangi jaringan dan menelan partikel asing.",
+              "description": "Bandingkan penghalang fisik kulit dengan respons sel imun di jaringan.",
+              "alt": "Tiga potongan kulit menunjukkan permukaan utuh, celah luka yang dapat dilalui partikel, dan satu sel imun mengelilingi partikel di jaringan.",
+              "parts": [
+                {
+                  "id": "kulit-utuh",
+                  "label": "Penghalang kulit",
+                  "function": "Lapisan kulit yang utuh menghambat masuknya mikroorganisme ke jaringan.",
+                  "hotspot": {
+                    "x": 16.67,
+                    "y": 70
+                  }
+                },
+                {
+                  "id": "luka",
+                  "label": "Luka dan peradangan",
+                  "process": "Kerusakan kulit membuka jalan masuk bagi partikel asing. Sinyal dari jaringan membantu mengarahkan sel imun ke area luka.",
+                  "hotspot": {
+                    "x": 50,
+                    "y": 70
+                  }
+                },
+                {
+                  "id": "fagositosis",
+                  "label": "Fagositosis",
+                  "process": "Sel fagosit mengelilingi, menelan, lalu mencerna partikel asing.",
+                  "hotspot": {
+                    "x": 83.33,
+                    "y": 70
+                  }
+                }
+              ]
+            },
+            {
               "type": "keypoint",
               "text": "Kerusakan jaringan memicu sel mast melepaskan **histamin** dan bradikinin. Hal ini menyebabkan vasodilatasi kapiler darah (kemerahan/rubor & panas/kalor) serta peningkatan permeabilitas kapiler sehingga plasma merembes ke jaringan (bengkak/tumor) dan menekan ujung saraf sensorik (nyeri/dolor)."
             }
@@ -1494,6 +1736,46 @@
             {
               "type": "keypoint",
               "text": "Model *Induced Fit* (Koshland, 1958) membuktikan bahwa sisi aktif enzim bersifat fleksibel; pengikatan substrat akan menginduksi perubahan konformasi spasial sisi aktif enzim sehingga substrat terikat secara pas dan membentuk kompleks Enzim-Substrat (ES)."
+            },
+            {
+              "type": "interactiveImage",
+              "src": "/images/diagrams/metabolisme/kecocokan-enzim.svg",
+              "width": 900,
+              "height": 490,
+              "variant": "process",
+              "title": "Cara enzim mengikat substrat",
+              "caption": "Skema ini memakai reaksi pemecahan sebagai contoh model kecocokan terinduksi.",
+              "description": "Perhatikan perubahan bentuk sisi aktif dari saat substrat mendekat hingga produk terlepas.",
+              "alt": "Satu substrat mendekat, sisi aktif enzim menyesuaikan bentuk saat mengikatnya, dan dua produk terpisah setelah reaksi.",
+              "parts": [
+                {
+                  "id": "substrat-mendekat",
+                  "label": "Substrat mendekat",
+                  "description": "Sisi aktif merupakan bagian enzim yang berinteraksi dengan substrat.",
+                  "hotspot": {
+                    "x": 16.67,
+                    "y": 73.06
+                  }
+                },
+                {
+                  "id": "kompleks",
+                  "label": "Kompleks enzim–substrat",
+                  "process": "Interaksi dengan substrat dapat mengubah bentuk sisi aktif sehingga reaksi lebih mudah berlangsung.",
+                  "hotspot": {
+                    "x": 50,
+                    "y": 73.06
+                  }
+                },
+                {
+                  "id": "produk-lepas",
+                  "label": "Produk terlepas",
+                  "process": "Produk meninggalkan sisi aktif. Enzim dapat mengikat substrat lagi.",
+                  "hotspot": {
+                    "x": 83.33,
+                    "y": 73.06
+                  }
+                }
+              ]
             }
           ]
         },

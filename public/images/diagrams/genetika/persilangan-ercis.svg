@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="570" viewBox="0 0 800 570">
+  <title>Persilangan monohibrid pada ercis</title>
+  <desc>Kotak Punnett menampilkan empat kemungkinan hasil persilangan Bb dengan Bb: BB, dua Bb, dan bb.</desc>
+  <defs>
+    <radialGradient id="paper" cx="42%" cy="38%" r="76%">
+      <stop stop-color="#f9fbf8" />
+      <stop offset="1" stop-color="#e7ece5" />
+    </radialGradient>
+    <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <circle cx="1" cy="1" r="1" fill="#4c7765" opacity=".13" />
+    </pattern>
+    <linearGradient id="purple" x1="0" x2="1" y1="0" y2="1" gradientUnits="objectBoundingBox">
+      <stop stop-color="#efe2fa" />
+      <stop offset="1" stop-color="#c8a9df" />
+    </linearGradient>
+    <linearGradient id="white" x1="0" x2="1" y1="0" y2="1" gradientUnits="objectBoundingBox">
+      <stop stop-color="#fffdec" />
+      <stop offset="1" stop-color="#e0e8d0" />
+    </linearGradient>
+    <g id="flower">
+      <path d="M0 43q-11-19-1-43m-2 28q-24-2-25-19 20-5 25 19m0 4q16-19 27-11-5 17-27 11" fill="#98b67f" stroke="#5e8561" stroke-width="2.4" stroke-linecap="round" />
+      <path d="M0-7q-24-5-21-20 4-12 16-11 4-18 16-13 8 4 12 15 12-2 15 10 3 14-15 17Q18 5 0-7Z" stroke-width="2.5" />
+      <circle cx="8" cy="-17" r="4.5" fill="#f4c579" stroke="none" />
+    </g>
+  </defs>
+  <path fill="url(#paper)" d="M0 0h800v570H0Z" />
+  <path fill="url(#grid)" d="M0 0h800v570H0Z" />
+  <g font-family="system-ui, sans-serif" text-anchor="middle" fill="#255447">
+    <text x="432" y="49" font-size="22" font-weight="650">Gamet induk 1</text>
+    <text transform="translate(64 320) rotate(-90)" font-size="22" font-weight="650">Gamet induk 2</text>
+    <g font-size="29" font-weight="750">
+      <text x="300" y="108">B</text>
+      <text x="562" y="108">b</text>
+      <text x="132" y="236">B</text>
+      <text x="132" y="439">b</text>
+    </g>
+  </g>
+  <g transform="translate(176 130)">
+    <rect width="248" height="188" rx="26" fill="#f5ecf8" stroke="#c5abd6" stroke-width="2.5" />
+    <use href="#flower" x="121" y="82" fill="url(#purple)" stroke="#8b659c" />
+    <text x="124" y="158" fill="#384559" text-anchor="middle" font-family="system-ui, sans-serif" font-weight="740" font-size="28">BB</text>
+    <path d="M174 126h22l11-13" fill="none" stroke="#496e60" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+  </g>
+  <g transform="translate(438 130)">
+    <rect width="248" height="188" rx="26" fill="#f5ecf8" stroke="#c5abd6" stroke-width="2.5" />
+    <use href="#flower" x="121" y="82" fill="url(#purple)" stroke="#8b659c" />
+    <text x="124" y="158" fill="#384559" text-anchor="middle" font-family="system-ui, sans-serif" font-weight="740" font-size="28">Bb</text>
+    <path d="M174 126h22l11-13" fill="none" stroke="#496e60" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+  </g>
+  <g transform="translate(176 333)">
+    <rect width="248" height="188" rx="26" fill="#f5ecf8" stroke="#c5abd6" stroke-width="2.5" />
+    <use href="#flower" x="121" y="82" fill="url(#purple)" stroke="#8b659c" />
+    <text x="124" y="158" fill="#384559" text-anchor="middle" font-family="system-ui, sans-serif" font-weight="740" font-size="28">Bb</text>
+    <path d="M174 126h22l11-13" fill="none" stroke="#496e60" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+  </g>
+  <g transform="translate(438 333)">
+    <rect width="248" height="188" rx="26" fill="#f1f5e5" stroke="#abc09e" stroke-width="2.5" />
+    <use href="#flower" x="121" y="82" fill="url(#white)" stroke="#879674" />
+    <text x="124" y="158" fill="#384559" text-anchor="middle" font-family="system-ui, sans-serif" font-weight="740" font-size="28">bb</text>
+    <path d="M174 126h22l11-13" fill="none" stroke="#496e60" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+  </g>
+</svg>

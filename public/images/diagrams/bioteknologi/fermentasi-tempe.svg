@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="490" viewBox="0 0 900 490">
+  <title>Bagaimana kedelai menyatu menjadi tempe</title>
+  <desc>Biji kedelai terlihat terpisah di awal. Jaringan hifa putih tumbuh di antaranya dan menyatukan biji dalam potongan tempe.</desc>
+  <defs>
+    <radialGradient id="paper" cx="42%" cy="38%" r="76%">
+      <stop stop-color="#f9fbf8" />
+      <stop offset="1" stop-color="#e9e9db" />
+    </radialGradient>
+    <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <circle cx="1" cy="1" r="1" fill="#4c7765" opacity=".13" />
+    </pattern>
+    <linearGradient id="bean" x1="0" x2="1" y1="0" y2="1" gradientUnits="objectBoundingBox">
+      <stop stop-color="#fae0a2" />
+      <stop offset="1" stop-color="#c89557" />
+    </linearGradient>
+    <linearGradient id="block" x1="0" x2="1" y1="0" y2="1" gradientUnits="objectBoundingBox">
+      <stop stop-color="#fcf1d9" />
+      <stop offset="1" stop-color="#d3af83" />
+    </linearGradient>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto" viewBox="0 0 8 8">
+      <path d="M1 1 7 4 1 7" fill="none" stroke="#4f7769" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+    </marker>
+    <g id="soy">
+      <path d="M-21 6c-8-17 10-31 25-26C21-17 26-3 16 11 4 26-15 22-21 6Z" fill="url(#bean)" stroke="#9b713f" stroke-width="2.5" />
+      <path d="M0-6q6 1 9 6" stroke="#775336" stroke-width="2.5" stroke-linecap="round" fill="none" />
+    </g>
+  </defs>
+  <path fill="url(#paper)" d="M0 0h900v490H0Z" />
+  <path fill="url(#grid)" d="M0 0h900v490H0Z" />
+  <path d="M67 191Q450 114 833 191L822 280Q450 346 78 280Z" fill="#dcebe0" opacity=".7" />
+  <g stroke="#638778" stroke-width="3.5" stroke-dasharray="4 7" fill="none">
+    <path d="M265 227h68" marker-end="url(#arrow)" />
+    <path d="M565 227h68" marker-end="url(#arrow)" />
+  </g>
+  <g fill="#fffdf4" stroke="#a9bfab" stroke-width="3">
+    <circle cx="150" cy="227" r="96" />
+    <circle cx="450" cy="227" r="96" />
+    <circle cx="750" cy="227" r="96" />
+  </g>
+  <use href="#soy" x="122" y="204" transform="rotate(-22 122 204)" />
+  <use href="#soy" x="165" y="202" transform="rotate(36 165 202)" />
+  <use href="#soy" x="179" y="246" transform="rotate(60 179 246)" />
+  <use href="#soy" x="126" y="252" transform="rotate(20 126 252)" />
+  <use href="#soy" x="149" y="226" transform="rotate(90 149 226)" />
+  <use href="#soy" x="421" y="195" transform="rotate(-22 421 195)" />
+  <use href="#soy" x="464" y="199" transform="rotate(36 464 199)" />
+  <use href="#soy" x="483" y="242" transform="rotate(60 483 242)" />
+  <use href="#soy" x="417" y="254" transform="rotate(20 417 254)" />
+  <use href="#soy" x="447" y="225" transform="rotate(90 447 225)" />
+  <g fill="none" stroke-linecap="round">
+    <path d="M390 230q31-28 55-10 38 27 76 5m-110-40q1 36 26 54 29 20 83 16m-33-79q-31 27-17 64 9 24 27 33m-53-112q10 26 0 40m-13 51q-7 16-39 17" stroke="#b5aa88" stroke-width="6" />
+    <path d="M390 230q31-28 55-10 38 27 76 5m-110-40q1 36 26 54 29 20 83 16m-33-79q-31 27-17 64 9 24 27 33m-53-112q10 26 0 40m-13 51q-7 16-39 17" stroke="#fffdf1" stroke-width="3.6" />
+  </g>
+  <path d="M677 219l71-45 74 29-9 54-72 43-66-31Z" fill="url(#block)" stroke="#a7805d" stroke-width="3" stroke-linejoin="round" />
+  <path d="M677 219l65 28 80-44-74-29Z" fill="#f7efd7" stroke="#a7805d" stroke-width="2.5" stroke-linejoin="round" />
+  <path d="M742 247l-1 53" stroke="#a7805d" stroke-width="2.5" />
+  <g fill="#dbbb87" stroke="#ae8c60" stroke-width="1.7">
+    <ellipse cx="731" cy="207" rx="13" ry="7" />
+    <ellipse cx="754" cy="195" rx="11" ry="6" />
+    <ellipse cx="768" cy="222" rx="12" ry="7" />
+    <ellipse cx="785" cy="205" rx="10" ry="6" />
+    <ellipse cx="709" cy="246" rx="11" ry="8" />
+    <ellipse cx="783" cy="254" rx="12" ry="7" transform="rotate(-25 783 254)" />
+  </g>
+  <path d="M150 323v28" fill="none" stroke="#496e60" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+  <path d="M450 323v28" fill="none" stroke="#496e60" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+  <path d="M750 323v28" fill="none" stroke="#496e60" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+</svg>

@@ -81,6 +81,28 @@ test('legenda diagram merupakan kontrol keyboard', async ({ page }) => {
   await expect(page.locator('.info-panel-title')).toHaveText('Fosfolipid Bilayer')
 })
 
+test('ilustrasi delapan modul terbaca dan penandanya dapat dipilih di ponsel', async ({ page }) => {
+  await page.setViewportSize({ width: 320, height: 844 })
+  for (const module of materials.modules) {
+    for (const subtopic of module.subtopics) {
+      const diagram = subtopic.content.find(block => block.type === 'interactiveImage')
+      if (!diagram) continue
+      await page.goto(`/#/materi/${module.id}?topik=${subtopic.id}`)
+      const figure = page.getByRole('region', { name: diagram.title })
+      const image = figure.getByRole('img', { name: diagram.alt })
+      await image.scrollIntoViewIfNeeded()
+      await expect.poll(() => image.evaluate(el => [el.naturalWidth, el.naturalHeight])).toEqual([diagram.width, diagram.height])
+      for (const part of diagram.parts) {
+        const marker = figure.getByRole('button', { name: `Pilih ${part.label}`, exact: true })
+        await marker.click()
+        await expect(figure.getByRole('heading', { name: part.label, exact: true })).toBeVisible()
+        await expect(marker).toHaveAttribute('aria-pressed', 'true')
+      }
+      expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBe(320)
+    }
+  }
+})
+
 test('dialog ponsel menjaga fokus dan kembali ke pemicunya', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 })
   await page.goto('/#/materi/mod-1')
@@ -119,6 +141,10 @@ test('PWA menjaga kuis offline dan memberi pemulihan atlas yang jelas', async ({
   await expect(page.locator('iframe')).toHaveCount(0)
   await page.getByRole('link', { name: 'Buka materi biologi' }).click()
   await expect(page.getByRole('heading', { name: 'Katalog Materi' })).toBeVisible()
+  await page.goto('/#/materi/mod-4')
+  const offlineDiagram = page.locator('.diagram-image')
+  await offlineDiagram.scrollIntoViewIfNeeded()
+  await expect.poll(() => offlineDiagram.evaluate(el => el.naturalWidth)).toBeGreaterThan(0)
   await page.goto('/#/kuis?quizId=quiz-sel')
   await expect(page.getByRole('radio')).toHaveCount(4)
 })

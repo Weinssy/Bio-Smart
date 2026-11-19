@@ -1,147 +1,92 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" width="100%" height="100%">
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="670" viewBox="0 0 960 670">
+  <title>Perjalanan sel telur hingga implantasi</title>
+  <desc>Jalur pada organ reproduksi mengarah dari ovarium ke tuba dan rahim. Gambar pembesaran menunjukkan pembuahan, morula, dan implantasi.</desc>
   <defs>
-    <marker id="arrow-rose" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-      <path d="M 0 1 L 10 5 L 0 9 z" fill="#e11d48"/>
+    <radialGradient id="paper" cx="42%" cy="38%" r="76%">
+      <stop stop-color="#f9fbf8" />
+      <stop offset="1" stop-color="#f1e6eb" />
+    </radialGradient>
+    <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <circle cx="1" cy="1" r="1" fill="#4c7765" opacity=".13" />
+    </pattern>
+    <linearGradient id="organ" x1="0" x2="1" y1="0" y2="1" gradientUnits="objectBoundingBox">
+      <stop stop-color="#ffddd3" />
+      <stop offset="1" stop-color="#cf8290" />
+    </linearGradient>
+    <linearGradient id="ovary" x1="0" x2="1" y1="0" y2="1" gradientUnits="objectBoundingBox">
+      <stop stop-color="#fff3c4" />
+      <stop offset="1" stop-color="#dea273" />
+    </linearGradient>
+    <linearGradient id="layer" x1="0" x2="1" y1="0" y2="1" gradientUnits="objectBoundingBox">
+      <stop stop-color="#f8c0b9" />
+      <stop offset="1" stop-color="#ca7385" />
+    </linearGradient>
+    <marker id="route" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto" viewBox="0 0 8 8">
+      <path d="M1 1 7 4 1 7" fill="none" stroke="#654a86" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
     </marker>
-    <filter id="glow" x="-10%" y="-10%" width="120%" height="120%">
-      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-opacity="0.15"/>
-    </filter>
+    <g id="ovum">
+      <circle r="38" fill="#eddff7" stroke="#8a709f" stroke-width="3" />
+      <circle r="30" fill="#dbbfe9" stroke="#bc96d3" stroke-width="2" />
+      <circle cx="-6" cy="5" r="11" fill="#a679b9" />
+    </g>
+    <g id="blastomere">
+      <circle r="12" fill="#e2bfe8" stroke="#9e75b0" stroke-width="2" />
+      <circle r="3" fill="#976da6" />
+    </g>
   </defs>
-
-  <!-- Background -->
-  <rect width="100%" height="100%" fill="#fff5f5" rx="16"/>
-
-  <!-- Title & Subtitle -->
-  <text x="480" y="42" font-family="system-ui, -apple-system, sans-serif" font-size="22" font-weight="bold" fill="#881337" text-anchor="middle">Proses Perjalanan &amp; Fertilisasi Manusia</text>
-  <text x="480" y="65" font-family="system-ui, -apple-system, sans-serif" font-size="13" fill="#9f1239" text-anchor="middle">Alur ovulasi, pergerakan sperma, pembuahan di tuba fallopi, hingga implantasi di uterus</text>
-
-  <!-- Anatomical Background Structures (Uterine cavity, Fallopian tube contour) -->
-  <g fill="none" stroke="#fecdd3" stroke-width="36" stroke-linecap="round" stroke-linejoin="round">
-    <!-- Fallopian Tube Pathway Contour -->
-    <path d="M 180 290 C 180 180, 280 140, 520 140 C 720 140, 780 220, 780 340 L 780 480" />
+  <path fill="url(#paper)" d="M0 0h960v670H0Z" />
+  <path fill="url(#grid)" d="M0 0h960v670H0Z" />
+  <path d="M480 169C426 145 387 136 327 151Q256 173 219 210M480 169c54-24 93-33 153-18q71 22 108 59" fill="none" stroke="#a15f75" stroke-width="34" stroke-linecap="round" />
+  <path d="M480 169C426 145 387 136 327 151Q256 173 219 210m261-41c54-24 93-33 153-18q71 22 108 59" fill="none" stroke="#f1b3b7" stroke-width="28" stroke-linecap="round" />
+  <path d="M221 204q-22-1-38 17m40-14q-3 19-25 34m30-40q-17-13-46-4m557 7q22-1 38 17m-40-14q3 19 25 34m-30-40q17-13 46-4" fill="none" stroke="#c37e8f" stroke-width="8" stroke-linecap="round" />
+  <path d="M407 145q74-34 146 0 13 11 4 35-31 55-51 96l2 48q-25 18-56 0l2-48q-20-42-51-96-10-24 4-35z" fill="url(#organ)" stroke="#a15f75" stroke-width="3" />
+  <path d="M425 163q55-20 110 0-27 30-44 90-12 16-10 52m-53-139q28 35 42 88c6 12 9 22 11 51" fill="#f8d0c5" stroke="#af6378" stroke-width="5" stroke-linecap="round" />
+  <g fill="url(#ovary)" stroke="#a97055" stroke-width="3">
+    <ellipse cx="196" cy="274" rx="46" ry="27" transform="rotate(-23 196 274)" />
+    <ellipse cx="764" cy="274" rx="46" ry="27" transform="rotate(23 764 274)" />
   </g>
-  <g fill="none" stroke="#fda4af" stroke-width="20" stroke-linecap="round">
-    <path d="M 180 290 C 180 180, 280 140, 520 140 C 720 140, 780 220, 780 340 L 780 480" />
+  <g fill="#f9daa0" stroke="#ba805d" stroke-width="2">
+    <circle cx="177" cy="277" r="10" />
+    <circle cx="199" cy="266" r="13" />
+    <circle cx="224" cy="257" r="9" />
+    <circle cx="747" cy="263" r="10" />
+    <circle cx="768" cy="272" r="13" />
   </g>
-
-  <!-- Uterine Wall & Endometrium (Right side) -->
-  <path d="M 720 540 L 720 340 C 720 280, 750 250, 800 250 L 920 250 L 920 540 Z" fill="#ffe4e6" stroke="#fb7185" stroke-width="3" filter="url(#glow)"/>
-  <!-- Endometrium Thick Vascular Layer -->
-  <path d="M 720 540 L 720 350 C 720 320, 735 300, 760 300 L 760 540 Z" fill="#f43f5e" opacity="0.25"/>
-  <text x="840" y="490" font-family="system-ui, sans-serif" font-size="14" font-weight="bold" fill="#9f1239" text-anchor="middle">Dinding Rahim</text>
-  <text x="840" y="510" font-family="system-ui, sans-serif" font-size="12" fill="#be123c" text-anchor="middle">(Endometrium)</text>
-
-  <!-- Process Flow Dashed Line -->
-  <path d="M 180 390 Q 180 270 240 200 T 520 150 T 700 240 T 750 390" fill="none" stroke="#e11d48" stroke-width="2.5" stroke-dasharray="6 4" marker-end="url(#arrow-rose)"/>
-
-  <!-- ================= 1. OVARIUM (OVULASI) ================= -->
-  <g transform="translate(180, 430)">
-    <!-- Ovary Body -->
-    <ellipse cx="0" cy="0" rx="55" ry="42" fill="#ffe4e6" stroke="#e11d48" stroke-width="3" filter="url(#glow)"/>
-    <!-- Follicles developing inside -->
-    <circle cx="-25" cy="-10" r="10" fill="#f43f5e" opacity="0.3"/>
-    <circle cx="-10" cy="15" r="14" fill="#f43f5e" opacity="0.5"/>
-    <circle cx="18" cy="-5" r="18" fill="#fda4af" stroke="#e11d48" stroke-width="1.5"/>
-    <!-- Oocyte inside Graafian follicle -->
-    <circle cx="18" cy="-5" r="7" fill="#fbbf24"/>
-    <!-- Releasing Ovum (Ovulation) -->
-    <path d="M 28 -20 Q 30 -35 15 -48" stroke="#e11d48" stroke-width="2" stroke-dasharray="3 2" fill="none"/>
-    <circle cx="12" cy="-56" r="10" fill="#fbbf24" stroke="#d97706" stroke-width="2"/>
-    <!-- Label -->
-    <text x="0" y="65" font-family="system-ui, sans-serif" font-size="14" font-weight="bold" fill="#881337" text-anchor="middle">1. Ovarium</text>
-    <text x="0" y="82" font-family="system-ui, sans-serif" font-size="11" fill="#9f1239" text-anchor="middle">Ovulasi Sel Telur</text>
+  <path d="M187 257q13-74 102-95 85-37 173-3 35 17 43 57" fill="none" stroke="#654a86" stroke-width="4.5" stroke-linecap="round" stroke-dasharray="4 8" marker-end="url(#route)" />
+  <path d="M93 303l68-17M177 111l-2 42 34 41M346 89v47" fill="none" stroke="#496e60" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+  <path d="M77 365h806" stroke="#9cb3a8" stroke-width="2" />
+  <g fill="#f8fbf7" stroke="#a4b9ab" stroke-width="2.5">
+    <circle cx="180" cy="480" r="84" />
+    <circle cx="480" cy="480" r="84" />
+    <circle cx="780" cy="480" r="84" />
   </g>
-
-  <!-- ================= 2. FIMBRIAE & INFUNDIBULUM ================= -->
-  <g transform="translate(175, 280)">
-    <!-- Finger-like Fimbriae fringes -->
-    <path d="M -30 20 C -25 5, -15 -10, 0 0 C 15 -15, 25 5, 20 25 C 30 15, 45 30, 35 45 C 10 35, -20 40, -30 20 Z" fill="#fda4af" stroke="#e11d48" stroke-width="2.5"/>
-    <path d="M -15 35 Q -10 10 5 15" stroke="#be123c" stroke-width="2" fill="none"/>
-    <path d="M 5 38 Q 15 15 25 22" stroke="#be123c" stroke-width="2" fill="none"/>
-    <!-- Ovum entering fimbriae -->
-    <circle cx="0" cy="-15" r="12" fill="#fbbf24" stroke="#d97706" stroke-width="2" filter="url(#glow)"/>
-    <!-- Label -->
-    <text x="-60" y="-10" font-family="system-ui, sans-serif" font-size="14" font-weight="bold" fill="#881337" text-anchor="middle">2. Fimbriae</text>
-    <text x="-60" y="8" font-family="system-ui, sans-serif" font-size="11" fill="#9f1239" text-anchor="middle">Menangkap Ovum</text>
+  <g stroke="#654a86" stroke-width="3.5" stroke-dasharray="5 7" fill="none">
+    <path d="M275 480h106" marker-end="url(#route)" />
+    <path d="M575 480h106" marker-end="url(#route)" />
   </g>
-
-  <!-- ================= 3. TUBA FALLOPI & SPERM TRANSIT ================= -->
-  <g transform="translate(350, 160)">
-    <!-- Moving Ovum -->
-    <circle cx="-20" cy="-5" r="13" fill="#fbbf24" stroke="#d97706" stroke-width="2"/>
-    <!-- Swimming Sperm cells approaching -->
-    <g stroke="#0284c7" stroke-width="1.5" fill="none">
-      <!-- Sperm 1 -->
-      <path d="M 25 10 Q 15 5 5 12 T -5 6" />
-      <ellipse cx="27" cy="10" rx="4" ry="2.5" fill="#0284c7"/>
-      <!-- Sperm 2 -->
-      <path d="M 35 -15 Q 25 -10 15 -18 T 5 -12" />
-      <ellipse cx="37" cy="-15" rx="4" ry="2.5" fill="#0284c7"/>
-      <!-- Sperm 3 -->
-      <path d="M 45 0 Q 35 8 25 0 T 15 5" />
-      <ellipse cx="47" cy="0" rx="4" ry="2.5" fill="#0284c7"/>
-    </g>
-    <!-- Label -->
-    <text x="0" y="48" font-family="system-ui, sans-serif" font-size="14" font-weight="bold" fill="#881337" text-anchor="middle">3. Tuba Fallopi</text>
-    <text x="0" y="65" font-family="system-ui, sans-serif" font-size="11" fill="#9f1239" text-anchor="middle">Saluran Pertemuan</text>
+  <g transform="translate(180 480)">
+    <use href="#ovum" x="0" y="0" />
+    <path d="M-67-18q17 5 28 15m-30-31q-22-8-16-20m76 118q-17-11-20-26" stroke="#714e88" stroke-width="2.5" stroke-linecap="round" fill="none" />
+    <ellipse cx="-41" cy="-4" rx="9" ry="4.5" fill="#825d9a" transform="rotate(23 -41 -4)" />
   </g>
-
-  <!-- ================= 4. FERTILISASI (PEMBUAHAN) ================= -->
-  <g transform="translate(520, 155)">
-    <!-- Ovum with Zona Pellucida layer -->
-    <circle cx="0" cy="0" r="22" fill="#fef3c7" stroke="#f59e0b" stroke-width="2.5" filter="url(#glow)"/>
-    <circle cx="0" cy="0" r="15" fill="#fde68a" stroke="#d97706" stroke-width="1.5"/>
-    <!-- Pronucleus fusing -->
-    <circle cx="-4" cy="0" r="5" fill="#f43f5e" opacity="0.7"/>
-    <circle cx="4" cy="0" r="5" fill="#0284c7" opacity="0.7"/>
-    <!-- Penetrating Sperm (Acrosome reaction) -->
-    <g stroke="#0284c7" stroke-width="1.5" fill="none">
-      <path d="M -30 -15 Q -25 -5 -18 -8" />
-      <ellipse cx="-18" cy="-8" rx="4" ry="2.5" fill="#0284c7"/>
-      <!-- Competing blocked sperms -->
-      <path d="M 15 28 Q 20 22 12 18" />
-      <ellipse cx="12" cy="18" rx="3.5" ry="2" fill="#94a3b8"/>
-      <path d="M -15 26 Q -10 20 -8 16" />
-      <ellipse cx="-8" cy="16" rx="3.5" ry="2" fill="#94a3b8"/>
-    </g>
-    <!-- Label -->
-    <text x="0" y="52" font-family="system-ui, sans-serif" font-size="14" font-weight="bold" fill="#881337" text-anchor="middle">4. Fertilisasi</text>
-    <text x="0" y="69" font-family="system-ui, sans-serif" font-size="11" fill="#9f1239" text-anchor="middle">Peleburan Inti (Zigot 2n)</text>
+  <g transform="translate(480 480)">
+    <circle r="43" fill="#ebdbf3" stroke="#8a709f" stroke-width="3" />
+    <use href="#blastomere" x="0" y="-24" />
+    <use href="#blastomere" x="-20" y="-12" />
+    <use href="#blastomere" x="21" y="-12" />
+    <use href="#blastomere" x="-23" y="11" />
+    <use href="#blastomere" x="0" y="1" />
+    <use href="#blastomere" x="23" y="12" />
+    <use href="#blastomere" x="-10" y="24" />
+    <use href="#blastomere" x="11" y="25" />
   </g>
-
-  <!-- ================= 5. PEMBELAHAN ZIGOT (MORULA) ================= -->
-  <g transform="translate(685, 230)">
-    <!-- Cleaving Embryo (Morula ball of cells) -->
-    <g filter="url(#glow)">
-      <circle cx="-8" cy="-8" r="9" fill="#fde68a" stroke="#d97706" stroke-width="1.5"/>
-      <circle cx="8" cy="-8" r="9" fill="#fde68a" stroke="#d97706" stroke-width="1.5"/>
-      <circle cx="-8" cy="8" r="9" fill="#fde68a" stroke="#d97706" stroke-width="1.5"/>
-      <circle cx="8" cy="8" r="9" fill="#fde68a" stroke="#d97706" stroke-width="1.5"/>
-      <circle cx="0" cy="0" r="7" fill="#fbbf24" stroke="#d97706" stroke-width="1"/>
-    </g>
-    <!-- Label -->
-    <text x="0" y="45" font-family="system-ui, sans-serif" font-size="14" font-weight="bold" fill="#881337" text-anchor="middle">5. Pembelahan Zigot</text>
-    <text x="0" y="62" font-family="system-ui, sans-serif" font-size="11" fill="#9f1239" text-anchor="middle">Mitosis Awal (Morula)</text>
+  <g transform="translate(780 480)">
+    <path d="M-60 17q19-31 38-12 20 20 38-1 20-28 43 7l8 28q-27 34-67 36-42-1-68-36z" fill="url(#layer)" stroke="#9e5b71" stroke-width="2.5" />
+    <circle cy="-5" r="25" fill="#e7d0f0" stroke="#8e6ca4" stroke-width="3" />
+    <circle cy="-8" r="15" fill="#f9effb" />
+    <path d="M-15-4q10 18 27 11-8 13-19 10-9-3-8-21" fill="#a67cb9" />
   </g>
-
-  <!-- ================= 6. IMPLANTASI DI UTERUS ================= -->
-  <g transform="translate(760, 390)">
-    <!-- Blastocyst embedding in endometrium -->
-    <circle cx="0" cy="0" r="20" fill="#fef3c7" stroke="#d97706" stroke-width="2" filter="url(#glow)"/>
-    <!-- Inner Cell Mass (embryoblast) -->
-    <circle cx="6" cy="-2" r="9" fill="#e11d48"/>
-    <!-- Trophoblast cells rim -->
-    <circle cx="-12" cy="0" r="3" fill="#f59e0b"/>
-    <circle cx="-10" cy="-10" r="3" fill="#f59e0b"/>
-    <circle cx="0" cy="-14" r="3" fill="#f59e0b"/>
-    <circle cx="10" cy="-12" r="3" fill="#f59e0b"/>
-    <circle cx="-10" cy="10" r="3" fill="#f59e0b"/>
-    <circle cx="0" cy="14" r="3" fill="#f59e0b"/>
-    <circle cx="10" cy="12" r="3" fill="#f59e0b"/>
-    <!-- Infiltration into Endometrium Tissue -->
-    <path d="M 18 -10 Q 28 -5 32 0 Q 28 5 18 10" stroke="#f43f5e" stroke-width="2" fill="none"/>
-    <!-- Label -->
-    <text x="-70" y="10" font-family="system-ui, sans-serif" font-size="14" font-weight="bold" fill="#881337" text-anchor="middle">6. Implantasi</text>
-    <text x="-70" y="28" font-family="system-ui, sans-serif" font-size="11" fill="#9f1239" text-anchor="middle">Penempelan di Rahim</text>
-  </g>
+  <path d="M180 565v19" fill="none" stroke="#496e60" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+  <path d="M480 565v19" fill="none" stroke="#496e60" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+  <path d="M780 565v19" fill="none" stroke="#496e60" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
 </svg>

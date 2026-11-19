@@ -1,9 +1,11 @@
-import { useState, useEffect, useMemo } from 'react'
+import { useState, useEffect, useMemo, useId } from 'react'
 import { TransformWrapper, TransformComponent } from 'react-zoom-pan-pinch'
 import { resolveAsset, validateDiagramData } from '../../utils/assetResolver'
+import VisualIcon from './VisualIcon'
 import './InteractiveDiagram.css'
 
 export default function InteractiveDiagram({ diagram }) {
+  const titleId = useId()
   const [activePartId, setActivePartId] = useState(null)
   const [mode, setMode] = useState('explore') // 'explore' | 'identify'
   const [imageError, setImageError] = useState(false)
@@ -129,8 +131,8 @@ export default function InteractiveDiagram({ diagram }) {
   const getSubtitle = () => {
     const idx = activePartIndex >= 0 ? activePartIndex + 1 : 1
     if (variant === 'process') return `Tahap ${idx} dari ${parts.length}`
-    if (variant === 'layered') return `Tingkat ${idx} dari ${parts.length}`
-    return 'Bagian Terpilih:'
+    if (variant === 'layered') return `Lapisan ${idx} dari ${parts.length}`
+    return `Bagian ${idx} dari ${parts.length}`
   }
 
   const getQuestionInstruction = () => {
@@ -140,19 +142,19 @@ export default function InteractiveDiagram({ diagram }) {
   }
 
   const getLegendTitle = () => {
-    if (variant === 'process') return 'Alur & Urutan Tahapan:'
-    if (variant === 'layered') return 'Tingkatan Piramida:'
-    return 'Daftar Bagian:'
+    if (variant === 'process') return 'Urutan tahap'
+    if (variant === 'layered') return 'Lapisan piramida'
+    return 'Bagian ilustrasi'
   }
 
   const imageSrc = resolveAsset(diagram?.src)
 
   return (
-    <div className={`interactive-diagram-container variant-${variant}`}>
+    <section className={`interactive-diagram-container variant-${variant}`} aria-labelledby={titleId}>
       <div className="diagram-header">
         <div className="diagram-header-top">
           <div className="diagram-header-text">
-            <h3 className="diagram-title">{diagram?.title || 'Diagram Interaktif'}</h3>
+            <h3 className="diagram-title" id={titleId}>{diagram?.title || 'Diagram Interaktif'}</h3>
             {diagram?.description && mode === 'explore' && (
               <p className="diagram-desc">{diagram.description}</p>
             )}
@@ -183,30 +185,29 @@ export default function InteractiveDiagram({ diagram }) {
 
       <div className="diagram-layout">
         {/* Visual / Image Area */}
-        <div className="diagram-visual-area">
-          <div className="diagram-controls-hint">
-            <span className="material-symbols-outlined">pinch</span> Gunakan dua jari / scroll untuk zoom & geser
-          </div>
-
+        <figure className="diagram-visual-area">
           <TransformWrapper
             initialScale={1}
-            minScale={0.5}
+            minScale={1}
             maxScale={4}
             centerOnInit={true}
-            wheel={{ step: 0.1 }}
+            wheel={{ step: 0.1, activationKeys: ['Alt'] }}
           >
             {({ zoomIn, zoomOut, resetTransform }) => (
               <>
-                <div className="zoom-controls">
-                  <button type="button" onClick={() => zoomIn()} title="Perbesar (Zoom In)" aria-label="Perbesar Diagram">
-                    <span className="material-symbols-outlined">zoom_in</span>
-                  </button>
-                  <button type="button" onClick={() => zoomOut()} title="Perkecil (Zoom Out)" aria-label="Perkecil Diagram">
-                    <span className="material-symbols-outlined">zoom_out</span>
-                  </button>
-                  <button type="button" onClick={() => resetTransform()} title="Kembalikan Tampilan (Reset)" aria-label="Reset Posisi Diagram">
-                    <span className="material-symbols-outlined">restart_alt</span>
-                  </button>
+                <div className="diagram-toolbar">
+                  <p>{mode === 'explore' ? 'Pilih penanda untuk melihat detail' : 'Pilih penanda sesuai pertanyaan'}</p>
+                  <div className="zoom-controls" role="group" aria-label="Pembesaran diagram">
+                    <button type="button" onClick={() => zoomIn()} title="Perbesar Diagram" aria-label="Perbesar Diagram">
+                      <VisualIcon name="plus" />
+                    </button>
+                    <button type="button" onClick={() => zoomOut()} title="Perkecil Diagram" aria-label="Perkecil Diagram">
+                      <VisualIcon name="minus" />
+                    </button>
+                    <button type="button" onClick={() => resetTransform()} title="Reset Posisi Diagram" aria-label="Reset Posisi Diagram">
+                      <VisualIcon name="reset" />
+                    </button>
+                  </div>
                 </div>
 
                 <TransformComponent wrapperClass="diagram-transform-wrapper">
@@ -219,7 +220,7 @@ export default function InteractiveDiagram({ diagram }) {
                     ) : (
                       <img
                         src={imageSrc}
-                        alt={diagram?.title || 'Diagram visual'}
+                        alt={(mode === 'explore' && diagram?.alt) || diagram?.title || 'Diagram visual'}
                         className="diagram-image"
                         width={diagram.width}
                         height={diagram.height}
@@ -253,20 +254,15 @@ export default function InteractiveDiagram({ diagram }) {
                             handleHotspotClick(part.id)
                           }}
                           onPointerDown={(e) => e.stopPropagation()}
+                        title={mode === 'explore' ? part.label : undefined}
+                        aria-pressed={mode === 'explore' ? isTargetActive : undefined}
                           aria-label={
                             mode === 'explore'
                               ? `Pilih ${part.label}`
                               : `Pilih area nomor ${idx + 1}`
                           }
                         >
-                          {mode === 'explore' ? (
-                            <span className="hotspot-number">{idx + 1}</span>
-                          ) : (
-                            <span className="hotspot-number">?</span>
-                          )}
-                          {mode === 'explore' && (
-                            <span className="hotspot-label-tooltip">{part.label}</span>
-                          )}
+                          <span className="hotspot-number" aria-hidden="true">{mode === 'explore' ? idx + 1 : '?'}</span>
                         </button>
                       )
                     })}
@@ -277,12 +273,15 @@ export default function InteractiveDiagram({ diagram }) {
           </TransformWrapper>
 
           {diagram?.caption && mode === 'explore' && (
-            <div className="diagram-caption">{diagram.caption}</div>
+            <figcaption className="diagram-caption">{diagram.caption}</figcaption>
           )}
-        </div>
+        </figure>
 
         {/* Right: Info / Quiz Panel Area */}
         <div className="diagram-info-area">
+          <p className="sr-only" role="status">
+            {mode === 'explore' && activePart ? `${activePart.label}. ${activePart.function || activePart.process || activePart.description || ''}` : ''}
+          </p>
           {mode === 'explore' ? (
             activePart ? (
               <div className="info-panel active-panel">
@@ -293,25 +292,25 @@ export default function InteractiveDiagram({ diagram }) {
                 <div className="info-panel-body">
                   {activePart.description && (
                     <div className="info-section">
-                      <strong>Deskripsi:</strong>
+                      <strong>Struktur</strong>
                       <p>{activePart.description}</p>
                     </div>
                   )}
                   {activePart.process && (
                     <div className="info-section">
-                      <strong>Proses / Perubahan:</strong>
+                      <strong>Proses</strong>
                       <p>{activePart.process}</p>
                     </div>
                   )}
                   {activePart.examples && (
                     <div className="info-section">
-                      <strong>Contoh Makanan / Elemen:</strong>
+                      <strong>Contoh</strong>
                       <p>{activePart.examples}</p>
                     </div>
                   )}
                   {activePart.function && (
                     <div className="info-section">
-                      <strong>Fungsi / Peran:</strong>
+                      <strong>Fungsi</strong>
                       <p>{activePart.function}</p>
                     </div>
                   )}
@@ -352,15 +351,6 @@ export default function InteractiveDiagram({ diagram }) {
               </div>
             ) : (
               <div className="info-panel empty-panel">
-                <span className="material-symbols-outlined empty-icon">ads_click</span>
-                <p>
-                  {variant === 'process'
-                    ? 'Klik salah satu tahap proses pada diagram untuk melihat detail alur biologisnya.'
-                    : variant === 'layered'
-                    ? 'Klik salah satu tingkatan piramida untuk mempelajari proporsi dan fungsi nutrisinya.'
-                    : 'Klik salah satu penanda pada diagram untuk melihat detail struktur dan fungsinya.'}
-                </p>
-
                 {parts.length > 0 && (
                   <div className="legend-list">
                     <strong>{getLegendTitle()}</strong>
@@ -461,6 +451,6 @@ export default function InteractiveDiagram({ diagram }) {
           )}
         </div>
       </div>
-    </div>
+    </section>
   )
 }

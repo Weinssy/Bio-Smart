@@ -1,92 +1,65 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 620" width="100%" height="100%">
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="580" viewBox="0 0 800 580">
+  <title>Piramida kelompok pangan</title>
+  <desc>Kelompok pangan disusun pada empat lapisan berpola dari makanan pokok hingga gula, garam, dan minyak.</desc>
   <defs>
-    <filter id="layer-shadow" x="-5%" y="-5%" width="110%" height="115%">
-      <feDropShadow dx="0" dy="3" stdDeviation="3" flood-opacity="0.12"/>
-    </filter>
+    <radialGradient id="paper" cx="42%" cy="38%" r="76%">
+      <stop stop-color="#f9fbf8" />
+      <stop offset="1" stop-color="#eaeedf" />
+    </radialGradient>
+    <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <circle cx="1" cy="1" r="1" fill="#4c7765" opacity=".13" />
+    </pattern>
+    <linearGradient id="grain" x1="0" x2="1" y1="0" y2="1" gradientUnits="objectBoundingBox">
+      <stop stop-color="#efd1a1" />
+      <stop offset="1" stop-color="#d8aa71" />
+    </linearGradient>
+    <linearGradient id="greens" x1="0" x2="1" y1="0" y2="1" gradientUnits="objectBoundingBox">
+      <stop stop-color="#cde4a9" />
+      <stop offset="1" stop-color="#9ec388" />
+    </linearGradient>
+    <linearGradient id="proteins" x1="0" x2="1" y1="0" y2="1" gradientUnits="objectBoundingBox">
+      <stop stop-color="#d9e4ec" />
+      <stop offset="1" stop-color="#aebed7" />
+    </linearGradient>
+    <linearGradient id="extras" x1="0" x2="1" y1="0" y2="1" gradientUnits="objectBoundingBox">
+      <stop stop-color="#f2cac0" />
+      <stop offset="1" stop-color="#deaba1" />
+    </linearGradient>
+    <g id="apple">
+      <path d="M0-15q-13-12-21 0c-15 18 7 46 21 34 14 12 36-16 21-34q-8-12-21 0z" fill="#cf7463" stroke="#9c5a50" stroke-width="2" />
+      <path d="M0-15q-2-18 17-17M2-22q7-12 21-8-7 12-21 8" stroke="#47765e" fill="#77a16f" stroke-width="2" stroke-linecap="round" />
+    </g>
+    <g id="leaf">
+      <path d="M0 32Q-48 4-7-35q27 8 18 32 22-13 30 2-7 31-41 33Z" fill="#69a57b" stroke="#497e62" stroke-width="2" />
+      <path d="M0 36Q-5 12-7-22M-1 23l26-17" fill="none" stroke="#e0efce" stroke-width="2.5" />
+    </g>
+    <g id="bowl">
+      <path d="M-38-4q4-20 38-22 34 2 38 22z" fill="#fff7e5" stroke="#ad8b65" stroke-width="2" />
+      <path d="M-42-3h84Q35 28 0 29T-42-3Z" fill="#af7e56" stroke="#8b694e" stroke-width="3" />
+      <path d="M-24 10q21 13 48 0" stroke="#f1d3aa" fill="none" stroke-width="3" stroke-linecap="round" />
+    </g>
   </defs>
-
-  <!-- Background -->
-  <rect width="100%" height="100%" fill="#fbfbfe" rx="16"/>
-
-  <!-- Title & Subtitle -->
-  <text x="480" y="40" font-family="system-ui, -apple-system, sans-serif" font-size="22" font-weight="bold" fill="#0f172a" text-anchor="middle">Piramida Makanan &amp; Gizi Seimbang</text>
-  <text x="480" y="62" font-family="system-ui, -apple-system, sans-serif" font-size="13" fill="#64748b" text-anchor="middle">Proporsi asupan harian makronutrien dan mikronutrien untuk metabolisme optimal</text>
-
-  <!-- ================= TIER 4: PUNCAK (GULA, GARAM, MINYAK) ================= -->
-  <!-- Triangle Apex -->
-  <g id="tier-puncak" filter="url(#layer-shadow)">
-    <polygon points="480,95 400,195 560,195" fill="#fee2e2" stroke="#ef4444" stroke-width="2.5"/>
-    <!-- Icon elements: Oil droplet, Salt, Sugar -->
-    <path d="M 480 125 C 473 135 468 145 468 152 A 12 12 0 1 0 492 152 C 492 145 487 135 480 125 Z" fill="#ef4444"/>
-    <rect x="498" y="145" width="14" height="18" rx="2" fill="#f87171"/>
-    <text x="480" y="182" font-family="system-ui, sans-serif" font-size="12" font-weight="bold" fill="#991b1b" text-anchor="middle">Gula, Garam, Minyak</text>
+  <path fill="url(#paper)" d="M0 0h800v580H0Z" />
+  <path fill="url(#grid)" d="M0 0h800v580H0Z" />
+  <path d="M60 496 344 55l283 441-16 23H73Z" fill="#826451" opacity=".15" />
+  <path d="M276 156 335 64q9-16 19 0l59 92Z" fill="url(#extras)" stroke="#ae756b" stroke-width="2.5" />
+  <path d="M269 168h151l64 101H205Z" fill="url(#proteins)" stroke="#8299ad" stroke-width="2.5" />
+  <path d="M197 281h295l64 103H132Z" fill="url(#greens)" stroke="#82a76e" stroke-width="2.5" />
+  <path d="M125 396h439l60 95q7 13-8 14H74q-15 0-8-14z" fill="url(#grain)" stroke="#ad8257" stroke-width="2.5" />
+  <path d="M347 79q-20 29-20 39a19 19 0 0038 0q0-10-18-39Z" fill="#e2a05f" stroke="#a96b4a" stroke-width="2.5" />
+  <path d="M334 121q3 8 10 10" stroke="#fff0cf" fill="none" stroke-width="2.5" stroke-linecap="round" />
+  <g transform="translate(323 217)">
+    <path d="M-48 0q32-32 65 0l23-17v34L17 0q-32 32-65 0Z" fill="#699bad" stroke="#466c85" stroke-width="2.8" />
+    <circle cx="-28" cy="-3" r="3" fill="#29485a" />
+    <path d="M61-13q23-8 18 6-8 18-19 13-11-6 1-19m26 13q23-8 18 6-8 18-19 13-11-6 1-19" fill="#e8b77d" stroke="#a47653" stroke-width="2" />
   </g>
-  <!-- Side Annotation for Tier 4 -->
-  <text x="630" y="150" font-family="system-ui, sans-serif" font-size="13" font-weight="bold" fill="#dc2626">Gunakan Secukupnya</text>
-  <text x="630" y="168" font-family="system-ui, sans-serif" font-size="11" fill="#7f1d1d">Maksimal 4 sdm gula, 1 sdt garam, 5 sdm minyak</text>
-
-  <!-- ================= TIER 3: PROTEIN & LAUK PAUK ================= -->
-  <!-- Trapezoid 3 -->
-  <g id="tier-protein" filter="url(#layer-shadow)">
-    <polygon points="400,205 560,205 640,320 320,320" fill="#ede9fe" stroke="#8b5cf6" stroke-width="2.5"/>
-    <!-- Icon elements: Fish, Drumstick, Tofu/Egg -->
-    <!-- Fish -->
-    <path d="M 410 250 C 430 238 450 248 460 255 C 470 250 480 240 480 240 L 475 255 L 480 270 C 480 270 470 260 460 255 C 450 262 430 272 410 260 Z" fill="#7c3aed"/>
-    <circle cx="420" cy="254" r="2" fill="#fff"/>
-    <!-- Egg / Tofu -->
-    <ellipse cx="510" cy="255" rx="14" ry="18" fill="#a78bfa"/>
-    <circle cx="510" cy="255" r="8" fill="#fef08a"/>
-    <text x="480" y="295" font-family="system-ui, sans-serif" font-size="14" font-weight="bold" fill="#5b21b6" text-anchor="middle">Lauk-Pauk: Protein Hewani &amp; Nabati</text>
-    <text x="480" y="312" font-family="system-ui, sans-serif" font-size="11" fill="#6d28d9" text-anchor="middle">Ikan, Telur, Daging, Tempe, Tahu, Susu</text>
+  <use href="#leaf" x="253" y="333" />
+  <use href="#apple" x="347" y="329" />
+  <use href="#leaf" x="443" y="331" transform="rotate(22 443 331)" />
+  <use href="#bowl" x="222" y="451" />
+  <use href="#bowl" x="466" y="451" />
+  <g transform="translate(344 451)" fill="#f5d49a" stroke="#9d743c" stroke-width="2.1">
+    <path d="M0 37V-32m0 15q-19-12-18-26 19 4 18 26m0 13q19-12 18-26Q-1-26 0-4m0 12q-19-12-20-25 20 4 20 25m0 14q19-12 20-25Q0 1 0 22" />
   </g>
-  <!-- Side Annotation for Tier 3 -->
-  <text x="700" y="260" font-family="system-ui, sans-serif" font-size="13" font-weight="bold" fill="#7c3aed">2 – 4 Porsi / Hari</text>
-  <text x="700" y="278" font-family="system-ui, sans-serif" font-size="11" fill="#5b21b6">Zat pembangun &amp; perbaikan sel tubuh</text>
-
-  <!-- ================= TIER 2: SAYURAN & BUAH-BUAHAN ================= -->
-  <!-- Trapezoid 2 -->
-  <g id="tier-sayur-buah" filter="url(#layer-shadow)">
-    <polygon points="320,330 640,330 730,455 230,455" fill="#dcfce7" stroke="#22c55e" stroke-width="2.5"/>
-    <!-- Divider between Veggies and Fruits -->
-    <line x1="480" y1="330" x2="480" y2="455" stroke="#16a34a" stroke-width="1.5" stroke-dasharray="3 3"/>
-    <!-- Left: Vegetables Icon (Carrot, Broccoli) -->
-    <g transform="translate(370, 380)">
-      <path d="M 0 -15 L 12 18 C 12 25 -12 25 -12 18 Z" fill="#f97316"/>
-      <path d="M 0 -15 Q -5 -25 0 -30 M 0 -15 Q 5 -25 5 -30" stroke="#15803d" stroke-width="2" fill="none"/>
-      <text x="0" y="45" font-family="system-ui, sans-serif" font-size="13" font-weight="bold" fill="#166534" text-anchor="middle">Sayuran (3-4 porsi)</text>
-    </g>
-    <!-- Right: Fruits Icon (Apple, Banana) -->
-    <g transform="translate(590, 380)">
-      <circle cx="-8" cy="2" r="14" fill="#ef4444"/>
-      <path d="M -8 -12 Q -5 -20 0 -22" stroke="#854d0e" stroke-width="2" fill="none"/>
-      <path d="M -8 -14 Q -16 -20 -14 -10 Z" fill="#22c55e"/>
-      <path d="M 8 -8 C 22 0 28 15 15 22 C 22 15 16 0 8 -8 Z" fill="#eab308"/>
-      <text x="0" y="45" font-family="system-ui, sans-serif" font-size="13" font-weight="bold" fill="#166534" text-anchor="middle">Buah-buahan (2-3 porsi)</text>
-    </g>
-    <text x="480" y="350" font-family="system-ui, sans-serif" font-size="13" font-weight="bold" fill="#15803d" text-anchor="middle">Sumber Serat, Vitamin &amp; Mineral</text>
-  </g>
-  <!-- Side Annotation for Tier 2 -->
-  <text x="770" y="385" font-family="system-ui, sans-serif" font-size="13" font-weight="bold" fill="#16a34a">3 – 5 Porsi / Hari</text>
-  <text x="770" y="403" font-family="system-ui, sans-serif" font-size="11" fill="#14532d">Zat pengatur &amp; imunitas tubuh</text>
-
-  <!-- ================= TIER 1: LAPISAN DASAR (KARBOHIDRAT) ================= -->
-  <!-- Trapezoid 1 (Base) -->
-  <g id="tier-dasar" filter="url(#layer-shadow)">
-    <polygon points="230,465 730,465 830,590 130,590" fill="#fef3c7" stroke="#f59e0b" stroke-width="2.5"/>
-    <!-- Icons: Rice bowl, Bread, Corn, Potato -->
-    <g transform="translate(480, 520)">
-      <!-- Bowl of rice -->
-      <path d="M -30 0 C -30 25 30 25 30 0 Z" fill="#d97706"/>
-      <ellipse cx="0" cy="0" rx="30" ry="10" fill="#fef9c3"/>
-      <!-- Corn -->
-      <path d="M -70 5 L -45 -10 L -40 2 Z" fill="#eab308" stroke="#ca8a04" stroke-width="1.5"/>
-      <!-- Bread slice -->
-      <path d="M 45 -10 C 45 -18 65 -18 65 -10 L 65 15 L 45 15 Z" fill="#b45309"/>
-      <text x="0" y="42" font-family="system-ui, sans-serif" font-size="15" font-weight="bold" fill="#92400e" text-anchor="middle">Makanan Pokok (Karbohidrat Kompleks)</text>
-      <text x="0" y="58" font-family="system-ui, sans-serif" font-size="11" fill="#b45309" text-anchor="middle">Nasi, Jagung, Roti Gandum, Singkong, Kentang, Ubi</text>
-    </g>
-  </g>
-  <!-- Side Annotation for Tier 1 -->
-  <text x="850" y="520" font-family="system-ui, sans-serif" font-size="13" font-weight="bold" fill="#d97706">3 – 4 Porsi / Hari</text>
-  <text x="850" y="538" font-family="system-ui, sans-serif" font-size="11" fill="#78350f">Sumber energi utama tubuh</text>
+  <path d="M302 130h-58l-41-23M451 217h75l102 5M167 333h-43l-43 24M599 451h58l46 25" fill="none" stroke="#496e60" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
 </svg>
